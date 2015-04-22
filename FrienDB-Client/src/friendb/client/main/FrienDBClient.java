@@ -32,6 +32,12 @@ public class FrienDBClient extends Application {
     public static String RegisterPageID = "RegisterPage";
     public static String YourCirclePage = "YourCirclePage.fxml";
     public static String YourCirclePageID = "YourCirclePage";
+    public static String CommentsPage = "CommentsPage.fxml";
+    public static String CommentsPageID = "CommentsPage";
+    public static String NewCommentPage = "NewCommentPage.fxml";
+    public static String NewCommentPageID = "NewCommentPage";
+    public static String NewPostPage = "NewPostPage.fxml";
+    public static String NewPostPageID = "NewPostPage";
     
     private Stage primaryStage;
     private AnchorPane rootLayout;
@@ -49,6 +55,9 @@ public class FrienDBClient extends Application {
         mainContainer.loadScreen(FrienDBClient.CirclePageID, FrienDBClient.CirclePage); //this will be moved once we know what circle page we have to load
         mainContainer.loadScreen(FrienDBClient.YourCirclePageID, FrienDBClient.YourCirclePage); //this will too
         mainContainer.loadScreen(FrienDBClient.NewCirclePageID, FrienDBClient.NewCirclePage); 
+        mainContainer.loadScreen(FrienDBClient.CommentsPageID, FrienDBClient.CommentsPage); 
+        mainContainer.loadScreen(FrienDBClient.NewPostPageID, FrienDBClient.NewPostPage); 
+        mainContainer.loadScreen(FrienDBClient.NewCommentPageID, FrienDBClient.NewCommentPage); 
         
         mainContainer.setScreen(FrienDBClient.LoginPageID);
             

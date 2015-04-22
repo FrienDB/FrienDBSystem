@@ -14,23 +14,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
  *
  * @author evanguby
  */
-public class YourCirclePageController implements Initializable, ControlledScreen {
+public class NewCommentPageController implements Initializable, ControlledScreen {
 
     ScreensController myController;
+    
     @FXML
     private Label circleName;
-    @FXML
-    private TableView<?> post;
-    @FXML
-    private ListView<?> circleMember;
 
     /**
      * Initializes the controller class.
@@ -41,46 +36,13 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     }    
 
     @FXML
-    private void handleRemoveSelected(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleLikePost(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleRenameCircle(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleDeleteCircle(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleAddMember(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleRemovePost(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleNewPost(ActionEvent event) {
-        myController.setScreen(FrienDBClient.NewPostPageID);
-    }
-
-    @FXML
-    private void handleModifyPost(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleViewComments(ActionEvent event) {
-        myController.setScreen(FrienDBClient.CommentsPageID);
-    }
-
-    @FXML
     private void handleBack(ActionEvent event) {
-        myController.setScreen(FrienDBClient.CustomerWelcomePageID);
+         myController.setScreen(FrienDBClient.CommentsPageID);
+    }
+
+    @FXML
+    private void handleMakeComment(ActionEvent event) {
+        myController.setScreen(FrienDBClient.CommentsPageID);
     }
 
     @Override

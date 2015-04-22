@@ -14,7 +14,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 
 /**
@@ -22,7 +21,7 @@ import javafx.scene.control.TableView;
  *
  * @author evanguby
  */
-public class YourCirclePageController implements Initializable, ControlledScreen {
+public class CommentsPageController implements Initializable, ControlledScreen {
 
     ScreensController myController;
     @FXML
@@ -30,7 +29,7 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     @FXML
     private TableView<?> post;
     @FXML
-    private ListView<?> circleMember;
+    private TableView<?> comment;
 
     /**
      * Initializes the controller class.
@@ -41,46 +40,25 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     }    
 
     @FXML
-    private void handleRemoveSelected(ActionEvent event) {
+    private void handleLikeComment(ActionEvent event) {
     }
 
     @FXML
-    private void handleLikePost(ActionEvent event) {
+    private void handleRemoveComment(ActionEvent event) {
     }
 
     @FXML
-    private void handleRenameCircle(ActionEvent event) {
+    private void handleNewComment(ActionEvent event) {
+        myController.setScreen(FrienDBClient.NewCommentPageID);
     }
 
     @FXML
-    private void handleDeleteCircle(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleAddMember(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleRemovePost(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleNewPost(ActionEvent event) {
-        myController.setScreen(FrienDBClient.NewPostPageID);
-    }
-
-    @FXML
-    private void handleModifyPost(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleViewComments(ActionEvent event) {
-        myController.setScreen(FrienDBClient.CommentsPageID);
+    private void handleModifyComment(ActionEvent event) {
     }
 
     @FXML
     private void handleBack(ActionEvent event) {
-        myController.setScreen(FrienDBClient.CustomerWelcomePageID);
+        myController.setScreen(FrienDBClient.YourCirclePageID);
     }
 
     @Override
