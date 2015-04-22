@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.RegisterPageController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Registration" underline="true" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="firstName" layoutX="133.0" layoutY="50.0" />
+      <Label layoutX="14.0" layoutY="52.0" text="First Name:" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="lastName" layoutX="133.0" layoutY="85.0" />
+      <Label layoutX="14.0" layoutY="87.0" text="Last Name:" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="sex" layoutX="133.0" layoutY="117.0" prefWidth="150.0" promptText="Select Gender" />
+      <TextField fx:id="tele" layoutX="133.0" layoutY="153.0" />
+      <Label layoutX="14.0" layoutY="155.0" text="Phone Number:" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="address" layoutX="133.0" layoutY="188.0" />
+      <Label layoutX="12.0" layoutY="192.0" text="Address:" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="city" layoutX="133.0" layoutY="221.0" />
+      <Label layoutX="15.0" layoutY="225.0" text="City:" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="10.0" layoutY="259.0" text="State:" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="state" layoutX="133.0" layoutY="255.0" prefWidth="150.0" promptText="Select State" />
+      <Label layoutX="14.0" layoutY="121.0" text="Gender:" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="10.0" layoutY="294.0" text="Date of Birth:" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dob" layoutX="133.0" layoutY="290.0" />
+      <TextField fx:id="zipCode" layoutX="133.0" layoutY="327.0" />
+      <Label layoutX="12.0" layoutY="331.0" text="Zip Code:" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="7.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleRegister" text="Register" AnchorPane.leftAnchor="15.0" />
+      <Button layoutX="664.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleBack" text="Back" />
+   </children>
+</AnchorPane>

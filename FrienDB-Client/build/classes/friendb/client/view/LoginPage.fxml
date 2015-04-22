@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.LoginPageController">
+   <children>
+      <Label layoutX="235.0" layoutY="60.0" text="FrienDB">
+         <font>
+            <Font size="68.0" />
+         </font>
+      </Label>
+      <TextField fx:id="email" layoutX="262.0" layoutY="218.0" />
+      <PasswordField fx:id="password" layoutX="262.0" layoutY="266.0" />
+      <Button layoutX="434.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleLogin" text="Login" />
+      <Button layoutX="269.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleNewUser" prefHeight="25.0" prefWidth="149.0" text="New User" />
+      <Label layoutX="187.0" layoutY="222.0" text="Email:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="187.0" layoutY="270.0" text="Password: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

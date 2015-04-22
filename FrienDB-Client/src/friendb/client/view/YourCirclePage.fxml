@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.YourCirclePageController">
+   <children>
+      <Label fx:id="circleName" layoutX="14.0" layoutY="15.0" text="Your Circle Name">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <TableView fx:id="post" layoutX="14.0" layoutY="53.0" prefHeight="349.0" prefWidth="509.0">
+        <columns>
+          <TableColumn prefWidth="103.0" text="Author" />
+          <TableColumn prefWidth="405.0" text="Post" />
+        </columns>
+      </TableView>
+      <ListView fx:id="circleMember" layoutX="527.0" layoutY="53.0" prefHeight="255.0" prefWidth="181.0" />
+      <Label layoutX="527.0" layoutY="34.0" text="Members:" />
+      <Button layoutX="527.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleRemoveSelected" text="Remove Member" />
+      <Button layoutX="14.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleLikePost" text="Like/Unlike Post" />
+      <Button layoutX="302.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleRenameCircle" text="Rename Circle" />
+      <Button layoutX="418.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleDeleteCircle" text="Delete Circle" />
+      <ComboBox layoutX="527.0" layoutY="343.0" prefHeight="26.0" prefWidth="181.0" />
+      <Button layoutX="527.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleAddMember" text="Add Member" />
+      <Button layoutX="230.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleRemovePost" text="Remove Post" />
+      <Button layoutX="14.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleNewPost" text="New Post" />
+      <Button layoutX="135.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleModifyPost" text="Modify Post" />
+      <Button layoutX="335.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleViewComments" text="View/Add Comments" />
+      <Button layoutX="657.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleBack" text="Back" />
+   </children>
+</AnchorPane>

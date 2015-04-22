@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.CusomterWelcomePageController">
+   <children>
+      <Label fx:id="welcome" layoutX="14.0" layoutY="14.0" text="Welcome ">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="360.0" layoutY="66.0" text="Personalized Ads List" />
+      <TableView fx:id="ad" layoutX="360.0" layoutY="88.0" prefHeight="266.0" prefWidth="346.0">
+        <columns>
+          <TableColumn prefWidth="180.0" text="Company" />
+          <TableColumn prefWidth="165.0" text="Product" />
+        </columns>
+      </TableView>
+      <Button layoutX="360.0" layoutY="360.0" mnemonicParsing="false" onAction="#handlePurchase" text="Purchase" />
+      <Label layoutX="14.0" layoutY="66.0" text="Circles" />
+      <TableView fx:id="circle" layoutX="14.0" layoutY="88.0" prefHeight="266.0" prefWidth="316.0">
+        <columns>
+          <TableColumn prefWidth="104.0" text="Circle Name" />
+          <TableColumn prefWidth="103.0" text="Circle Type" />
+            <TableColumn prefWidth="108.0" text="Circle Owner" />
+        </columns>
+      </TableView>
+      <Button layoutX="15.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleVisitCircle" text="Visit Circle" />
+      <Button layoutX="14.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleNewCircle" text="New Circle" />
+      <Label layoutX="116.0" layoutY="365.0" text="Find Circle:" />
+      <TextField fx:id="joinCircleName" layoutX="184.0" layoutY="360.0" prefHeight="26.0" prefWidth="146.0" promptText="Circle Name" />
+      <Button layoutX="249.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleJoinCircle" text="Join Circle" />
+      <Button layoutX="360.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleViewBestSellerList" text="View Best Seller List" />
+      <Button layoutX="648.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleLogout" text="Logout" />
+   </children>
+</AnchorPane>
