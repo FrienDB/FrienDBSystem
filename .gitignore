@@ -3,3 +3,5 @@
 /FrienDB-Client/nbproject/private/
 /FrienDB-Server/nbproject/private/
 /FrienDB-Server/build/
+/FrienDB-Server/target/
+/FrienDB-Shared/target/
