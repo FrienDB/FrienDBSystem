@@ -15,18 +15,16 @@ import javax.persistence.TypedQuery;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import javax.persistence.EntityExistsException;
-//import shield.server.entities.School;
 import friendb.server.util.DatabaseConnection;
-import java.util.Date;
 /**
  *
  * @author evanguby
  */
-
+@Stateful
 public class CustomerBean {
      //Logger
     private static final Logger logger =
-            Logger.getLogger("sss.ejb.AdminSchoolsBean");
+            Logger.getLogger("friendb.beans.CustomerBean");
 
     //reference to the perisstence layer
     @PersistenceContext
@@ -58,7 +56,7 @@ public class CustomerBean {
         try
         {
             customers = query.getResultList();
-            logger.log(Level.INFO, "Retrieving all schools in DB", customers);
+            logger.log(Level.INFO, "Retrieving all customers in DB", customers);
         } finally
         {
             //Close the entity manager

@@ -5,14 +5,14 @@
  */
 package friendb.shared;
 
-import java.util.Date;
 
 /**
  *
  * @author evanguby
  */
 public class SimpleCustomer {
-    public int id;
+    
+    public int CustomerID;
     public String firstName;
     public String lastName;
     public char sex;

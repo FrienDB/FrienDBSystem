@@ -46,7 +46,7 @@ public class CustomerResource {
             Logger.getLogger(CustomerResource.class.getName());
 
     /**
-     * Creates a new instance of AdminSchoolsREST
+     * Creates a new instance of CustomerREST
      */
     public CustomerResource()
     {
@@ -60,26 +60,27 @@ public class CustomerResource {
         List<Customer> allCustomers = customerBean.getAllCustomers();
         
         //convert the School entities to a stripped down version readable by the client
-        List<SimpleCustomer> SimpleCustomers = new ArrayList<>();
+        List<SimpleCustomer> simpleCustomers = new ArrayList<>();
         SimpleCustomer c;
         for (Customer customer : allCustomers)
         {
             c = new SimpleCustomer();
+            c.CustomerID = customer.getCustomerID();
             c.address = customer.getAddress();
             c.city = customer.getCity();
             String d = customer.getDob();
             c.emailID = customer.getEmailID();
             c.firstName = customer.getFirstName();
-            c.id =customer.getId();
             c.lastName = customer.getLastName();
-            c.rating = customer.getRating();
+            c.rating = customer.getRatingOf10();
             c.sex = customer.getSex();
             c.state = customer.getCustState();
             c.telephone = customer.getTelephone();
             c.zipCode = customer.getZipCode();
+            simpleCustomers.add(c);
         }
         GenericEntity<List<SimpleCustomer>> wrapper =
-                new GenericEntity<List<SimpleCustomer>>(SimpleCustomers)
+                new GenericEntity<List<SimpleCustomer>>(simpleCustomers)
                 {
                 };
         return Response.ok(wrapper).build();
