@@ -6,7 +6,6 @@
 package friendb.server.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -23,6 +22,8 @@ import javax.persistence.NamedQuery;
 @Entity
 public class Customer implements Serializable{
     
+    @Id
+    private int CustomerID;
     private String firstName;
     private String lastName;
     private char sex;
@@ -33,10 +34,26 @@ public class Customer implements Serializable{
     private String custState;
     private int zipCode;
     private String telephone;
-    private int rating;
+    private int ratingOf10;
+
+    public int getRatingOf10() {
+        return ratingOf10;
+    }
+
+    public void setRatingOf10(int ratingOf10) {
+        this.ratingOf10 = ratingOf10;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     private String password;
-    @Id
-    private int id;
+    
+
 
     public Customer() {
     }
@@ -63,7 +80,7 @@ public class Customer implements Serializable{
         this.zipCode = zipCode;
         this.telephone = telephone;
         this.password = password;
-        this.rating = 5;
+        this.ratingOf10 = 5;
     }
     
     public String getFirstName() {
@@ -146,21 +163,11 @@ public class Customer implements Serializable{
         this.telephone = telephone;
     }
 
-    public int getRating() {
-        return rating;
+    public int getCustomerID() {
+        return CustomerID;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-    
-    
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setCustomerID(int id) {
+        this.CustomerID = id;
     }
 }
