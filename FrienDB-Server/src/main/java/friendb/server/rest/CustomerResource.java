@@ -77,6 +77,7 @@ public class CustomerResource {
             c.state = customer.getCustState();
             c.telephone = customer.getTelephone();
             c.zipCode = customer.getZipCode();
+            simpleCustomers.add(c);
         }
         GenericEntity<List<SimpleCustomer>> wrapper =
                 new GenericEntity<List<SimpleCustomer>>(simpleCustomers)
