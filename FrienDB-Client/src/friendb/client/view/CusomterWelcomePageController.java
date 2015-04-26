@@ -22,9 +22,8 @@ import javafx.scene.control.TextField;
  *
  * @author evanguby
  */
-public class CustomerWelcomePageController implements Initializable, ControlledScreen {
-
-    ScreensController myController;
+public class CusomterWelcomePageController implements Initializable, ControlledScreen {
+     ScreensController myController;
     @FXML
     private Label welcome;
     @FXML
@@ -78,5 +77,6 @@ public class CustomerWelcomePageController implements Initializable, ControlledS
     public void populatePage() {
 
     }
+    
     
 }
