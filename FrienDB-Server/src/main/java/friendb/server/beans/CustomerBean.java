@@ -26,7 +26,7 @@ import java.util.Date;
 public class CustomerBean {
      //Logger
     private static final Logger logger =
-            Logger.getLogger("sss.ejb.AdminSchoolsBean");
+            Logger.getLogger("sss.ejb.CustomerBean");
 
     //reference to the perisstence layer
     @PersistenceContext
