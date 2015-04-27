@@ -44,6 +44,25 @@ public class CustomerBean {
         
          em = DatabaseConnection.getEntityManager();
          Customer c = new Customer(firstName, lastName, sex, emailID, dob, address, city, state, zipCode, telephone, password);
+         
+         try
+        {
+            //add the school
+            em.getTransaction().begin();
+            em.persist(c);
+            em.getTransaction().commit();
+            logger.log(Level.INFO, "New customer added to database {0}", c);
+        } catch (EntityExistsException eeex)
+        {
+            //a school with that id already exists in database
+            logger.log(Level.WARNING, "Collision on customer ID within database");
+            throw eeex;
+        } finally
+        {
+            //close the entity manager
+            em.close();
+            em = null;
+        }
     }
     
     public List<Customer> getAllCustomers(){

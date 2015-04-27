@@ -8,6 +8,8 @@ package friendb.client.view;
 import friendb.client.main.ControlledScreen;
 import friendb.client.main.FrienDBClient;
 import friendb.client.main.ScreensController;
+import friendb.client.web.ServerAccessPoint;
+import friendb.client.web.ServerResources;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import friendb.shared.SimpleCustomer;
+import javafx.scene.control.PasswordField;
+import javax.ws.rs.core.Response;
 
 /**
  * FXML Controller class
@@ -51,7 +56,15 @@ public class RegisterPageController implements Initializable, ControlledScreen {
     private DatePicker dob;
     @FXML
     private TextField zipCode;
-
+    @FXML
+    private TextField email;
+    @FXML
+    private PasswordField password;
+    
+    private final ServerAccessPoint newCustomer =
+            new ServerAccessPoint(ServerResources.ADD_NEW_CUSTOMER_URL);
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -62,7 +75,48 @@ public class RegisterPageController implements Initializable, ControlledScreen {
 
     @FXML
     private void handleRegister(ActionEvent event) {
-        myController.setScreen(FrienDBClient.LoginPageID);
+        System.out.println(dob.getValue().toString());
+        if(firstName.getText().isEmpty() || lastName.getText().isEmpty() || sex.getValue() == null ||
+                tele.getText().isEmpty() || address.getText().isEmpty() || city.getText().isEmpty() ||
+                state.getValue() == null || dob.isPressed() || zipCode.getText().isEmpty()
+                || email.getText().isEmpty()){
+            //MISSING FIELD ERROR
+        } else {
+            SimpleCustomer c = new SimpleCustomer();
+            c.address = address.getText();
+            c.city = city.getText();
+            c.dob = dob.getPromptText();
+            c.emailID = email.getText();
+            c.firstName = firstName.getText();
+            c.lastName = lastName.getText();
+            c.password = password.getText();
+            c.sex = sex.getValue().charAt(0);
+            c.state = state.getValue();
+            c.telephone = tele.getText();
+            c.zipCode = Integer.parseInt(zipCode.getText());
+            
+            //transmit new student form to server
+            Response rsp = newCustomer.request(c);
+            //check response code
+            if (rsp.getStatus() != Response.Status.OK.getStatusCode())
+            {
+                //@TODO handle error codes
+            }
+            
+            address.clear();
+            city.clear();
+            dob.setValue(null);
+            email.clear();
+            firstName.clear();
+            lastName.clear();
+            password.clear();
+            sex.getSelectionModel().clearSelection();
+            state.getSelectionModel().clearSelection();
+            tele.clear();
+            zipCode.clear();
+            
+            myController.setScreen(FrienDBClient.LoginPageID);
+        }
     }
 
     @FXML
@@ -84,56 +138,56 @@ public class RegisterPageController implements Initializable, ControlledScreen {
                 );
         sex.setItems(options);
         options = FXCollections.observableArrayList(
-                "Alabama",
-                "Alaska",
-                "Arizona",
-                "Arkansas",
-                "California",
-                "Colorado",
-                "Connecticut",
-                "Delaware",
-                "Florida",
-                "Georgia",
-                "Hawaii",
-                "Idaho",
-                "Illinois",
-                "Indiana",
-                "Iowa",
-                "Kansas",
-                "Kentucky",
-                "Louisiana",
-                "Maine",
-                "Maryland",
-                "Massachusetts",
-                "Michigan",
-                "Minnesota",
-                "Mississippi",
-                "Missouri",
-                "Montana",
-                "Nebraska",
-                "Nevada",
-                "New Hampshire",
-                "New Jersey",
-                "New Mexico",
-                "New York",
-                "North Carolina",
-                "North Dakota",
-                "Ohio",
-                "Oklahoma",
-                "Oregon",
-                "Pennsylvania",
-                "Rhode Island",
-                "South Carolina",
-                "South Dakota",
-                "Tennessee",
-                "Texas",
-                "Utah",
-                "Vermont",
-                "Virginia",
-                "Washington",
-                "West Virginia",
-                "Wisconsin",
-                "Wyoming"
+                "AL",
+                "AK",
+                "AZ",
+                "AR",
+                "CA",
+                "CO",
+                "CT",
+                "DE",
+                "FL",
+                "GA",
+                "HI",
+                "ID",
+                "IL",
+                "IN",
+                "IA",
+                "KS",
+                "KY",
+                "LA",
+                "ME",
+                "MD",
+                "MA",
+                "MI",
+                "MN",
+                "MS",
+                "MO",
+                "MT",
+                "NE",
+                "NV",
+                "NH",
+                "NJ",
+                "NM",
+                "NY",
+                "NC",
+                "ND",
+                "OH",
+                "OK",
+                "OR",
+                "PA",
+                "RI",
+                "SC",
+                "SD",
+                "TN",
+                "TX",
+                "UT",
+                "VT",
+                "VA",
+                "WA",
+                "WV",
+                "WI",
+                "WY"
         );
         state.setItems(options);
     }
