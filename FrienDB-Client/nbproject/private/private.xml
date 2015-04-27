@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/CommentsPageController.java</file>
-            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/NewCommentPageController.java</file>
-            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/CusomterWelcomePageController.java</file>
-            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/main/FrienDBClient.java</file>
-            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/main/ScreensController.java</file>
-            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/CirclePageController.java</file>
-            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/RegisterPageController.java</file>
-            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/CustomerWelcomePage.fxml</file>
-            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/RegisterPage.fxml</file>
-            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/YourCirclePageController.java</file>
-            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/NewPostPageController.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
