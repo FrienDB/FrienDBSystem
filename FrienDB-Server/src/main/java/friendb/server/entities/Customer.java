@@ -37,14 +37,7 @@ public class Customer implements Serializable{
     private int zipCode;
     private String telephone;
     private int ratingOf10;
-
-    public int getRatingOf10() {
-        return ratingOf10;
-    }
-
-    public void setRatingOf10(int ratingOf10) {
-        this.ratingOf10 = ratingOf10;
-    }
+    private String password;
 
     public String getPassword() {
         return password;
@@ -53,9 +46,14 @@ public class Customer implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
-    private String password;
-    
 
+    public int getRatingOf10() {
+        return ratingOf10;
+    }
+
+    public void setRatingOf10(int ratingOf10) {
+        this.ratingOf10 = ratingOf10;
+    }
 
     public Customer() {
     }

@@ -72,7 +72,19 @@ public class AuthenticationResource {
             logger.log(Level.INFO, "Authentication success, OK response");
             if (s[0].equals("Customer")) {
                 SimpleCustomer c = new SimpleCustomer();
-                c.emailID = s[1];
+                c.CustomerID = Integer.parseInt(s[13]);
+                c.emailID = s[5];
+                c.address = s[1];
+                c.city = s[2];
+                c.dob = s[4];
+                c.firstName = s[6];
+                c.lastName = s[7];
+                c.password = s[8];
+                c.rating = Integer.parseInt(s[11]);
+                c.sex = s[9].charAt(0);
+                c.state = s[3];
+                c.telephone = s[10];
+                c.zipCode = Integer.parseInt(s[12]);
                 //CREATE C FINDBYNAME.Customer
                 return Response.ok(c).build();
             } else //Employee

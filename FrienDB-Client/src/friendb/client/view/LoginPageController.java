@@ -32,9 +32,9 @@ public class LoginPageController implements Initializable, ControlledScreen {
 
     ScreensController myController;
 
-        private final ServerAccessPoint AUTHENTICATE =
-            new ServerAccessPoint(ServerResources.AUTHENTICATION_URL);
-    
+    private final ServerAccessPoint AUTHENTICATE
+            = new ServerAccessPoint(ServerResources.AUTHENTICATION_URL);
+
     @FXML
     private TextField email;
     @FXML
@@ -54,34 +54,36 @@ public class LoginPageController implements Initializable, ControlledScreen {
         LoginInfo login = new LoginInfo();
         login.email = email.getText();
         login.password = password.getText();
-        
+
         //transmit the login credentials to the server
         Response rsp = AUTHENTICATE.request(login);
-        
+
         //if response codei indicates error then inform the client and return
-        if (rsp.getStatus() != Response.Status.OK.getStatusCode())
-        {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Login Error");
-                alert.setHeaderText("Incorrect Username");
-                alert.setContentText("Username does not exist");
-                alert.show();
+        if (rsp.getStatus() != Response.Status.OK.getStatusCode()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Login Error");
+            alert.setHeaderText("Incorrect Username");
+            alert.setContentText("Username does not exist");
+            alert.show();
 
             return;
-        }
-        //successful response
-        else
-        {
-            //students authenticate with an email
-            if (login.email.indexOf('@') != -1)
-            {
+        } //successful response
+        else {
+            //customer authenticate with an email
+            if (login.email.indexOf('@') != -1) {
                 SimpleCustomer cust = rsp.readEntity(SimpleCustomer.class);
-                //myController.createStudentSession(cust);
+                myController.createStudentSession(cust);
+                myController.loadScreen(FrienDBClient.CustomerWelcomePageID, FrienDBClient.CustomerWelcomePage);
+                myController.loadScreen(FrienDBClient.CirclePageID, FrienDBClient.CirclePage); //this will be moved once we know what circle page we have to load
+                myController.loadScreen(FrienDBClient.YourCirclePageID, FrienDBClient.YourCirclePage); //this will too
+                myController.loadScreen(FrienDBClient.NewCirclePageID, FrienDBClient.NewCirclePage);
+                myController.loadScreen(FrienDBClient.NewCommentPageID, FrienDBClient.NewCommentPage);
+                myController.loadScreen(FrienDBClient.CommentsPageID, FrienDBClient.CommentsPage);
+                myController.loadScreen(FrienDBClient.NewPostPageID, FrienDBClient.NewPostPage);
                 myController.setScreen(FrienDBClient.CustomerWelcomePageID);
-            } 
-            //administrators have no @ symbols in their username
-            else
-            {
+
+            } //employees have no @ symbols in their username
+            else {
                 SimpleEmployee emp = rsp.readEntity(SimpleEmployee.class);
                 //myController.createEmployeeSession(emp);
                 //myController.setScreen(FrienDBClient.EmployeeWelcomePage);
@@ -102,7 +104,7 @@ public class LoginPageController implements Initializable, ControlledScreen {
 
     @Override
     public void populatePage() {
-        
+
     }
 
 }

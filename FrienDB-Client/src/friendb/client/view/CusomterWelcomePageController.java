@@ -8,6 +8,8 @@ package friendb.client.view;
 import friendb.client.main.ControlledScreen;
 import friendb.client.main.FrienDBClient;
 import friendb.client.main.ScreensController;
+import friendb.client.session.CustomerSession;
+import friendb.shared.SimpleCustomer;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -27,9 +29,9 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     @FXML
     private Label welcome;
     @FXML
-    private TableView<?> ad;
+    private TableView<String> ad;
     @FXML
-    private TableView<?> circle;
+    private TableView<String> circle;
     @FXML
     private TextField joinCircleName;
 
@@ -75,7 +77,9 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
 
     @Override
     public void populatePage() {
-
+        CustomerSession cs = (CustomerSession)myController.getSession();
+        SimpleCustomer c = cs.getCustomerAccount();
+        welcome.setText("Welcome " + c.firstName + "!");
     }
     
     

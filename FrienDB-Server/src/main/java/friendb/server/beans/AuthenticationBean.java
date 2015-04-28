@@ -64,7 +64,21 @@ public class AuthenticationBean
                 if (cust.get(0).getPassword().equals(password))
                 {
                     logger.log(Level.INFO, "Student {0} logged in", email);
-                    String toReturn[] = {"Customer",cust.get(0).getEmailID()};
+                    String toReturn[] = new String[14];
+                    toReturn[0] = "Customer";
+                    toReturn[1] = cust.get(0).getAddress();
+                    toReturn[2] = cust.get(0).getCity();
+                    toReturn[3] = cust.get(0).getCustState();
+                    toReturn[4] = cust.get(0).getDob();
+                    toReturn[5] = cust.get(0).getEmailID();
+                    toReturn[6] = cust.get(0).getFirstName();
+                    toReturn[7] = cust.get(0).getLastName();
+                    toReturn[8] = cust.get(0).getPassword();
+                    toReturn[9] = cust.get(0).getSex();
+                    toReturn[10] = cust.get(0).getTelephone();
+                    toReturn[11] = "" + cust.get(0).getRatingOf10();
+                    toReturn[12] = ""+cust.get(0).getZipCode();
+                    toReturn[13] = ""+cust.get(0).getCustomerID();
                     return toReturn;
                 } else
                 {
