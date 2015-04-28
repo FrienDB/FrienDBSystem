@@ -17,7 +17,9 @@ import javax.persistence.NamedQuery;
  */
 @NamedQueries({
     @NamedQuery(name = "Customer.findAll", 
-            query = "SELECT c FROM Customer c")
+            query = "SELECT c FROM Customer c"),
+    @NamedQuery(name = "Customer.findByEmail", 
+            query = "SELECT c FROM Customer c WHERE c.emailID = :emailID")
 })
 @Entity
 public class Customer implements Serializable{
@@ -26,7 +28,7 @@ public class Customer implements Serializable{
     private int CustomerID;
     private String firstName;
     private String lastName;
-    private char sex;
+    private String sex;
     private String emailID;
     private String dob;
     private String address;
@@ -60,7 +62,7 @@ public class Customer implements Serializable{
     
     public Customer(String firstName,
             String lastName,
-            char sex,
+            String sex,
             String emailID,
             String dob,
             String address,
@@ -99,11 +101,11 @@ public class Customer implements Serializable{
         this.lastName = lastName;
     }
 
-    public char getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(char sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
