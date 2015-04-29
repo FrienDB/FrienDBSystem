@@ -25,6 +25,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -46,21 +47,14 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     @FXML
     private TableView<?> ad;
     @FXML
-    private TableView<?> circle;
+    private ListView circles;
 
     @FXML
-    private TableColumn<?, ?> company;
+    private TableColumn<?,?> company;
     @FXML
     private TableColumn<?, ?> product;
     @FXML
     private TableColumn<?, ?> price;
-
-    @FXML
-    private TableColumn<String[], String> circleName;
-    @FXML
-    private TableColumn<String[], String> circleType;
-    @FXML
-    private TableColumn<String[], String> circleOwner;
 
     @FXML
     private TextField joinCircleName;
@@ -118,34 +112,16 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         Response rsp = getCustomersCircles.request(cs.getCustomerAccount());
         GenericType<List<SimpleCircle>> gtlc = new GenericType<List<SimpleCircle>>() {
         };
-        ObservableList<SimpleCircle> circles = FXCollections.observableArrayList();
+        ObservableList<String> circle = FXCollections.observableArrayList();
         List<SimpleCircle> scList = rsp.readEntity(gtlc);
         
-        circleName.setCellValueFactory(
-                new PropertyValueFactory<>("circleName")
-        );
-        circleType.setCellValueFactory(
-                new PropertyValueFactory<>("circleType")
-        );
-        circleOwner.setCellValueFactory(
-                new PropertyValueFactory<>("circleOwner")
-        );
-
         //circle.setItems(scList);
         for(SimpleCircle sc : scList){
-            circles.add(sc);
+            circle.add("Name: " + sc.circleName + " | Circle Type: "+ sc.circleType);
         }
-        
+        circles.setItems(circle);
         //circle.setItems(circles);
-        //circle.
-//            String[] toAdd = new String[3];
-//            toAdd[0] = sc.circleName;
-//            toAdd[1] = sc.circleType;
-//            toAdd[2] = ""+sc.circleOwner;
-//            circle.getItems().add(toAdd);
-//        }
-        //ArrayList<SimpleCircle> schoolNames = new ArrayList<>();
-        //TableColumn<String,String> tcs = (TableColumn<String,String>) circle.getColumns();
+
     }
 
 }

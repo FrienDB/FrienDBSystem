@@ -54,7 +54,7 @@ public class LoginPageController implements Initializable, ControlledScreen {
 
         if (true) { //Logged in as student only for now
             //myController.loadStudentPages(); 
-            myController.setScreen(FrienDBClient.CustomerWelcomePageID);
+            //myController.setScreen(FrienDBClient.CustomerWelcomePageID);
 
             //create a login credentials structure
             LoginInfo login = new LoginInfo();
