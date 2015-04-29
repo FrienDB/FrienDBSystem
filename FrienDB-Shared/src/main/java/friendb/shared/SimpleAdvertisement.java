@@ -11,6 +11,7 @@ package friendb.shared;
  */
 public class SimpleAdvertisement {
 
+<<<<<<< HEAD
     private int adID;
     private int employeeID;
     private String adType;
@@ -20,5 +21,16 @@ public class SimpleAdvertisement {
     private String content;
     private double price;
     private int numOfUnits;
+=======
+    public int adID;
+    public int employeeID;
+    public String adType;
+    public String postDate;
+    public String company;
+    public String item;
+    public String content;
+    public double price;
+    public int numOfUnits;
+>>>>>>> parent of 861b97e... Revert 780e2f5..dc40f98
 
 }

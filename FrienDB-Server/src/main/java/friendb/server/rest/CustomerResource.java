@@ -73,7 +73,7 @@ public class CustomerResource {
             c.firstName = customer.getFirstName();
             c.lastName = customer.getLastName();
             c.rating = customer.getRatingOf10();
-            c.sex = customer.getSex();
+            //c.sex = customer.getSex();
             c.state = customer.getCustState();
             c.telephone = customer.getTelephone();
             c.zipCode = customer.getZipCode();
@@ -94,8 +94,8 @@ public class CustomerResource {
         try
         {
             //add the school
-            customerBean.addCustomer(customer.firstName,customer.lastName,customer.sex,customer.emailID,
-                    customer.dob,customer.address,customer.city,customer.state,customer.zipCode,customer.telephone, customer.password);
+           // customerBean.addCustomer(customer.firstName,customer.lastName,customer.sex,customer.emailID,
+             //       customer.dob,customer.address,customer.city,customer.state,customer.zipCode,customer.telephone, customer.password);
             logger.log(Level.INFO, "OK response");
             return Response.ok(customer).build();
         } catch (EntityExistsException eeex)

@@ -11,7 +11,12 @@ package friendb.shared;
  */
 public class SimpleCircleMembership {
     
+<<<<<<< HEAD
     private int circleID;
     private int customerID;
+=======
+    public int circleID;
+    public int customerID;
+>>>>>>> parent of 861b97e... Revert 780e2f5..dc40f98
     
 }

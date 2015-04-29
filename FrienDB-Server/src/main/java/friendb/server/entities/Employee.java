@@ -18,7 +18,9 @@
      */
     @NamedQueries({
         @NamedQuery(name = "Employee.findAll", 
-                query = "SELECT e FROM Employee e")
+                query = "SELECT e FROM Employee e"),
+        @NamedQuery(name = "Employee.findByID", 
+            query = "SELECT e FROM Employee e WHERE e.employeeID = :employeeID")
     })
     @Entity
     public class Employee implements Serializable{

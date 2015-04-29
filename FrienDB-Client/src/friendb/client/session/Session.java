@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package friendb.shared;
+package friendb.client.session;
 
 /**
  *
- * @author nathanwong
+ * @author evanguby
  */
-public class SimpleCircle {
-    
-    public int circleID;
-    public String  circleName;
-    public String circleType;
-    public int circleOwner;
+public interface Session {
     
 }

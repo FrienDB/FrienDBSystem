@@ -30,10 +30,14 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         resources.add(friendb.server.rest.AuthenticationResource.class);
         resources.add(friendb.server.rest.CircleResource.class);
 >>>>>>> parent of 5c8da0d... Revert "Pretty much done showing circles can't get last step"
+=======
+        resources.add(friendb.server.rest.AuthenticationResource.class);
+>>>>>>> parent of 861b97e... Revert 780e2f5..dc40f98
         resources.add(friendb.server.rest.CustomerResource.class);
     }
     
