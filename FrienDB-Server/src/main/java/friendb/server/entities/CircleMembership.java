@@ -17,8 +17,8 @@ import javax.persistence.NamedQuery;
  * @author evanguby
  */
 @NamedQueries({
-    @NamedQuery(name = "CircleMemberShip.findAll", 
-            query = "SELECT m FROM CircleMembership m")
+    @NamedQuery(name = "CircleMembership.findByCustomer", 
+            query = "SELECT m FROM CircleMembership m WHERE m.customerID = :customerID")
 })
 @Entity
 public class CircleMembership implements Serializable{

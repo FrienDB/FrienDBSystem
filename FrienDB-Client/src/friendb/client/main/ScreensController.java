@@ -9,6 +9,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import friendb.client.main.FrienDBClient;
+import friendb.client.session.CustomerSession;
+import friendb.client.session.Session;
+import friendb.shared.SimpleCustomer;
 
 
 /**
@@ -18,6 +21,7 @@ import friendb.client.main.FrienDBClient;
 public class ScreensController extends StackPane
 {
     private HashMap<String, Node> screens = new HashMap<>();
+    private Session session;
     
     public ScreensController()
     {
@@ -97,6 +101,20 @@ public class ScreensController extends StackPane
             return true;
         }
     }
+    
+    public Session getSession()
+    {
+        return session;
+    }
 
+    public void createStudentSession(SimpleCustomer acct)
+    {
+        session = new CustomerSession(acct);
+    }
+    
+//    public void createEmployeeSession(SimpleEmployee acct)
+//    {
+//        session = new AdminSession();
+//    }
     
 }
