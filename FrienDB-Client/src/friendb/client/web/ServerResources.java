@@ -20,6 +20,15 @@ public final class ServerResources {
     
     public static final String ADD_NEW_CUSTOMER_URL =
             SERVER_BASE_URL + "customer/add";
+<<<<<<< HEAD
     
+=======
+   
+    public static final String AUTHENTICATION_URL = 
+            SERVER_BASE_URL + "authentication";
+    
+    public static final String GET_CUSTOMERS_CIRCLES_URL = 
+            SERVER_BASE_URL + "circle";
+>>>>>>> parent of 5c8da0d... Revert "Pretty much done showing circles can't get last step"
      
 }
