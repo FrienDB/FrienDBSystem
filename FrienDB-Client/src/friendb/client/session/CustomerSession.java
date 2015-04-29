@@ -5,7 +5,9 @@
  */
 package friendb.client.session;
 
+import friendb.shared.SimpleCircle;
 import friendb.shared.SimpleCustomer;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,6 +15,7 @@ import friendb.shared.SimpleCustomer;
  */
 public class CustomerSession implements Session{
     private SimpleCustomer customer;
+    private ArrayList<SimpleCircle> circles;
 
     public CustomerSession(SimpleCustomer acct)
     {
@@ -22,5 +25,13 @@ public class CustomerSession implements Session{
     public SimpleCustomer getCustomerAccount()
     {
         return customer;
+    }
+    
+    public ArrayList<SimpleCircle> getCircles() {
+        return circles;
+    }
+
+    public void setCircles(ArrayList<SimpleCircle> scA) {
+        circles = scA;
     }
 }

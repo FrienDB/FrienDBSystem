@@ -16,6 +16,7 @@ import friendb.shared.SimpleCustomer;
 import friendb.client.session.CustomerSession;
 import friendb.shared.SimpleCustomer;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
@@ -113,12 +114,15 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         GenericType<List<SimpleCircle>> gtlc = new GenericType<List<SimpleCircle>>() {
         };
         ObservableList<String> circle = FXCollections.observableArrayList();
+        ArrayList<SimpleCircle> scA = new ArrayList<>();
         List<SimpleCircle> scList = rsp.readEntity(gtlc);
         
         //circle.setItems(scList);
         for(SimpleCircle sc : scList){
-            circle.add("Name: " + sc.circleName + " | Circle Type: "+ sc.circleType);
+            circle.add("Name: " + sc.circleName + " | Type: "+ sc.circleType);
+            scA.add(sc);
         }
+        cs.setCircles(scA);
         circles.setItems(circle);
         //circle.setItems(circles);
 
