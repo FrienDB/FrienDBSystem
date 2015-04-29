@@ -8,6 +8,7 @@ package friendb.client.view;
 import friendb.client.main.ControlledScreen;
 import friendb.client.main.FrienDBClient;
 import friendb.client.main.ScreensController;
+import friendb.client.session.CustomerSession;
 import friendb.client.web.ServerAccessPoint;
 import friendb.client.web.ServerResources;
 import friendb.shared.LoginInfo;
@@ -73,6 +74,7 @@ public class LoginPageController implements Initializable, ControlledScreen {
             if (login.email.indexOf('@') != -1) {
                 SimpleCustomer cust = rsp.readEntity(SimpleCustomer.class);
                 myController.createStudentSession(cust);
+                
                 myController.loadScreen(FrienDBClient.CustomerWelcomePageID, FrienDBClient.CustomerWelcomePage);
                 myController.loadScreen(FrienDBClient.CirclePageID, FrienDBClient.CirclePage); //this will be moved once we know what circle page we have to load
                 myController.loadScreen(FrienDBClient.YourCirclePageID, FrienDBClient.YourCirclePage); //this will too

@@ -23,5 +23,8 @@ public final class ServerResources {
    
     public static final String AUTHENTICATION_URL = 
             SERVER_BASE_URL + "authentication";
+    
+    public static final String GET_CUSTOMERS_CIRCLES_URL = 
+            SERVER_BASE_URL + "circle";
      
 }
