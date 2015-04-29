@@ -5,6 +5,8 @@
  */
 package friendb.shared;
 
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
  * @author nathanwong
@@ -15,5 +17,34 @@ public class SimpleCircle {
     public String  circleName;
     public String circleType;
     public int circleOwner;
+    
+    private final SimpleStringProperty ownerColumnProperty = new SimpleStringProperty("");
+    private final SimpleStringProperty nameColumnProperty = new SimpleStringProperty("");
+    private final SimpleStringProperty typeColumnProperty = new SimpleStringProperty("");
+
+    public SimpleStringProperty getCircleName() {
+        return nameColumnProperty;
+    }
+
+    public void setCircleName(String circleName) {
+        nameColumnProperty.set(circleName);
+    }
+
+    public SimpleStringProperty getCircleType() {
+        return typeColumnProperty;
+    }
+
+    public void setCircleType(String circleType) {
+        typeColumnProperty.set(circleType);
+    }
+
+    public SimpleStringProperty getCircleOwner() {
+        return ownerColumnProperty;
+    }
+
+    public void setCircleOwner(String circleOwner) {
+        typeColumnProperty.set(circleOwner);
+    }
+    
     
 }
