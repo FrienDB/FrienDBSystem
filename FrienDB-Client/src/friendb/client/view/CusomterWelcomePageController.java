@@ -50,6 +50,7 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     private TableView<?> circle;
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
     @FXML
     private TableColumn<?, ?> company;
     @FXML
@@ -66,10 +67,15 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     private TableColumn<String[], String> circleOwner;
 >>>>>>> parent of 5c8da0d... Revert "Pretty much done showing circles can't get last step"
 =======
+=======
+>>>>>>> parent of 3f2714a... Revert 780e2f5..5be28a5
     private TableView<String> ad;
     @FXML
     private TableView<String> circle;
 >>>>>>> parent of dc40f98... fuck
+<<<<<<< HEAD
+>>>>>>> parent of 3f2714a... Revert 780e2f5..5be28a5
+=======
 >>>>>>> parent of 3f2714a... Revert 780e2f5..5be28a5
     @FXML
     private TextField joinCircleName;
@@ -126,6 +132,7 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         SimpleCustomer c = cs.getCustomerAccount();
         welcome.setText("Welcome " + c.firstName + "!");
 <<<<<<< HEAD
+<<<<<<< HEAD
         
         Response rsp = getCustomersCircles.request(cs.getCustomerAccount());
         GenericType<List<SimpleCircle>> gtlc = new GenericType<List<SimpleCircle>>()
@@ -145,6 +152,9 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         
         
 >>>>>>> parent of 5c8da0d... Revert "Pretty much done showing circles can't get last step"
+=======
+>>>>>>> parent of dc40f98... fuck
+>>>>>>> parent of 3f2714a... Revert 780e2f5..5be28a5
 =======
 >>>>>>> parent of dc40f98... fuck
 >>>>>>> parent of 3f2714a... Revert 780e2f5..5be28a5
