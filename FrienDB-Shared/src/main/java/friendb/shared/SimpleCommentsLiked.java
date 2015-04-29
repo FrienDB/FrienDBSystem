@@ -11,7 +11,7 @@ package friendb.shared;
  */
 public class SimpleCommentsLiked {
     
-    private int commentID;
-    private int customer_who_likedID;
+    public int commentID;
+    public int customer_who_likedID;
     
 }

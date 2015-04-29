@@ -11,9 +11,9 @@ package friendb.shared;
  */
 public class SimpleAccount {
     
-    private int customerID;
-    private int  accountNum;
-    private String creationDate;
-    private String creditCard;
+    public int customerID;
+    public int  accountNum;
+    public String creationDate;
+    public String creditCard;
     
 }
