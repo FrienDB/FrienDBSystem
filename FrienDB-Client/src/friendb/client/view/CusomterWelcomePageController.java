@@ -27,9 +27,15 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     @FXML
     private Label welcome;
     @FXML
+<<<<<<< HEAD
     private TableView<?> ad;
     @FXML
     private TableView<?> circle;
+=======
+    private TableView<String> ad;
+    @FXML
+    private TableView<String> circle;
+>>>>>>> parent of dc40f98... fuck
     @FXML
     private TextField joinCircleName;
 
@@ -75,7 +81,13 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
 
     @Override
     public void populatePage() {
+<<<<<<< HEAD
 
+=======
+        CustomerSession cs = (CustomerSession)myController.getSession();
+        SimpleCustomer c = cs.getCustomerAccount();
+        welcome.setText("Welcome " + c.firstName + "!");
+>>>>>>> parent of dc40f98... fuck
     }
     
     
