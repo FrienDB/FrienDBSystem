@@ -26,7 +26,7 @@ public class Account implements Serializable{
     @Id
     private int customerID;
     private int  accountNum;
-    private String creationDate;
+    private Date creationDate;
     private String creditCard;
     
 
@@ -34,7 +34,7 @@ public class Account implements Serializable{
     public Account() {
     }
     
-    public Account(int customerID, int accountNum, String creationDate,
+    public Account(int customerID, int accountNum, Date creationDate,
             String creditCard){
         this.customerID = customerID;
         this.accountNum = accountNum;
@@ -56,11 +56,11 @@ public class Account implements Serializable{
     public void setAccountNum(int accountNum) {
         this.accountNum = accountNum;
     }
-     public String getCreationDate() {
+     public Date getCreationDate() {
     return creationDate;
     }
 
-    public void setCreationDate(String CreationDate) {
+    public void setCreationDate(Date CreationDate) {
         this.creationDate = creationDate;
     }
 
