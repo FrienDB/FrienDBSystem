@@ -11,9 +11,9 @@ package friendb.shared;
  */
 public class SimpleCircle {
     
-    public int circleID;
-    public String  circleName;
-    public String circleType;
-    public int circleOwner;
+    private int circleID;
+    private String  circleName;
+    private String circleType;
+    private int circleOwner;
     
 }
