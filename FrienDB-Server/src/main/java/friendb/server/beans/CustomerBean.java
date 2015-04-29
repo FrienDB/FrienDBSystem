@@ -32,7 +32,7 @@ public class CustomerBean {
     
     public void addCustomer(String firstName,
             String lastName,
-            String sex,
+            char sex,
             String emailID,
             String dob,
             String address,

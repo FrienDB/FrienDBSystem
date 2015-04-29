@@ -8,20 +8,13 @@ package friendb.client.view;
 import friendb.client.main.ControlledScreen;
 import friendb.client.main.FrienDBClient;
 import friendb.client.main.ScreensController;
-import friendb.client.web.ServerAccessPoint;
-import friendb.client.web.ServerResources;
-import friendb.shared.LoginInfo;
-import friendb.shared.SimpleCustomer;
-import friendb.shared.SimpleEmployee;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javax.ws.rs.core.Response;
 
 /**
  * FXML Controller class
@@ -31,9 +24,6 @@ import javax.ws.rs.core.Response;
 public class LoginPageController implements Initializable, ControlledScreen {
 
     ScreensController myController;
-
-    private final ServerAccessPoint AUTHENTICATE
-            = new ServerAccessPoint(ServerResources.AUTHENTICATION_URL);
 
     @FXML
     private TextField email;
@@ -50,45 +40,9 @@ public class LoginPageController implements Initializable, ControlledScreen {
 
     @FXML
     private void handleLogin(ActionEvent event) {
-        //create a login credentials structure
-        LoginInfo login = new LoginInfo();
-        login.email = email.getText();
-        login.password = password.getText();
-
-        //transmit the login credentials to the server
-        Response rsp = AUTHENTICATE.request(login);
-
-        //if response codei indicates error then inform the client and return
-        if (rsp.getStatus() != Response.Status.OK.getStatusCode()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Login Error");
-            alert.setHeaderText("Incorrect Username");
-            alert.setContentText("Username does not exist");
-            alert.show();
-
-            return;
-        } //successful response
-        else {
-            //customer authenticate with an email
-            if (login.email.indexOf('@') != -1) {
-                SimpleCustomer cust = rsp.readEntity(SimpleCustomer.class);
-                myController.createStudentSession(cust);
-                myController.loadScreen(FrienDBClient.CustomerWelcomePageID, FrienDBClient.CustomerWelcomePage);
-                myController.loadScreen(FrienDBClient.CirclePageID, FrienDBClient.CirclePage); //this will be moved once we know what circle page we have to load
-                myController.loadScreen(FrienDBClient.YourCirclePageID, FrienDBClient.YourCirclePage); //this will too
-                myController.loadScreen(FrienDBClient.NewCirclePageID, FrienDBClient.NewCirclePage);
-                myController.loadScreen(FrienDBClient.NewCommentPageID, FrienDBClient.NewCommentPage);
-                myController.loadScreen(FrienDBClient.CommentsPageID, FrienDBClient.CommentsPage);
-                myController.loadScreen(FrienDBClient.NewPostPageID, FrienDBClient.NewPostPage);
-                myController.setScreen(FrienDBClient.CustomerWelcomePageID);
-
-            } //employees have no @ symbols in their username
-            else {
-                SimpleEmployee emp = rsp.readEntity(SimpleEmployee.class);
-                //myController.createEmployeeSession(emp);
-                //myController.setScreen(FrienDBClient.EmployeeWelcomePage);
-            }
-
+        if(true){ //Logged in as student only for now
+            //myController.loadStudentPages(); 
+            myController.setScreen(FrienDBClient.CustomerWelcomePageID);
         }
     }
 
@@ -104,7 +58,7 @@ public class LoginPageController implements Initializable, ControlledScreen {
 
     @Override
     public void populatePage() {
-
+        
     }
 
 }

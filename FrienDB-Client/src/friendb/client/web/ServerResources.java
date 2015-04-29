@@ -20,8 +20,6 @@ public final class ServerResources {
     
     public static final String ADD_NEW_CUSTOMER_URL =
             SERVER_BASE_URL + "customer/add";
-   
-    public static final String AUTHENTICATION_URL = 
-            SERVER_BASE_URL + "authentication";
+    
      
 }

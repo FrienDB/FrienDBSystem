@@ -51,7 +51,13 @@ public class FrienDBClient extends Application {
         mainContainer.loadScreen(FrienDBClient.LoginPageID, FrienDBClient.LoginPage);
         mainContainer.loadScreen(FrienDBClient.RegisterPageID, FrienDBClient.RegisterPage);
         
-        
+        mainContainer.loadScreen(FrienDBClient.CustomerWelcomePageID, FrienDBClient.CustomerWelcomePage);
+        mainContainer.loadScreen(FrienDBClient.CirclePageID, FrienDBClient.CirclePage); //this will be moved once we know what circle page we have to load
+        mainContainer.loadScreen(FrienDBClient.YourCirclePageID, FrienDBClient.YourCirclePage); //this will too
+        mainContainer.loadScreen(FrienDBClient.NewCirclePageID, FrienDBClient.NewCirclePage); 
+        mainContainer.loadScreen(FrienDBClient.NewCommentPageID, FrienDBClient.NewCommentPage); 
+        mainContainer.loadScreen(FrienDBClient.CommentsPageID, FrienDBClient.CommentsPage); 
+        mainContainer.loadScreen(FrienDBClient.NewPostPageID, FrienDBClient.NewPostPage); 
         
         mainContainer.setScreen(FrienDBClient.LoginPageID);
             
