@@ -7,6 +7,8 @@ package friendb.client.view;
 
 import friendb.client.main.ControlledScreen;
 import friendb.client.main.ScreensController;
+import friendb.client.session.CustomerSession;
+import friendb.shared.SimpleCustomer;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -75,6 +77,20 @@ public class ManageCustomerInfoController implements Initializable, ControlledSc
 
     @Override
     public void populatePage() {
+        
+        CustomerSession cs = (CustomerSession)myController.getSession();
+        SimpleCustomer c = cs.getCustomerAccount();
+        
+        firstName.setText(c.firstName);
+        lastName.setText(c.lastName);
+        email.setText(c.emailID);
+        //sex.setText(c.sex);
+        tele.setText(c.telephone);
+        address.setText(c.address);
+        city.setText(c.city);
+        state.setPromptText(c.state);
+        zipCode.setText( "" + c.zipCode);
+        
     }
     
 }
