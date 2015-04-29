@@ -11,12 +11,9 @@ package friendb.shared;
  */
 public class SimpleCommentsLiked {
     
-<<<<<<< HEAD
-    private int commentID;
-    private int customer_who_likedID;
-=======
+
     public int commentID;
     public int customer_who_likedID;
->>>>>>> parent of 861b97e... Revert 780e2f5..dc40f98
+
     
 }

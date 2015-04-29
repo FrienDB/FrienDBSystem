@@ -5,11 +5,8 @@
  */
 package friendb.shared;
 
-<<<<<<< HEAD
-=======
 import javafx.beans.property.SimpleStringProperty;
 
->>>>>>> parent of 861b97e... Revert 780e2f5..dc40f98
 /**
  *
  * @author nathanwong
@@ -21,8 +18,6 @@ public class SimpleCircle {
     public String circleType;
     public int circleOwner;
     
-<<<<<<< HEAD
-=======
     private final SimpleStringProperty ownerColumnProperty = new SimpleStringProperty("");
     private final SimpleStringProperty nameColumnProperty = new SimpleStringProperty("");
     private final SimpleStringProperty typeColumnProperty = new SimpleStringProperty("");
@@ -52,5 +47,4 @@ public class SimpleCircle {
     }
     
     
->>>>>>> parent of 861b97e... Revert 780e2f5..dc40f98
 }

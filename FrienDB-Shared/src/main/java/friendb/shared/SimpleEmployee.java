@@ -11,20 +11,7 @@ package friendb.shared;
  */
 public class SimpleEmployee {
 
-<<<<<<< HEAD
-    private int employeeID;
-    private int ssn;
-    private String startDate;
-    private String firstName;
-    private String lastName;
-    private String telephone;
-    private String address;
-    private String city;
-    private String curState;
-    private int zipCode;
-    private Double hourlyRate;
-    private String role;
-=======
+
     public int employeeID;
     public int ssn;
     public String startDate;
@@ -37,6 +24,6 @@ public class SimpleEmployee {
     public int zipCode;
     public Double hourlyRate;
     public String role;
->>>>>>> parent of 861b97e... Revert 780e2f5..dc40f98
+
 
 }

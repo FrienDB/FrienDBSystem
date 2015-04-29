@@ -11,16 +11,10 @@ package friendb.shared;
  */
 public class SimpleAccount {
     
-<<<<<<< HEAD
-    private int customerID;
-    private int  accountNum;
-    private String creationDate;
-    private String creditCard;
-=======
+
     public int customerID;
     public int  accountNum;
     public String creationDate;
     public String creditCard;
->>>>>>> parent of 861b97e... Revert 780e2f5..dc40f98
     
 }
