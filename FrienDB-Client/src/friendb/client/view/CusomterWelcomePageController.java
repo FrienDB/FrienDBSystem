@@ -43,11 +43,13 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     @FXML
     private Label welcome;
     @FXML
+<<<<<<< HEAD
     private TableView<?> ad;
 <<<<<<< HEAD
     @FXML
     private TableView<?> circle;
 =======
+<<<<<<< HEAD
     @FXML
     private TableColumn<?, ?> company;
     @FXML
@@ -63,6 +65,12 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     @FXML
     private TableColumn<String[], String> circleOwner;
 >>>>>>> parent of 5c8da0d... Revert "Pretty much done showing circles can't get last step"
+=======
+    private TableView<String> ad;
+    @FXML
+    private TableView<String> circle;
+>>>>>>> parent of dc40f98... fuck
+>>>>>>> parent of 3f2714a... Revert 780e2f5..5be28a5
     @FXML
     private TextField joinCircleName;
 
@@ -117,6 +125,7 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         CustomerSession cs = (CustomerSession)myController.getSession();
         SimpleCustomer c = cs.getCustomerAccount();
         welcome.setText("Welcome " + c.firstName + "!");
+<<<<<<< HEAD
         
         Response rsp = getCustomersCircles.request(cs.getCustomerAccount());
         GenericType<List<SimpleCircle>> gtlc = new GenericType<List<SimpleCircle>>()
@@ -136,6 +145,9 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         
         
 >>>>>>> parent of 5c8da0d... Revert "Pretty much done showing circles can't get last step"
+=======
+>>>>>>> parent of dc40f98... fuck
+>>>>>>> parent of 3f2714a... Revert 780e2f5..5be28a5
     }
     
 }
