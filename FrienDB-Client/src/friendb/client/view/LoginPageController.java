@@ -82,7 +82,7 @@ public class LoginPageController implements Initializable, ControlledScreen {
 
                     myController.loadScreen(FrienDBClient.CustomerWelcomePageID, FrienDBClient.CustomerWelcomePage);
                     myController.loadScreen(FrienDBClient.CirclePageID, FrienDBClient.CirclePage); //this will be moved once we know what circle page we have to load
-                    myController.loadScreen(FrienDBClient.YourCirclePageID, FrienDBClient.YourCirclePage); //this will too
+                     //this will too MOVED
                     myController.loadScreen(FrienDBClient.NewCirclePageID, FrienDBClient.NewCirclePage);
                     myController.loadScreen(FrienDBClient.NewCommentPageID, FrienDBClient.NewCommentPage);
                     myController.loadScreen(FrienDBClient.CommentsPageID, FrienDBClient.CommentsPage);

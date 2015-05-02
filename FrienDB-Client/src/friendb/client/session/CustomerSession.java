@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class CustomerSession implements Session{
     private SimpleCustomer customer;
     private ArrayList<SimpleCircle> circles;
+    private SimpleCircle visitingCircle;
 
     public CustomerSession(SimpleCustomer acct)
     {
@@ -34,4 +35,15 @@ public class CustomerSession implements Session{
     public void setCircles(ArrayList<SimpleCircle> scA) {
         circles = scA;
     }
+
+    public SimpleCircle getVisitingCircle() {
+        return visitingCircle;
+    }
+
+    public void setVisitingCircle(SimpleCircle visitingCircle) {
+        this.visitingCircle = visitingCircle;
+    }
+    
+    
+
 }

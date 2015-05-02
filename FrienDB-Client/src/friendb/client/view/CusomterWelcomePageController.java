@@ -77,7 +77,18 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
 
     @FXML
     private void handleVisitCircle(ActionEvent event) {
-        myController.setScreen(FrienDBClient.YourCirclePageID);
+        int index = circles.getSelectionModel().getSelectedIndex();
+        CustomerSession cs = (CustomerSession)myController.getSession();
+        SimpleCircle circle = cs.getCircles().get(index);
+        cs.setVisitingCircle(circle);
+        if(cs.getCustomerAccount().CustomerID == circle.circleOwner){
+            myController.loadScreen(FrienDBClient.YourCirclePageID, FrienDBClient.YourCirclePage);
+            myController.setScreen(FrienDBClient.YourCirclePageID);
+        }else{
+            myController.loadScreen(FrienDBClient.CirclePageID, FrienDBClient.CirclePage);
+            myController.setScreen(FrienDBClient.CirclePageID);
+        }
+        
     }
 
     @FXML
