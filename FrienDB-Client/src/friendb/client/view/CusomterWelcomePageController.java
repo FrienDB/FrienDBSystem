@@ -92,6 +92,11 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     @FXML
     private void handleViewBestSellerList(ActionEvent event) {
     }
+    
+    @FXML
+    private void handleManageInfo(ActionEvent event) {
+        myController.setScreen(FrienDBClient.ManageCustomerInfoID);
+    }
 
     @FXML
     private void handleLogout(ActionEvent event) {
