@@ -6,6 +6,7 @@
 package friendb.client.view;
 
 import friendb.client.main.ControlledScreen;
+import friendb.client.main.FrienDBClient;
 import friendb.client.main.ScreensController;
 import friendb.client.session.CustomerSession;
 import friendb.shared.SimpleCustomer;
@@ -65,9 +66,15 @@ public class ManageCustomerInfoController implements Initializable, ControlledSc
     @FXML
     private void handleRegister(ActionEvent event) {
     }
+    
+    @FXML
+    private void handleSave(ActionEvent event) {
+        
+    }
 
     @FXML
     private void handleBack(ActionEvent event) {
+        myController.setScreen(FrienDBClient.CustomerWelcomePageID);
     }
 
     @Override
@@ -84,7 +91,6 @@ public class ManageCustomerInfoController implements Initializable, ControlledSc
         firstName.setText(c.firstName);
         lastName.setText(c.lastName);
         email.setText(c.emailID);
-        //sex.setText(c.sex);
         tele.setText(c.telephone);
         address.setText(c.address);
         city.setText(c.city);
