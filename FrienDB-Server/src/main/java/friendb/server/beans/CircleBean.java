@@ -10,6 +10,7 @@ import friendb.server.entities.CircleMembership;
 import friendb.server.entities.Customer;
 import friendb.server.rest.CircleResource;
 import friendb.server.util.DatabaseConnection;
+import friendb.shared.SimpleCircle;
 import friendb.shared.SimpleCustomer;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.RollbackException;
 import javax.persistence.TypedQuery;
 
 /**
@@ -65,6 +67,41 @@ public class CircleBean {
             em = null;
         }
         return circles;
+    }
+
+    public void addCircle(SimpleCircle sc) {
+        em = DatabaseConnection.getEntityManager();
+        try
+        {
+            Circle circle = new Circle(sc.circleName,sc.circleType,sc.circleOwner);
+            //add the course
+            em.getTransaction().begin();
+            //@TODO check return of addCourse to see if it worked
+            em.persist(circle);
+            em.getTransaction().commit();
+            TypedQuery<Circle> query = em.createNamedQuery("Circle.findByCustomerID", Circle.class);
+            query.setParameter("customerID", sc.circleOwner);
+            
+            List<Circle> cmList = query.getResultList();
+            
+            Circle c = cmList.get(cmList.size()-1);
+            CircleMembership cm = new CircleMembership(c.getCircleOwner(),c.getCircleID());
+            em.getTransaction().begin();
+            //@TODO check return of addCourse to see if it worked
+            em.persist(cm);
+            em.getTransaction().commit();
+            logger.log(Level.INFO, "New circlemembership added to database {0}", circle);
+        } catch (RollbackException rex)
+        {
+            //a course with that id already exists in database
+            logger.log(Level.WARNING, "Collision on circle ID within database");
+            throw rex;
+        } finally
+        {
+            //close the entity manager
+            em.close();
+            em = null;
+        }
     }
     
 }
