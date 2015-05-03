@@ -85,8 +85,11 @@ public class LoginPageController implements Initializable, ControlledScreen {
             } //employees have no @ symbols in their username
             else {
                 SimpleEmployee emp = rsp.readEntity(SimpleEmployee.class);
-                //myController.createEmployeeSession(emp);
-                //myController.setScreen(FrienDBClient.EmployeeWelcomePage);
+                myController.createEmployeeSession(emp);
+                myController.loadScreen(FrienDBClient.EmployeePageID, FrienDBClient.EmployeePage);
+                myController.loadScreen(FrienDBClient.SalesPageID, FrienDBClient.SalesPage);
+                myController.loadScreen(FrienDBClient.AdsPageID, FrienDBClient.AdsPage);
+                myController.setScreen(FrienDBClient.EmployeePageID);
             }
 
         }

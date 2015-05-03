@@ -38,6 +38,12 @@ public class FrienDBClient extends Application {
     public static String CommentsPageID = "CommentsPage";
     public static String NewPostPage = "NewPostPage.fxml";
     public static String NewPostPageID = "NewPostPage";
+    public static String EmployeePage = "EmployeeLogin";
+    public static String EmployeePageID = "EmployeeLogin.fxml";
+    public static String AdsPage = "AdsScreen";
+    public static String AdsPageID = "AdsScreen.fxml";
+    public static String SalesPage = "SalesScreen";
+    public static String SalesPageID = "SalesScreen.fxml";
     
     private Stage primaryStage;
     private AnchorPane rootLayout;

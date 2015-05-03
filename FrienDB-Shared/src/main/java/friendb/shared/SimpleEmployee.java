@@ -11,17 +11,17 @@ package friendb.shared;
  */
 public class SimpleEmployee {
 
-    private int employeeID;
-    private int ssn;
-    private String startDate;
-    private String firstName;
-    private String lastName;
-    private String telephone;
-    private String address;
-    private String city;
-    private String curState;
-    private int zipCode;
-    private Double hourlyRate;
-    private String role;
+    public int employeeID;
+    public int ssn;
+    public String startDate;
+    public String firstName;
+    public String lastName;
+    public String telephone;
+    public String address;
+    public String city;
+    public String curState;
+    public int zipCode;
+    public Double hourlyRate;
+    public String role;
 
 }

@@ -10,8 +10,10 @@ import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import friendb.client.main.FrienDBClient;
 import friendb.client.session.CustomerSession;
+import friendb.client.session.EmployeeSession;
 import friendb.client.session.Session;
 import friendb.shared.SimpleCustomer;
+import friendb.shared.SimpleEmployee;
 
 
 /**
@@ -112,9 +114,9 @@ public class ScreensController extends StackPane
         session = new CustomerSession(acct);
     }
     
-//    public void createEmployeeSession(SimpleEmployee acct)
-//    {
-//        session = new AdminSession();
-//    }
-    
+    public void createEmployeeSession(SimpleEmployee acct)
+    {
+        session = new EmployeeSession(acct);
+    }
+   
 }
