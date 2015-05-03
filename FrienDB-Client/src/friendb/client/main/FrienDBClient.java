@@ -38,14 +38,14 @@ public class FrienDBClient extends Application {
     public static String CommentsPageID = "CommentsPage";
     public static String NewPostPage = "NewPostPage.fxml";
     public static String NewPostPageID = "NewPostPage";
-    public static String EmployeePage = "EmployeeLogin";
-    public static String EmployeePageID = "EmployeeLogin.fxml";
-    public static String AdsPage = "AdsScreen";
-    public static String AdsPageID = "AdsScreen.fxml";
-    public static String SalesPage = "SalesScreen";
-    public static String SalesPageID = "SalesScreen.fxml";
-    public static String ManageCustomerInfo = "ManageCustomerInfo";
-    public static String ManageCustomerInfoID = "ManageCustomerInfo.fxml";
+    public static String EmployeePageID = "EmployeeLogin";
+    public static String EmployeePage = "EmployeeLogin.fxml";
+    public static String AdsPageID = "AdsScreen";
+    public static String AdsPage = "AdsScreen.fxml";
+    public static String SalesPageID = "SalesScreen";
+    public static String SalesPage = "SalesScreen.fxml";
+    public static String ManageCustomerInfoID = "ManageCustomerInfo";
+    public static String ManageCustomerInfo = "ManageCustomerInfo.fxml";
     
     private Stage primaryStage;
     private AnchorPane rootLayout;

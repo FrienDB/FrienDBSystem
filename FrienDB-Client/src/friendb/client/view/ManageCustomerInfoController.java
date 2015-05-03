@@ -41,7 +41,7 @@ public class ManageCustomerInfoController implements Initializable, ControlledSc
     @FXML
     private PasswordField password;
     @FXML
-    private ComboBox<?> sex;
+    private ComboBox<String> sex;
     @FXML
     private TextField tele;
     @FXML
@@ -49,7 +49,7 @@ public class ManageCustomerInfoController implements Initializable, ControlledSc
     @FXML
     private TextField city;
     @FXML
-    private ComboBox<?> state;
+    private ComboBox<String> state;
     @FXML
     private DatePicker dob;
     @FXML
