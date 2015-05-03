@@ -5,10 +5,13 @@
         <group>
             <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/LoginPageController.java</file>
             <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/CusomterWelcomePageController.java</file>
+            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/session/CustomerSession.java</file>
             <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/NewCirclePageController.java</file>
             <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/CustomerWelcomePage.fxml</file>
             <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/web/ServerResources.java</file>
+            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/ManageCustomerInfo.fxml</file>
             <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/NewPostPageController.java</file>
+            <file>file:/Users/evanguby/Documents/FrienDBSystem/FrienDB-Client/src/friendb/client/view/YourCirclePageController.java</file>
         </group>
     </open-files>
 </project-private>
