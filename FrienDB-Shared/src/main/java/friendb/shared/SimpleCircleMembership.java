@@ -11,7 +11,9 @@ package friendb.shared;
  */
 public class SimpleCircleMembership {
     
-    private int circleID;
-    private int customerID;
+
+    public int circleID;
+    public int customerID;
+
     
 }

@@ -8,6 +8,8 @@ package friendb.server.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -18,7 +20,11 @@ import javax.persistence.NamedQuery;
  */
 @NamedQueries({
     @NamedQuery(name = "Circle.findAll", 
-            query = "SELECT c FROM Circle c")
+            query = "SELECT c FROM Circle c"),
+    @NamedQuery(name = "Circle.findByID", 
+            query = "SELECT c FROM Circle c WHERE c.circleID = :circleID"),
+    @NamedQuery(name = "Circle.findByCustomerID", 
+            query = "SELECT c FROM Circle c WHERE c.circleOwner = :customerID")
 })
 @Entity
 public class Circle implements Serializable{
@@ -34,9 +40,8 @@ public class Circle implements Serializable{
     public Circle() {
     }
     
-    public Circle(int circleID, String circleName, String circleType,
+    public Circle(String circleName, String circleType,
             int circleOwner){
-        this.circleID = circleID;
         this.circleName = circleName;
         this.circleType = circleType;
         this.circleOwner = circleOwner;
