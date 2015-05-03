@@ -79,7 +79,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="12.0" layoutY="433.0" mnemonicParsing="false" onAction="#handleRegister" text="Save" AnchorPane.leftAnchor="12.0" />
+      <Button layoutX="12.0" layoutY="433.0" mnemonicParsing="false" onAction="#handleSave" text="Save" AnchorPane.leftAnchor="12.0" />
       <Button layoutX="664.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleBack" text="Back" />
    </children>
 </AnchorPane>
