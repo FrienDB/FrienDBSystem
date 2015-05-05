@@ -46,6 +46,8 @@ public class FrienDBClient extends Application {
     public static String SalesPage = "SalesScreen.fxml";
     public static String ManageCustomerInfoID = "ManageCustomerInfo";
     public static String ManageCustomerInfo = "ManageCustomerInfo.fxml";
+    public static String AccountPageID = "AccountPage";
+    public static String AccountPage = "AccountPage.fxml";
     
     private Stage primaryStage;
     private AnchorPane rootLayout;

@@ -99,7 +99,6 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     @FXML
     private void handleJoinCircle(ActionEvent event) {
     }
-
     @FXML
     private void handleViewBestSellerList(ActionEvent event) {
     }
@@ -144,4 +143,6 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
 
     }
 
+    @FXML
+    }
 }
