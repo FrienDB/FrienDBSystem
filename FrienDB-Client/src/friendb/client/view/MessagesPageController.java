@@ -13,25 +13,21 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 /**
  * FXML Controller class
  *
- * @author Chin
+ * @author nathanwong
  */
-public class SalesScreenController implements Initializable, ControlledScreen {
+public class MessagesPageController implements Initializable, ControlledScreen {
+
     ScreensController myController;
     @FXML
-    private ListView<?> salesList;
+    private Label Accounts;
     @FXML
-    private Label salesInfo;
-    @FXML
-    private Label salesTitle;
-    @FXML
-    private Button backButton;
+    private ListView<?> accounts;
 
     /**
      * Initializes the controller class.
@@ -43,17 +39,29 @@ public class SalesScreenController implements Initializable, ControlledScreen {
 
     @FXML
     private void handleBack(ActionEvent event) {
-        myController.setScreen(FrienDBClient.EmployeePageID);
+        myController.setScreen(FrienDBClient.CustomerWelcomePageID);
+    }
+
+    @FXML
+    private void handleReply(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleCompose(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleDelete(ActionEvent event) {
     }
 
     @Override
     public void setScreenParent(ScreensController screenPage) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void populatePage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
     
 }

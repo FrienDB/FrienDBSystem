@@ -32,6 +32,7 @@ public class ApplicationConfig extends Application {
         resources.add(friendb.server.rest.AuthenticationResource.class);
         resources.add(friendb.server.rest.CircleResource.class);
         resources.add(friendb.server.rest.CustomerResource.class);
+        resources.add(friendb.server.rest.EmployeeResource.class);
 
     }
     
