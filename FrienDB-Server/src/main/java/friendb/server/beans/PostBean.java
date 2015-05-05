@@ -11,10 +11,7 @@ import friendb.server.entities.Post;
 import friendb.server.util.DatabaseConnection;
 import friendb.shared.SimpleCircle;
 import friendb.shared.SimplePost;
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
->>>>>>> origin/master
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -69,9 +66,7 @@ public class PostBean {
         }
         return simplePosts;
     }
-<<<<<<< HEAD
 
-=======
     
     public void addCirclePost(SimplePost sp) {
         em = DatabaseConnection.getEntityManager();
@@ -98,5 +93,4 @@ public class PostBean {
         }
     }
     
->>>>>>> origin/master
 }

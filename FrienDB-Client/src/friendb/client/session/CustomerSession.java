@@ -23,6 +23,7 @@ public class CustomerSession implements Session{
     private List<SimpleCustomer> customersInCircle;
     private List<SimpleAccount> accounts;
     private List<SimplePost> circlePosts;
+    private int pageID;
 
     public CustomerSession(SimpleCustomer acct)
     {
@@ -72,6 +73,14 @@ public class CustomerSession implements Session{
 
     public void setCirclePosts(List<SimplePost> circlePosts) {
         this.circlePosts = circlePosts;
+    }
+
+    public int getPageID() {
+        return pageID;
+    }
+
+    public void setPageID(int pageID) {
+        this.pageID = pageID;
     }
     
     
