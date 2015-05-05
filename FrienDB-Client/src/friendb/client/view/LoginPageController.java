@@ -106,6 +106,10 @@ public class LoginPageController implements Initializable, ControlledScreen {
 //>>>>>>> origin/master
             }
         }
+        
+        // CLEAR THE TEXT FIELDS SO THE INFO ISN'T THERE AFTER LOGOUT
+        email.clear();
+        password.clear();
     }
 
     @FXML
