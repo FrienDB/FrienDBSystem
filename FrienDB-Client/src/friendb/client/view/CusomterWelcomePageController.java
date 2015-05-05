@@ -156,7 +156,6 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
 
     }
 
-<<<<<<< HEAD
     @FXML
     private void handleBack(ActionEvent event) {
     }
@@ -173,6 +172,3 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     private void handleEditAccount(ActionEvent event) {
     }
 }
-=======
- }
->>>>>>> origin/master

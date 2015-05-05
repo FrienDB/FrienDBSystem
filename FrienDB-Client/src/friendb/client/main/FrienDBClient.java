@@ -38,7 +38,6 @@ public class FrienDBClient extends Application {
     public static String CommentsPageID = "CommentsPage";
     public static String NewPostPage = "NewPostPage.fxml";
     public static String NewPostPageID = "NewPostPage";
-<<<<<<< HEAD
     public static String EmployeePageID = "EmployeeLogin";
     public static String EmployeePage = "EmployeeLogin.fxml";
     public static String AdsPageID = "AdsScreen";
@@ -51,7 +50,6 @@ public class FrienDBClient extends Application {
     public static String AccountPage = "AccountPage.fxml";
     public static String MessagesPageID = "MessagesPage";
     public static String MessagesPage = "MessagesPage.fxml";
-=======
     public static String EmployeePage = "EmployeeLogin";
     public static String EmployeePageID = "EmployeeLogin.fxml";
     public static String AdsPage = "AdsScreen";
@@ -64,7 +62,6 @@ public class FrienDBClient extends Application {
     public static String NewAdvertisementID = "NewAdvertisement.fxml";
     public static String AccountPage = "Account";
     public static String AccountPageID = "Account.fxml";
->>>>>>> origin/master
     
     private Stage primaryStage;
     private AnchorPane rootLayout;
