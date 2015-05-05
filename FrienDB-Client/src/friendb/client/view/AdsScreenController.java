@@ -5,6 +5,10 @@
  */
 package friendb.client.view;
 
+import friendb.client.main.ControlledScreen;
+import static friendb.client.main.FrienDBClient.EmployeePageID;
+import static friendb.client.main.FrienDBClient.NewAdvertisementID;
+import friendb.client.main.ScreensController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,7 +23,8 @@ import javafx.scene.control.ListView;
  *
  * @author Chin
  */
-public class AdsScreenController implements Initializable {
+public class AdsScreenController implements Initializable, ControlledScreen{
+    ScreensController myController;
     @FXML
     private Label adTitle;
     @FXML
@@ -41,10 +46,22 @@ public class AdsScreenController implements Initializable {
 
     @FXML
     private void handleCreate(ActionEvent event) {
+        myController.setScreen(NewAdvertisementID);
     }
 
     @FXML
     private void handleBack(ActionEvent event) {
+        myController.setScreen(EmployeePageID);
+    }
+
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void populatePage() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
