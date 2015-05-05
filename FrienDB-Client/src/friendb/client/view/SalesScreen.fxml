@@ -38,9 +38,6 @@
             <Font name="Times New Roman" size="39.0" />
          </font>
       </Label>
-      <AnchorPane layoutY="-1.0" prefHeight="109.0" prefWidth="720.0">
-         <children>
-            <Button fx:id="backButton" layoutX="611.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="31.0" prefWidth="54.0" text="Back" />
-         </children></AnchorPane>
+      <AnchorPane layoutY="-1.0" prefHeight="109.0" prefWidth="720.0" />
    </children>
 </fx:root>

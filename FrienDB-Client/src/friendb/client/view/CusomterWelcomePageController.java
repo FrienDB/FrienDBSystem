@@ -62,6 +62,8 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
 
     private final ServerAccessPoint getCustomersCircles =
             new ServerAccessPoint(ServerResources.GET_CUSTOMERS_CIRCLES_URL);
+    @FXML
+    private ListView<?> accounts;
 
     /**
      * Initializes the controller class.
@@ -99,6 +101,7 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     @FXML
     private void handleJoinCircle(ActionEvent event) {
     }
+    
     @FXML
     private void handleViewBestSellerList(ActionEvent event) {
     }
@@ -107,10 +110,20 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     private void handleManageInfo(ActionEvent event) {
         myController.setScreen(FrienDBClient.ManageCustomerInfoID);
     }
+    
+    @FXML
+    private void handleAccounts(ActionEvent event) {
+        myController.setScreen(FrienDBClient.AccountPageID);
+    }
 
     @FXML
     private void handleLogout(ActionEvent event) {
         myController.setScreen(FrienDBClient.LoginPageID);
+    }
+    
+    @FXML
+    private void handleMessages(ActionEvent event) {
+        myController.setScreen(FrienDBClient.MessagesPageID);
     }
 
     @Override
@@ -140,7 +153,6 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         cs.setCircles(scA);
         circles.setItems(circle);
         //circle.setItems(circles);
-
     }
-
- }
+    
+}
