@@ -11,12 +11,17 @@ import friendb.server.entities.Post;
 import friendb.server.util.DatabaseConnection;
 import friendb.shared.SimpleCircle;
 import friendb.shared.SimplePost;
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+>>>>>>> origin/master
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.RollbackException;
 import javax.persistence.TypedQuery;
 
 /**
@@ -64,5 +69,34 @@ public class PostBean {
         }
         return simplePosts;
     }
+<<<<<<< HEAD
 
+=======
+    
+    public void addCirclePost(SimplePost sp) {
+        em = DatabaseConnection.getEntityManager();
+        try
+        {
+            Post post = new Post( sp.pageID, sp.content, sp.authorID, sp.datePosted);
+            //add the course
+            em.getTransaction().begin();
+            //@TODO check return of addCourse to see if it worked
+            em.persist(post);
+            em.getTransaction().commit();
+            
+            logger.log(Level.INFO, "New Post added to database {0}", post);
+        } catch (RollbackException rex)
+        {
+            //a course with that id already exists in database
+            logger.log(Level.WARNING, "Collision on post ID within database");
+            throw rex;
+        } finally
+        {
+            //close the entity manager
+            em.close();
+            em = null;
+        }
+    }
+    
+>>>>>>> origin/master
 }

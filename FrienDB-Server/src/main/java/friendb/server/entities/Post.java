@@ -24,7 +24,7 @@ import javax.persistence.NamedQuery;
 public class Post implements Serializable{
     
     @Id
-    private int postID;
+    //private int postID;
     private int pageID;
     private String content;
     private int author;
@@ -35,10 +35,10 @@ public class Post implements Serializable{
     public Post() {
     }
     
-    public Post(int pageID, int postID, String content, int author,
+    public Post(int pageID, /*int postID, */String content, int author,
         String datePosted){
         this.pageID = pageID;
-        this.postID = postID;
+//        this.postID = postID;
         this.content=content;
         this.author=author;
         this.datePosted=datePosted;
@@ -51,7 +51,7 @@ public class Post implements Serializable{
     public void setPageID(int pageID) {
         this.pageID = pageID;
     }
-
+/*
     public int getPostID() {
         return postID;
     }
@@ -59,6 +59,7 @@ public class Post implements Serializable{
     public void setPostID(int postID) {
         this.postID = postID;
     }
+*/
     public String getContent() {
         return content;
     }
