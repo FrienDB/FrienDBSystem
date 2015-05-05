@@ -17,11 +17,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+<<<<<<< HEAD
 import friendb.shared.SimplePost;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.ws.rs.core.Response;
+=======
+import javafx.scene.control.TextArea;
+>>>>>>> origin/master
 
 /**
  * FXML Controller class
@@ -35,8 +39,13 @@ public class NewPostPageController implements Initializable, ControlledScreen {
     @FXML
     private Label circleName;
     
+<<<<<<< HEAD
     private final ServerAccessPoint addNewCircle =
             new ServerAccessPoint(ServerResources.ADD_POST_URL);
+=======
+    @FXML
+    private TextArea content;
+>>>>>>> origin/master
 
     /**
      * Initializes the controller class.
