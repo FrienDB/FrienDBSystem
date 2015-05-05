@@ -10,6 +10,8 @@ import friendb.server.entities.Pages;
 import friendb.server.entities.Post;
 import friendb.server.util.DatabaseConnection;
 import friendb.shared.SimpleCircle;
+import friendb.shared.SimplePost;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateful;
@@ -23,33 +25,44 @@ import javax.persistence.TypedQuery;
  */
 @Stateful
 public class PostBean {
-    
-    private static final Logger logger =
-            Logger.getLogger("friendb.beans.PostBean");
+
+    private static final Logger logger
+            = Logger.getLogger("friendb.beans.PostBean");
 
     //reference to the perisstence layer
     @PersistenceContext
     private EntityManager em;
 
-    public List<Post> getCirclePost(SimpleCircle sc) {
+    public List<SimplePost> getCirclePost(SimpleCircle sc) {
         em = DatabaseConnection.getEntityManager();
-        TypedQuery<Pages> query =
-                em.createNamedQuery("Pages.findByCircleID", Pages.class);
+        TypedQuery<Pages> query
+                = em.createNamedQuery("Pages.findByCircleID", Pages.class);
         query.setParameter("circleID", sc.circleID);
         List<Post> posts = null;
-        try{
+        List<SimplePost> simplePosts = null;
+        try {
             Pages page = query.getSingleResult();
-            TypedQuery<Post> query2 =
-                em.createNamedQuery("Post.findByPageID", Post.class);
+            TypedQuery<Post> query2
+                    = em.createNamedQuery("Post.findByPageID", Post.class);
             query2.setParameter("pageID", page.getpageID());
             posts = query2.getResultList();
-        }finally
-        {
+            simplePosts = new ArrayList<>();
+            SimplePost sp;
+            for (Post post : posts) {
+                sp = new SimplePost();
+                sp.authorID = post.getAuthor();
+                sp.commentCount = post.getCommentCount();
+                sp.content = post.getContent();
+                sp.datePosted = post.getDatePosted();
+                sp.pageID = post.getPageID();
+                simplePosts.add(sp);
+            }
+        } finally {
             //Close the entity manager
             em.close();
             em = null;
         }
-        return posts;
+        return simplePosts;
     }
-    
+
 }

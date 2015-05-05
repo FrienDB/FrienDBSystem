@@ -8,6 +8,7 @@ package friendb.client.session;
 import friendb.shared.SimpleAccount;
 import friendb.shared.SimpleCircle;
 import friendb.shared.SimpleCustomer;
+import friendb.shared.SimplePost;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class CustomerSession implements Session{
     private SimpleCircle visitingCircle;
     private List<SimpleCustomer> customersInCircle;
     private List<SimpleAccount> accounts;
+    private List<SimplePost> circlePosts;
 
     public CustomerSession(SimpleCustomer acct)
     {
@@ -62,6 +64,14 @@ public class CustomerSession implements Session{
 
     public void setAccounts(List<SimpleAccount> accounts) {
         this.accounts = accounts;
+    }
+
+    public List<SimplePost> getCirclePosts() {
+        return circlePosts;
+    }
+
+    public void setCirclePosts(List<SimplePost> circlePosts) {
+        this.circlePosts = circlePosts;
     }
     
     

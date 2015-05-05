@@ -15,4 +15,5 @@ public class SimplePost {
     public int authorID;
     public int circleID;
     public int commentCount;
+    public int pageID;
 }
