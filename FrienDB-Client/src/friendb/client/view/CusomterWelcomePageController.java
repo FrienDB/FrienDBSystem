@@ -153,7 +153,6 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         cs.setCircles(scA);
         circles.setItems(circle);
         //circle.setItems(circles);
-
     }
     
 }

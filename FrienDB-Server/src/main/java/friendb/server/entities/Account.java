@@ -18,7 +18,9 @@ import javax.persistence.NamedQuery;
  */
 @NamedQueries({
     @NamedQuery(name = "Account.findAll", 
-            query = "SELECT a FROM Account a")
+            query = "SELECT a FROM Account a"),
+    @NamedQuery(name = "Account.findByCustomerID", 
+            query = "SELECT a FROM Account a WHERE a.customerID = :customerID")
 })
 @Entity
 public class Account implements Serializable{

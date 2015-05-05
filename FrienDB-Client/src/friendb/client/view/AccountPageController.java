@@ -11,13 +11,20 @@ import friendb.client.main.ScreensController;
 import friendb.client.session.CustomerSession;
 import friendb.client.web.ServerAccessPoint;
 import friendb.client.web.ServerResources;
+import friendb.shared.SimpleAccount;
+import friendb.shared.SimpleCustomer;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -31,7 +38,7 @@ public class AccountPageController implements Initializable, ControlledScreen {
     @FXML
     private Label Accounts;
     @FXML
-    private ListView<?> accounts;
+    private ListView<String> accounts;
     
     private final ServerAccessPoint getCustomersAccounts =
             new ServerAccessPoint(ServerResources.GET_CUSTOMERS_ACCOUNTS_URL);
@@ -69,25 +76,24 @@ public class AccountPageController implements Initializable, ControlledScreen {
     @Override
     public void populatePage() {
         
-        /*
         CustomerSession cs = (CustomerSession)myController.getSession();
-        SimpleAccount c = cs.getCustomerAccount();
+        SimpleCustomer c = cs.getCustomerAccount();
 
-        Response rsp = getCustomersAccounts.request(cs.getCustomerAccount());
-        GenericType<List<SimpleCircle>> gtlc = new GenericType<List<SimpleCircle>>() {
+        Response rsp = getCustomersAccounts.request(c);
+        GenericType<List<SimpleAccount>> gtlc = new GenericType<List<SimpleAccount>>() {
         };
-        ObservableList<String> circle = FXCollections.observableArrayList();
-        ArrayList<SimpleCircle> scA = new ArrayList<>();
-        List<SimpleCircle> scList = rsp.readEntity(gtlc);
+        ObservableList<String> account = FXCollections.observableArrayList();
+        ArrayList<SimpleAccount> saA = new ArrayList<>();
+        List<SimpleAccount> saList = rsp.readEntity(gtlc);
         
         //circle.setItems(scList);
-        for(SimpleCircle sc : scList){
-            circle.add("Name: " + sc.circleName + " | Type: "+ sc.circleType);
-            scA.add(sc);
+        for(SimpleAccount sa : saList){
+            account.add("Name: " + sa.accountNum + " | Type: "+ sa.creditCard);
+            saA.add(sa);
         }
-        cs.setCircles(scA);
-        circles.setItems(circle);
-        //circle.setItems(circles);*/
+        cs.setAccounts(saList);
+        accounts.setItems(account);
+        //circle.setItems(circles);
     }
 
 }
