@@ -142,7 +142,9 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         //circle.setItems(circles);
 
     }
-
     @FXML
+    private void handleAccounts(ActionEvent event) {
+        
     }
+    
 }

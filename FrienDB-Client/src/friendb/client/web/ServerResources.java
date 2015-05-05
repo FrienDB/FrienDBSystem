@@ -32,6 +32,8 @@ public final class ServerResources {
     
     public static final String GET_CUSTOMERS_ACCOUNTS_URL =
             SERVER_BASE_URL + "circle/add";
+    public static final String GET_CIRCLE_MEMBERS_URL =
+            SERVER_BASE_URL + "circleMembership/getCircleMembers";
 
      
 }
