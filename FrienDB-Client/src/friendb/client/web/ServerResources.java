@@ -17,6 +17,8 @@ public final class ServerResources {
      
     public static final String GET_ALL_CUSTOMERS_URL =
             SERVER_BASE_URL + "customer";
+    public static final String GET_ALL_EMPLOYEE_URL =
+            SERVER_BASE_URL + "employee";
     
     public static final String ADD_NEW_CUSTOMER_URL =
             SERVER_BASE_URL + "customer/add";

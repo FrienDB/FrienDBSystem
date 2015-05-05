@@ -99,12 +99,26 @@
         public void setLastName(String lastName) {
             this.lastName = lastName;
         }
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
         public String getTelephone() {
             return telephone;
         }
 
         public void setTelephone(String telephone) {
             this.telephone = telephone;
+        }
+         public String getCity() {
+        return city;
+        }
+
+        public void setCity(String city) {
+            this.city = city;
         }
         public String getCurState() {
         return curState;
@@ -122,7 +136,20 @@
         public void setZipCode(int zipCode) {
             this.zipCode = zipCode;
         }
-        
+        public double getHourlyRate() {
+            return hourlyRate;
+        }
+
+        public void setHourlyRate(Double hourlyRate) {
+            this.hourlyRate = hourlyRate;
+        }
+        public String getRole() {
+        return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
         }
 
 

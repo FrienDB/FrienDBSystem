@@ -34,5 +34,6 @@
       <Button layoutX="632.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleAccounts" text="Accounts" />
       <Button layoutX="426.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleManageInfo" text="Manage Account Information" />
       <ListView fx:id="circles" layoutX="14.0" layoutY="88.0" prefHeight="259.0" prefWidth="390.0" />
+      <Button layoutX="330.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleMessages" text="Messages" />
    </children>
 </AnchorPane>
