@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 /**
  * FXML Controller class
@@ -26,6 +27,9 @@ public class NewPostPageController implements Initializable, ControlledScreen {
     
     @FXML
     private Label circleName;
+    
+    @FXML
+    private TextArea content;
 
     /**
      * Initializes the controller class.
