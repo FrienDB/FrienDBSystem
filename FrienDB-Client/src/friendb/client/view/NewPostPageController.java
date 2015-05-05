@@ -36,7 +36,7 @@ public class NewPostPageController implements Initializable, ControlledScreen {
     @FXML
     private Label circleName;
     
-    private final ServerAccessPoint addNewCircle =
+    private final ServerAccessPoint addNewPost =
             new ServerAccessPoint(ServerResources.ADD_POST_URL);
     @FXML
     private TextArea content;
@@ -60,8 +60,8 @@ public class NewPostPageController implements Initializable, ControlledScreen {
         SimplePost newPost = new SimplePost();
         
         newPost.pageID = cs.getPageID();
-//        newPost.content = 
-//        newPost.authorID = Integer.parseInt( (cs.getCustomerAccount().CustomerID) );
+        newPost.content = content.getText();
+        newPost.authorID = (cs.getCustomerAccount().CustomerID);
         
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
@@ -69,7 +69,7 @@ public class NewPostPageController implements Initializable, ControlledScreen {
         String change = value.replaceAll("/", "-");
         newPost.datePosted = change;
 
-        Response rsp = addNewCircle.request(newPost);
+        Response rsp = addNewPost.request(newPost);
         
         myController.setScreen(FrienDBClient.YourCirclePageID);
     }
