@@ -91,6 +91,7 @@ public class LoginPageController implements Initializable, ControlledScreen {
                     myController.loadScreen(FrienDBClient.CommentsPageID, FrienDBClient.CommentsPage);
                     myController.loadScreen(FrienDBClient.NewPostPageID, FrienDBClient.NewPostPage);
                     myController.loadScreen(FrienDBClient.ManageCustomerInfoID, FrienDBClient.ManageCustomerInfo);
+                    myController.loadScreen(FrienDBClient.AccountPageID, FrienDBClient.AccountPage);
                     myController.setScreen(FrienDBClient.CustomerWelcomePageID);
 
                 } //employees have no @ symbols in their username
@@ -105,6 +106,10 @@ public class LoginPageController implements Initializable, ControlledScreen {
 //>>>>>>> origin/master
             }
         }
+        
+        // CLEAR THE TEXT FIELDS SO THE INFO ISN'T THERE AFTER LOGOUT
+        email.clear();
+        password.clear();
     }
 
     @FXML

@@ -41,7 +41,7 @@ public class ManageCustomerInfoController implements Initializable, ControlledSc
     @FXML
     private PasswordField password;
     @FXML
-    private ComboBox<?> sex;
+    private ComboBox<String> sex;
     @FXML
     private TextField tele;
     @FXML
@@ -49,7 +49,7 @@ public class ManageCustomerInfoController implements Initializable, ControlledSc
     @FXML
     private TextField city;
     @FXML
-    private ComboBox<?> state;
+    private ComboBox<String> state;
     @FXML
     private DatePicker dob;
     @FXML
@@ -62,10 +62,6 @@ public class ManageCustomerInfoController implements Initializable, ControlledSc
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    @FXML
-    private void handleRegister(ActionEvent event) {
-    }
     
     @FXML
     private void handleSave(ActionEvent event) {
@@ -91,6 +87,7 @@ public class ManageCustomerInfoController implements Initializable, ControlledSc
         firstName.setText(c.firstName);
         lastName.setText(c.lastName);
         email.setText(c.emailID);
+        password.setText(c.password);
         tele.setText(c.telephone);
         address.setText(c.address);
         city.setText(c.city);
