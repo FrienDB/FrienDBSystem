@@ -39,10 +39,13 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     @FXML
     private TableView<?> post;
     @FXML
-    private ListView<?> circleMember;
+    private ListView<String> circleMember;
     
     private final ServerAccessPoint getCircleMembers =
             new ServerAccessPoint(ServerResources.GET_CIRCLE_MEMBERS_URL);
+    
+    private final ServerAccessPoint getCirclePosts =
+            new ServerAccessPoint(ServerResources.GET_CIRCLE_POSTS_URL);
 
     /**
      * Initializes the controller class.
@@ -113,6 +116,13 @@ public class YourCirclePageController implements Initializable, ControlledScreen
         };
         
         List<SimpleCustomer> customers = rsp.readEntity(gtlc);
+        cs.setCustomersInCircle(customers);
+        for(SimpleCustomer c : customers){
+            String add = c.firstName + " " + c.lastName;
+            circleMember.getItems().add(add);
+        }
+        
+        Response rsp2 = getCirclePosts.request(scm);
     }
     
 }
