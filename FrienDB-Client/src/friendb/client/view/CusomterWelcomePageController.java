@@ -155,27 +155,5 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         //circle.setItems(circles);
 
     }
-    @FXML
-<<<<<<< HEAD
-    private void handleAccounts(ActionEvent event) {
-        
-    }
     
 }
-=======
-    private void handleBack(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleAddAccount(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleDeleteAccount(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleEditAccount(ActionEvent event) {
-    }
-}
->>>>>>> origin/master
