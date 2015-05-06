@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -22,8 +23,9 @@ import javax.persistence.TypedQuery;
  *
  * @author evanguby
  */
-@Stateful
+@Stateless
 public class CircleMembershipBean {
+    
     private static final Logger logger =
             Logger.getLogger("friendb.beans.CircleMembershipBean");
 
@@ -33,13 +35,12 @@ public class CircleMembershipBean {
     
     public List<Customer> getCircleMembers(SimpleCircleMembership scm){
         List<Customer> customers = new ArrayList<>();
-
         // Create the entity manager and set up the query for all schools
         em = DatabaseConnection.getEntityManager();
-        TypedQuery<CircleMembership> query =
-                em.createNamedQuery("CircleMembership.findByCircleID", CircleMembership.class);
+
         try
         {
+            TypedQuery<CircleMembership> query = em.createNamedQuery("CircleMembership.findByCircleID", CircleMembership.class);
             query.setParameter("circleID", scm.circleID);
             List<CircleMembership> cmList = query.getResultList();
             

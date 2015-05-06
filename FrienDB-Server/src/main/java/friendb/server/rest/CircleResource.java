@@ -92,4 +92,25 @@ public class CircleResource {
         }
     }
     
+    @POST
+    @Path("/deleteCircle")
+    @Consumes("application/json")
+    public Response deleteCircle(SimpleCircle sc) {
+        try
+        {
+            circleBean.deleteCircle(sc);
+            logger.log(Level.INFO, "OK Response");
+            return Response.ok(sc).build();
+        } catch (RollbackException rex)
+        {
+            logger.log(Level.WARNING, "BAD REQUEST");
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (NoResultException nrex)
+        {
+            //@TODO disambiguate errors
+            logger.log(Level.WARNING, "BAD REQUEST");
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+    }
+    
 }

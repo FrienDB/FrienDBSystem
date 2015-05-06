@@ -6,6 +6,7 @@
 package friendb.server.rest;
 
 import friendb.server.beans.AuthenticationBean;
+import friendb.server.beans.CircleBean;
 import friendb.server.beans.CircleMembershipBean;
 import friendb.server.entities.Circle;
 import friendb.server.entities.Customer;

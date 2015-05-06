@@ -11,6 +11,7 @@ import friendb.server.util.DatabaseConnection;
 import friendb.shared.SimpleComments;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.RollbackException;
@@ -19,6 +20,7 @@ import javax.persistence.RollbackException;
  *
  * @author nathanwong
  */
+@Stateful
 public class CommentBean {
     
         //Logger

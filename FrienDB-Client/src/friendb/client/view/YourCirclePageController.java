@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
@@ -41,12 +42,20 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     private ListView<String> post;
     @FXML
     private ListView<String> circleMember;
+    @FXML
+    private ComboBox<String> customerToAdd;
     
     private final ServerAccessPoint getCircleMembers =
             new ServerAccessPoint(ServerResources.GET_CIRCLE_MEMBERS_URL);
     
     private final ServerAccessPoint getCirclePosts =
             new ServerAccessPoint(ServerResources.GET_CIRCLE_POSTS_URL);
+    
+    private final ServerAccessPoint getAllCustomers =
+            new ServerAccessPoint(ServerResources.GET_ALL_CUSTOMERS_URL);
+    
+    private final ServerAccessPoint deleteCircle =
+            new ServerAccessPoint(ServerResources.DELETE_CIRCLE_URL);
 
     /**
      * Initializes the controller class.
@@ -70,6 +79,13 @@ public class YourCirclePageController implements Initializable, ControlledScreen
 
     @FXML
     private void handleDeleteCircle(ActionEvent event) {
+        CustomerSession cs = (CustomerSession)myController.getSession();
+        SimpleCircle toDelete = cs.getVisitingCircle();
+        
+        Response rsp = deleteCircle.request(toDelete);
+        
+        myController.loadScreen(FrienDBClient.CustomerWelcomePageID,FrienDBClient.CustomerWelcomePage);
+        myController.setScreen(FrienDBClient.CustomerWelcomePageID);
     }
 
     @FXML
@@ -127,8 +143,22 @@ public class YourCirclePageController implements Initializable, ControlledScreen
         
         GenericType<List<SimplePost>> gtlc2 = new GenericType<List<SimplePost>>() {
         };
+        List<SimplePost> posts = null;
+        try{
+            posts = rsp2.readEntity(gtlc2);
+        }catch (Exception e){
+            return;
+        }
+        Response rsp3 = getAllCustomers.request();
         
-        List<SimplePost> posts = rsp2.readEntity(gtlc2);
+        GenericType<List<SimpleCustomer>> gtlc3 = new GenericType<List<SimpleCustomer>>() {
+        };
+        List<SimpleCustomer> customersTo = rsp3.readEntity(gtlc3);
+        for(SimpleCustomer c : customersTo){
+            customerToAdd.getItems().add(c.firstName + " " + c.lastName);
+        }
+        cs.setAllCustomers(customersTo);
+        customers = customersTo;
         cs.setCirclePosts(posts);
         cs.setPageID(posts.get(0).pageID);
         for(SimplePost p : posts){
@@ -137,7 +167,7 @@ public class YourCirclePageController implements Initializable, ControlledScreen
                 if(c.CustomerID == p.authorID)
                     author = c.firstName + " " + c.lastName;
             }
-            String add = author + p.content + "(" + p.datePosted + ")";
+            String add = author + ": " + p.content + "(" + p.datePosted + ")";
             post.getItems().add(add);
         }
         

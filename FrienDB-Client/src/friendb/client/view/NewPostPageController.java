@@ -71,6 +71,7 @@ public class NewPostPageController implements Initializable, ControlledScreen {
 
         Response rsp = addNewPost.request(newPost);
         
+        myController.loadScreen(FrienDBClient.YourCirclePageID,FrienDBClient.YourCirclePage);
         myController.setScreen(FrienDBClient.YourCirclePageID);
     }
 

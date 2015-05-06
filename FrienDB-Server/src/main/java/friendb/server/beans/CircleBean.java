@@ -11,6 +11,7 @@ import friendb.server.entities.Customer;
 import friendb.server.rest.CircleResource;
 import friendb.server.util.DatabaseConnection;
 import friendb.shared.SimpleCircle;
+import friendb.shared.SimpleCircleMembership;
 import friendb.shared.SimpleCustomer;
 import java.util.ArrayList;
 import java.util.List;
@@ -103,5 +104,30 @@ public class CircleBean {
             em = null;
         }
     }
+
+    public void deleteCircle(SimpleCircle sc) {
+        em = DatabaseConnection.getEntityManager();
+        try
+        {
+            TypedQuery<Circle> query = em.createNamedQuery("Circle.findByID", Circle.class);
+            query.setParameter("circleID", sc.circleID);
+            TypedQuery<CircleMembership> query2 = em.createNamedQuery("CircleMembership.findByCircleID", CircleMembership.class);
+            query2.setParameter("circleID", sc.circleID);
+            Circle circle = query.getSingleResult();
+            List<CircleMembership> cms = query2.getResultList();
+            em.getTransaction().begin();
+            for(CircleMembership cm : cms){
+                em.remove(cm);
+            }
+            em.remove(circle);
+            em.getTransaction().commit();
+        }finally
+        {
+            //close the entity manager
+            em.close();
+            em = null;
+        }
+    }
+    
     
 }

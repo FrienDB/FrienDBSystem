@@ -18,7 +18,7 @@ import javax.persistence.Persistence;
 public final class DatabaseConnection
 {
 
-    private static final String PERSISTENCE_UNIT_NAME = "FrienDBT";
+    private static final String PERSISTENCE_UNIT_NAME = "FrienDB";
 
     private static Map PROPERTIES = new HashMap();
     private static final String USERNAME = "nwong";
