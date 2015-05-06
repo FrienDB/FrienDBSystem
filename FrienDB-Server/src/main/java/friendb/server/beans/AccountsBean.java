@@ -14,6 +14,7 @@ import friendb.shared.SimpleCustomer;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -22,6 +23,7 @@ import javax.persistence.TypedQuery;
  *
  * @author nathanwong
  */
+@Stateful
 public class AccountsBean {
     
     private static final Logger logger =

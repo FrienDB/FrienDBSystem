@@ -12,12 +12,6 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <TableView fx:id="post" layoutX="14.0" layoutY="53.0" prefHeight="349.0" prefWidth="509.0">
-        <columns>
-          <TableColumn prefWidth="103.0" text="Author" />
-          <TableColumn prefWidth="405.0" text="Post" />
-        </columns>
-      </TableView>
       <ListView fx:id="circleMember" layoutX="527.0" layoutY="53.0" prefHeight="255.0" prefWidth="181.0" />
       <Label layoutX="527.0" layoutY="34.0" text="Members:" />
       <Button layoutX="527.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleRemoveSelected" text="Remove Member" />
@@ -31,5 +25,6 @@
       <Button layoutX="135.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleModifyPost" text="Modify Post" />
       <Button layoutX="335.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleViewComments" text="View/Add Comments" />
       <Button layoutX="657.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleBack" text="Back" />
+      <ListView fx:id="post" layoutX="14.0" layoutY="54.0" prefHeight="346.0" prefWidth="507.0" />
    </children>
 </AnchorPane>

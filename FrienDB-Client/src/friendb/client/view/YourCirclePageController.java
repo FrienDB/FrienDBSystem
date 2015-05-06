@@ -38,7 +38,7 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     @FXML
     private Label circleName;
     @FXML
-    private TableView<String> post;
+    private ListView<String> post;
     @FXML
     private ListView<String> circleMember;
     

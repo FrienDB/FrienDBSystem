@@ -18,7 +18,9 @@ import javax.persistence.NamedQuery;
  */
 @NamedQueries({
     @NamedQuery(name = "Post.findAll", 
-            query = "SELECT p FROM Post p")
+            query = "SELECT p FROM Post p"),
+    @NamedQuery(name = "Post.findByPageID", 
+            query = "SELECT p FROM Post p WHERE p.pageID = :pageID")
 })
 @Entity
 public class Post implements Serializable{

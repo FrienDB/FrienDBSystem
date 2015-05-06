@@ -9,6 +9,7 @@ import friendb.server.entities.CircleMembership;
 import friendb.server.entities.Customer;
 import friendb.server.util.DatabaseConnection;
 import friendb.shared.SimpleCircleMembership;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,12 +32,12 @@ public class CircleMembershipBean {
     private EntityManager em;
     
     public List<Customer> getCircleMembers(SimpleCircleMembership scm){
-        List<Customer> customers = null;
+        List<Customer> customers = new ArrayList<>();
 
         // Create the entity manager and set up the query for all schools
         em = DatabaseConnection.getEntityManager();
         TypedQuery<CircleMembership> query =
-                em.createNamedQuery("CircleMembership.findByCicleID", CircleMembership.class);
+                em.createNamedQuery("CircleMembership.findByCircleID", CircleMembership.class);
         try
         {
             query.setParameter("circleID", scm.circleID);

@@ -98,10 +98,15 @@ public class LoginPageController implements Initializable, ControlledScreen {
                 else {
                     SimpleEmployee emp = rsp.readEntity(SimpleEmployee.class);
                     myController.createEmployeeSession(emp);
-                    myController.loadScreen(FrienDBClient.EmployeePageID, FrienDBClient.EmployeePage);
-                    myController.loadScreen(FrienDBClient.SalesPageID, FrienDBClient.SalesPage);
-                    myController.loadScreen(FrienDBClient.AdsPageID, FrienDBClient.AdsPage);
-                    myController.setScreen(FrienDBClient.EmployeePageID);
+                    if(emp.role.equalsIgnoreCase("Manager")){
+                        
+                    }else{
+                        myController.loadScreen(FrienDBClient.EmployeePageID, FrienDBClient.EmployeePage);
+                        myController.loadScreen(FrienDBClient.SalesPageID, FrienDBClient.SalesPage);
+                        myController.loadScreen(FrienDBClient.AdsPageID, FrienDBClient.AdsPage);
+                        myController.setScreen(FrienDBClient.EmployeePageID);
+                    }
+                    
                 }
 //>>>>>>> origin/master
             }
