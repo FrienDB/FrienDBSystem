@@ -61,13 +61,13 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     private final ServerAccessPoint addCustomerToCircle
             = new ServerAccessPoint(ServerResources.ADD_CUSTOMER_TO_CIRCLE_URL);
     
-<<<<<<< HEAD
+
     private final ServerAccessPoint removeCustomerFromCircle
             = new ServerAccessPoint(ServerResources.REMOVE_CUSTOMER_FROM_CIRCLE_URL);
-=======
+
     private final ServerAccessPoint removePost 
             = new ServerAccessPoint(ServerResources.REMOVE_POST_URL);
->>>>>>> origin/master
+
 
     /**
      * Initializes the controller class.
