@@ -5,11 +5,9 @@
  */
 package friendb.server.rest;
 
-import friendb.server.beans.CustomerBean;
 import friendb.server.beans.PostBean;
 import friendb.server.entities.Post;
 import friendb.shared.SimpleCircle;
-import friendb.shared.SimpleCircleMembership;
 import friendb.shared.SimplePost;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +68,27 @@ public class PostResource {
         try
         {
             postBean.addCirclePost(sp);
+            logger.log(Level.INFO, "OK Response");
+            return Response.ok(sp).build();
+        } catch (RollbackException rex)
+        {
+            logger.log(Level.WARNING, "BAD REQUEST");
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (NoResultException nrex)
+        {
+            //@TODO disambiguate errors
+            logger.log(Level.WARNING, "BAD REQUEST");
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+    }
+    
+    @POST
+    @Path("/removePost")
+    @Consumes("application/json")
+    public Response removePost(SimplePost sp) {
+        try
+        {
+            postBean.removeCirclePost(sp);
             logger.log(Level.INFO, "OK Response");
             return Response.ok(sp).build();
         } catch (RollbackException rex)

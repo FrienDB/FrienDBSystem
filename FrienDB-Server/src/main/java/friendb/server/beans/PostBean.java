@@ -52,11 +52,11 @@ public class PostBean {
             SimplePost sp;
             for (Object[] post : posts) {
                 sp = new SimplePost();
-                sp.authorID = (int)post[1];
-                sp.commentCount = (int)post[3];
-                sp.content = (String)post[0];
-                sp.datePosted = (String)post[2];
-                sp.pageID = (int)post[4];
+                sp.authorID = (int) post[1];
+                sp.commentCount = (int) post[3];
+                sp.content = (String) post[0];
+                sp.datePosted = (String) post[2];
+                sp.pageID = (int) post[4];
                 simplePosts.add(sp);
             }
         } finally {
@@ -67,30 +67,48 @@ public class PostBean {
         return simplePosts;
     }
 
-    
     public void addCirclePost(SimplePost sp) {
         em = DatabaseConnection.getEntityManager();
-        try
-        {
-            Post post = new Post( sp.pageID, sp.content, sp.authorID, sp.datePosted);
+        try {
+            Post post = new Post(sp.pageID, sp.content, sp.authorID, sp.datePosted);
             //add the course
             em.getTransaction().begin();
             //@TODO check return of addCourse to see if it worked
             em.persist(post);
             em.getTransaction().commit();
-            
+
             logger.log(Level.INFO, "New Post added to database {0}", post);
-        } catch (RollbackException rex)
-        {
+        } catch (RollbackException rex) {
             //a course with that id already exists in database
             logger.log(Level.WARNING, "Collision on post ID within database");
             throw rex;
-        } finally
-        {
+        } finally {
             //close the entity manager
             em.close();
             em = null;
         }
     }
-    
+
+    public void removeCirclePost(SimplePost sp) {
+        em = DatabaseConnection.getEntityManager();
+        try {
+            Post post = new Post(sp.pageID, sp.content, sp.authorID, sp.datePosted);
+            //add the course
+            em.getTransaction().begin();
+            //@TODO check return of addCourse to see if it worked
+            em.remove(post);
+            em.getTransaction().commit();
+
+            logger.log(Level.INFO, "Post removed from database", post);
+        } catch (RollbackException rex) {
+            //a course with that id already exists in database
+            logger.log(Level.WARNING, "Collision on post ID within database");
+            throw rex;
+        } finally {
+            //close the entity manager
+            em.close();
+            em = null;
+        }
+    }
+
 }
