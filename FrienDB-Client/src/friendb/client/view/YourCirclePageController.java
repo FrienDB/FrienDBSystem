@@ -60,6 +60,9 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     
     private final ServerAccessPoint addCustomerToCircle
             = new ServerAccessPoint(ServerResources.ADD_CUSTOMER_TO_CIRCLE_URL);
+    
+    private final ServerAccessPoint removeCustomerFromCircle
+            = new ServerAccessPoint(ServerResources.REMOVE_CUSTOMER_FROM_CIRCLE_URL);
 
     /**
      * Initializes the controller class.
@@ -71,6 +74,17 @@ public class YourCirclePageController implements Initializable, ControlledScreen
 
     @FXML
     private void handleRemoveSelected(ActionEvent event) {
+        int index = circleMember.getSelectionModel().getSelectedIndex();
+        CustomerSession cs = (CustomerSession)myController.getSession();
+        SimpleCustomer sc = cs.getCustomersInCircle().get(index);
+        SimpleCircleMembership scm = new SimpleCircleMembership();
+        scm.circleID = cs.getVisitingCircle().circleID;
+        scm.customerID = sc.CustomerID;
+        if(cs.getVisitingCircle().circleOwner != scm.customerID){
+            Response rsp = removeCustomerFromCircle.request(scm);
+        }
+        myController.loadScreen(FrienDBClient.YourCirclePageID, FrienDBClient.YourCirclePage);
+        myController.setScreen(FrienDBClient.YourCirclePageID);
     }
 
     @FXML
@@ -100,7 +114,7 @@ public class YourCirclePageController implements Initializable, ControlledScreen
         List<SimpleCustomer> allCustomers = cs.getAllCustomers();
         SimpleCustomer customerToAdd = null;
         for(SimpleCustomer c : allCustomers){
-            if(c.firstName == name[0] && c.lastName == name[1]){
+            if(c.firstName.equals(name[0]) && c.lastName.equals(name[1])){
                 customerToAdd = c;
             }
         }
