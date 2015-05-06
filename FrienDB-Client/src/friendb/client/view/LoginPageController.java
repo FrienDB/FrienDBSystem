@@ -113,7 +113,6 @@ public class LoginPageController implements Initializable, ControlledScreen {
                     else
                     {
                     myController.createEmployeeSession(emp);
-<<<<<<< HEAD
                     if(emp.role.equalsIgnoreCase("Manager")){
                         
                     }else{
@@ -122,14 +121,9 @@ public class LoginPageController implements Initializable, ControlledScreen {
                         myController.loadScreen(FrienDBClient.AdsPageID, FrienDBClient.AdsPage);
                         myController.setScreen(FrienDBClient.EmployeePageID);
                     }
-                    
-=======
-                    myController.loadScreen(FrienDBClient.EmployeePageID, FrienDBClient.EmployeePage);
-                    myController.loadScreen(FrienDBClient.SalesPageID, FrienDBClient.SalesPage);
-                    myController.loadScreen(FrienDBClient.AdsPageID, FrienDBClient.AdsPage);
-                    myController.setScreen(FrienDBClient.EmployeePageID);
+
                     }
->>>>>>> origin/master
+
                 }
 //>>>>>>> origin/master
             }
