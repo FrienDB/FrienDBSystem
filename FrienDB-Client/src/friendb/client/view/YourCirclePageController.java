@@ -60,6 +60,9 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     
     private final ServerAccessPoint addCustomerToCircle
             = new ServerAccessPoint(ServerResources.ADD_CUSTOMER_TO_CIRCLE_URL);
+    
+    private final ServerAccessPoint removePost 
+            = new ServerAccessPoint(ServerResources.REMOVE_POST_URL);
 
     /**
      * Initializes the controller class.
@@ -117,7 +120,17 @@ public class YourCirclePageController implements Initializable, ControlledScreen
 
     @FXML
     private void handleRemovePost(ActionEvent event) {
-
+        CustomerSession cs = (CustomerSession)myController.getSession();
+                
+        SimplePost simplePost = new SimplePost();
+        simplePost.authorID = cs.getCirclePosts().get( post.getSelectionModel().getSelectedIndex() ).authorID;
+        simplePost.circleID = cs.getCirclePosts().get( post.getSelectionModel().getSelectedIndex() ).circleID;
+        simplePost.commentCount = cs.getCirclePosts().get( post.getSelectionModel().getSelectedIndex() ).commentCount;
+        simplePost.datePosted = cs.getCirclePosts().get( post.getSelectionModel().getSelectedIndex() ).datePosted;
+        simplePost.content = cs.getCirclePosts().get( post.getSelectionModel().getSelectedIndex() ).content;
+        simplePost.pageID = cs.getCirclePosts().get( post.getSelectionModel().getSelectedIndex() ).pageID;
+        
+        Response rsp = removePost.request(simplePost);
     }
 
     @FXML
