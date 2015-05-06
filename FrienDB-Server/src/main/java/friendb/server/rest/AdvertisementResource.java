@@ -89,7 +89,7 @@ public class AdvertisementResource {
     @POST
     @Path("/add")
     @Consumes("application/json")
-    public Response addCustomer(SimpleCustomer customer)
+    public Response addAdvertisement(SimpleAdvertisement advertisement)
     {
         try
         {
@@ -97,7 +97,7 @@ public class AdvertisementResource {
            // customerBean.addCustomer(customer.firstName,customer.lastName,customer.sex,customer.emailID,
              //       customer.dob,customer.address,customer.city,customer.state,customer.zipCode,customer.telephone, customer.password);
             logger.log(Level.INFO, "OK response");
-            return Response.ok(customer).build();
+            return Response.ok(advertisement).build();
         } catch (EntityExistsException eeex)
         {
             logger.log(Level.WARNING, "BAD REQUEST response");
