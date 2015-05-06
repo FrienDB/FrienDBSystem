@@ -18,13 +18,13 @@
       <Button layoutX="14.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleLikePost" text="Like/Unlike Post" />
       <Button layoutX="302.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleRenameCircle" text="Rename Circle" />
       <Button layoutX="418.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleDeleteCircle" text="Delete Circle" />
-      <ComboBox layoutX="527.0" layoutY="343.0" prefHeight="26.0" prefWidth="181.0" />
+      <ComboBox fx:id="customerToAdd" layoutX="527.0" layoutY="343.0" prefHeight="26.0" prefWidth="181.0" />
       <Button layoutX="527.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleAddMember" text="Add Member" />
       <Button layoutX="230.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleRemovePost" text="Remove Post" />
       <Button layoutX="14.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleNewPost" text="New Post" />
       <Button layoutX="135.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleModifyPost" text="Modify Post" />
       <Button layoutX="335.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleViewComments" text="View/Add Comments" />
       <Button layoutX="657.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleBack" text="Back" />
-      <ListView fx:id="post" layoutX="14.0" layoutY="54.0" prefHeight="346.0" prefWidth="507.0" />
+      <ListView fx:id="post" layoutX="14.0" layoutY="54.0" prefHeight="348.0" prefWidth="509.0" />
    </children>
 </AnchorPane>

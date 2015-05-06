@@ -68,9 +68,10 @@ public class NewPostPageController implements Initializable, ControlledScreen {
         String value = dateFormat.format(date);
         String change = value.replaceAll("/", "-");
         newPost.datePosted = change;
-
+        newPost.circleID = cs.getVisitingCircle().circleID;
         Response rsp = addNewPost.request(newPost);
         
+        myController.loadScreen(FrienDBClient.YourCirclePageID,FrienDBClient.YourCirclePage);
         myController.setScreen(FrienDBClient.YourCirclePageID);
     }
 

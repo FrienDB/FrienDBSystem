@@ -50,4 +50,7 @@ public final class ServerResources {
     public static final String ADD_POST_URL = 
             SERVER_BASE_URL + "post/addPost";
     
+    public static final String DELETE_CIRCLE_URL = 
+            SERVER_BASE_URL + "circle/deleteCircle";
+    
 }

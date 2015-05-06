@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="FrienDBT" transaction-type="JTA">
+  <persistence-unit name="FrienDB" transaction-type="JTA">
     <jta-data-source>jdbc/FrienDBJNDI</jta-data-source>
     <class>friendb.server.entities.Customer</class>
     <class>friendb.server.entities.Account</class>
@@ -16,7 +16,7 @@
     <class>friendb.server.entities.Post</class>
     <class>friendb.server.entities.Preferences</class>
     <class>friendb.server.entities.Sales</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
 </persistence>
