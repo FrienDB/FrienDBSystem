@@ -20,7 +20,7 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name = "CircleMembership.findByCustomer", 
             query = "SELECT m FROM CircleMembership m WHERE m.customerID = :customerID"),
     @NamedQuery(name = "CircleMembership.findByCircleID", 
-            query = "SELECT m FROM CircleMembership m WHERE m.circleID = :circleID"),
+            query = "SELECT m.customerID FROM CircleMembership m WHERE m.circleID = :circleID"),
     @NamedQuery(name = "CircleMembership.findAll", 
             query = "SELECT m FROM CircleMembership m")
     })

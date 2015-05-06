@@ -17,6 +17,7 @@ import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -40,14 +41,15 @@ public class CircleMembershipBean {
 
         try
         {
-            TypedQuery<CircleMembership> query = em.createNamedQuery("CircleMembership.findByCircleID", CircleMembership.class);
-            query.setParameter("circleID", scm.circleID);
-            List<CircleMembership> cmList = query.getResultList();
+            //TypedQuery<CircleMembership> query = em.createNamedQuery("CircleMembership.findByCircleID", CircleMembership.class);
+            Query q = em.createQuery("SELECT m.customerID FROM CircleMembership m WHERE m.circleID = " + scm.circleID);
+            //query.setParameter("circleID", scm.circleID);
+            List<Integer> cmList = q.getResultList();
             
-            for(CircleMembership cm : cmList){
+            for(Integer cm : cmList){
                 TypedQuery<Customer> query2 =
                     em.createNamedQuery("Customer.findByID", Customer.class);
-                query2.setParameter("id", cm.getCustomerID());
+                query2.setParameter("id", cm);
                 Customer customer = query2.getSingleResult();
                 customers.add(customer);
             }
