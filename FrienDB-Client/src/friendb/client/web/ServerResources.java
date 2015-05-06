@@ -42,4 +42,7 @@ public final class ServerResources {
     public static final String GET_CIRCLE_POSTS_URL =
             SERVER_BASE_URL + "post/getCirclePosts";
     
+    public static final String ADD_POST_URL = 
+            SERVER_BASE_URL + "post/addPost";
+    
 }

@@ -51,18 +51,8 @@ public class PostResource {
     @Path("/getCirclePosts")
     @Consumes("application/json")
     public Response getCirclePosts(SimpleCircle sc) {
-        List<Post> posts = postBean.getCirclePost(sc);
-        ArrayList<SimplePost> simplePosts = new ArrayList<>();
-        SimplePost sp;
-        for (Post post : posts)
-        {
-            sp = new SimplePost();
-            sp.authorID = post.getAuthor();
-            sp.commentCount = post.getCommentCount();
-            sp.content = post.getContent();
-            sp.datePosted = post.getDatePosted();
-            simplePosts.add(sp);
-        }
+        List<SimplePost> simplePosts = postBean.getCirclePost(sc);
+        
         GenericEntity<List<SimplePost>> wrapper =
                 new GenericEntity<List<SimplePost>>(simplePosts)
                 {

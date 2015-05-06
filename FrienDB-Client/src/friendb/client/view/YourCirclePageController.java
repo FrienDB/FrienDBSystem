@@ -14,6 +14,7 @@ import friendb.client.web.ServerResources;
 import friendb.shared.SimpleCircle;
 import friendb.shared.SimpleCircleMembership;
 import friendb.shared.SimpleCustomer;
+import friendb.shared.SimplePost;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -37,7 +38,7 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     @FXML
     private Label circleName;
     @FXML
-    private TableView<?> post;
+    private TableView<String> post;
     @FXML
     private ListView<String> circleMember;
     
@@ -123,6 +124,23 @@ public class YourCirclePageController implements Initializable, ControlledScreen
         }
         
         Response rsp2 = getCirclePosts.request(scm);
+        
+        GenericType<List<SimplePost>> gtlc2 = new GenericType<List<SimplePost>>() {
+        };
+        
+        List<SimplePost> posts = rsp2.readEntity(gtlc2);
+        cs.setCirclePosts(posts);
+        cs.setPageID(posts.get(0).pageID);
+        for(SimplePost p : posts){
+            String author = "";
+            for(SimpleCustomer c : customers){
+                if(c.CustomerID == p.authorID)
+                    author = c.firstName + " " + c.lastName;
+            }
+            String add = author + p.content + "(" + p.datePosted + ")";
+            post.getItems().add(add);
+        }
+        
     }
     
 }
