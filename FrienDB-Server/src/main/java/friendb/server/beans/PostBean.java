@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.RollbackException;
 import javax.persistence.TypedQuery;
 
@@ -41,23 +42,21 @@ public class PostBean {
         TypedQuery<Pages> query
                 = em.createNamedQuery("Pages.findByCircleID", Pages.class);
         query.setParameter("circleID", sc.circleID);
-        List<Post> posts = null;
         List<SimplePost> simplePosts = null;
         try {
             Pages page = query.getSingleResult();
-            TypedQuery<Post> query2
-                    = em.createNamedQuery("Post.findByPageID", Post.class);
-            query2.setParameter("pageID", page.getpageID());
-            posts = query2.getResultList();
+            Query query2
+                    = em.createQuery("SELECT p.content, p.author, p.datePosted, p.commentCount, p.pageID FROM Post p WHERE p.pageID = " + page.getpageID());
+            List<Object[]> posts = query2.getResultList();
             simplePosts = new ArrayList<>();
             SimplePost sp;
-            for (Post post : posts) {
+            for (Object[] post : posts) {
                 sp = new SimplePost();
-                sp.authorID = post.getAuthor();
-                sp.commentCount = post.getCommentCount();
-                sp.content = post.getContent();
-                sp.datePosted = post.getDatePosted();
-                sp.pageID = post.getPageID();
+                sp.authorID = (int)post[1];
+                sp.commentCount = (int)post[3];
+                sp.content = (String)post[0];
+                sp.datePosted = (String)post[2];
+                sp.pageID = (int)post[4];
                 simplePosts.add(sp);
             }
         } finally {
