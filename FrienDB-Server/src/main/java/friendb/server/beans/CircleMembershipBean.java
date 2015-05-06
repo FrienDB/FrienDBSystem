@@ -18,6 +18,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.RollbackException;
 import javax.persistence.TypedQuery;
 
 /**
@@ -61,5 +62,27 @@ public class CircleMembershipBean {
             em = null;
         }
         return customers;
+    }
+
+    public void addCustomerToCircle(SimpleCircleMembership scm) {
+        em = DatabaseConnection.getEntityManager();
+        try
+        {
+            CircleMembership cm = new CircleMembership(scm.customerID,scm.circleID);
+            em.getTransaction().begin();
+            //@TODO check return of addCourse to see if it worked
+            em.persist(cm);
+            em.getTransaction().commit();
+        }catch (RollbackException rex)
+        {
+            //a course with that id already exists in database
+            logger.log(Level.WARNING, "Customer already in circle");
+            throw rex;
+        } finally
+        {
+            //close the entity manager
+            em.close();
+            em = null;
+        }
     }
 }
