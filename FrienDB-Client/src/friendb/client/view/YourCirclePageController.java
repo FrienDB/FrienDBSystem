@@ -90,10 +90,12 @@ public class YourCirclePageController implements Initializable, ControlledScreen
 
     @FXML
     private void handleAddMember(ActionEvent event) {
+        
     }
 
     @FXML
     private void handleRemovePost(ActionEvent event) {
+        
     }
 
     @FXML
@@ -167,7 +169,7 @@ public class YourCirclePageController implements Initializable, ControlledScreen
                 if(c.CustomerID == p.authorID)
                     author = c.firstName + " " + c.lastName;
             }
-            String add = author + ": " + p.content + "(" + p.datePosted + ")";
+            String add = author + ": " + p.content + " (" + p.datePosted + ")";
             post.getItems().add(add);
         }
         

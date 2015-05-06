@@ -16,8 +16,7 @@
     <class>friendb.server.entities.Post</class>
     <class>friendb.server.entities.Preferences</class>
     <class>friendb.server.entities.Sales</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
-    <shared-cache-mode>DISABLE_SELECTIVE</shared-cache-mode>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
 </persistence>
