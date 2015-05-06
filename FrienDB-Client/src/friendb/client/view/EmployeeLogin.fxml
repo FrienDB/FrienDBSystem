@@ -41,5 +41,6 @@
             </Button>
          </children>
       </VBox>
+      <Button fx:id="signOutButton" layoutX="38.0" layoutY="29.0" mnemonicParsing="false" onAction="#HandleSignOut" text="Sign Out" />
    </children>
 </fx:root>

@@ -49,7 +49,8 @@ public class NewAdvertisementController implements Initializable, ControlledScre
     private Button backButton;
     @FXML
     private TextField numUnitsText;
-     
+    private final ServerAccessPoint newCustomer =
+            new ServerAccessPoint(ServerResources.ADD_NEW_ADVERTISEMENT_URL);
     /**
      * Initializes the controller class.
      */
@@ -77,9 +78,9 @@ public class NewAdvertisementController implements Initializable, ControlledScre
             String change = value.replaceAll("/","-");
             a.postDate = change;
             a.numOfUnits=Integer.parseInt(numUnitsText.getText());
-            }
-            //transmit new student form to server
-        /*
+            
+            //transmit new ad form to server
+        
             Response rsp = newAdvertisement.request(e);
             //check response code
             if (rsp.getStatus() != Response.Status.OK.getStatusCode())
@@ -93,7 +94,8 @@ public class NewAdvertisementController implements Initializable, ControlledScre
             descriptionText.clear();
             
             myController.setScreen(FrienDBClient.LoginPageID);
-                */
+                
+    }
     }
 
     @FXML

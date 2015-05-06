@@ -37,6 +37,8 @@ public class EmployeeLoginController implements Initializable, ControlledScreen 
     private Button mailingButton;
     @FXML
     private Button suggestMailButton;
+    @FXML
+    private Button signOutButton;
     /**
      * Initializes the controller class.
      */
@@ -70,11 +72,17 @@ public class EmployeeLoginController implements Initializable, ControlledScreen 
 
     @FXML
     private void HandleMailing(ActionEvent event) {
-        
+        myController.setScreen(FrienDBClient.MailingListPageID);
     }
 
     @FXML
     private void HandleSuggest(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void HandleSignOut(ActionEvent event) {
+        myController.setScreen(FrienDBClient.LoginPageID);
     }
     
 }

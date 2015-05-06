@@ -5,27 +5,27 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: cyan;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.ManagerPageController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: cyan;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.ManagerPageController">
    <children>
-      <Label layoutX="183.0" layoutY="25.0" text="Welcome Manager">
+      <Label layoutX="243.0" layoutY="21.0" text="Welcome Manager">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
-      <VBox layoutX="57.0" layoutY="152.0" prefHeight="232.0" prefWidth="122.0" spacing="50.0">
+      <VBox layoutX="86.0" layoutY="152.0" prefHeight="232.0" prefWidth="122.0" spacing="50.0">
          <children>
             <Button fx:id="salesReportButton" mnemonicParsing="false" onAction="#handleReport" prefHeight="40.0" prefWidth="153.0" text="Sales Report" />
             <Button fx:id="advertisementButton" lineSpacing="50.0" mnemonicParsing="false" onAction="#handleAdvertisements" prefHeight="40.0" prefWidth="127.0" text="All Advertisements" />
             <Button fx:id="employeeInfoButton" mnemonicParsing="false" onAction="#HandleInfo" prefHeight="40.0" prefWidth="153.0" text="Edit Employee Info" />
          </children>
       </VBox>
-      <VBox layoutX="440.0" layoutY="152.0" prefHeight="138.0" prefWidth="122.0" spacing="50.0">
+      <VBox layoutX="522.0" layoutY="152.0" prefHeight="138.0" prefWidth="122.0" spacing="50.0">
          <children>
             <Button fx:id="employeeStatisticsButton" mnemonicParsing="false" onAction="#handleEmployee" prefHeight="40.0" prefWidth="153.0" text="Employee Statistics" />
             <Button fx:id="customerStatisticsButton" lineSpacing="50.0" mnemonicParsing="false" onAction="#handleStatistics" prefHeight="40.0" prefWidth="127.0" text="Customer Statistics" />
          </children>
       </VBox>
-      <VBox layoutX="239.0" layoutY="152.0" prefHeight="138.0" prefWidth="122.0" spacing="50.0">
+      <VBox layoutX="299.0" layoutY="152.0" prefHeight="138.0" prefWidth="122.0" spacing="50.0">
          <children>
             <Button fx:id="allSalesButton" mnemonicParsing="false" onAction="#handleSales" prefHeight="40.0" prefWidth="153.0" text="All Sales" />
             <Button fx:id="revenueButton" lineSpacing="50.0" mnemonicParsing="false" onAction="#handleRevenue" prefHeight="40.0" prefWidth="127.0" text="Total Revenue" />

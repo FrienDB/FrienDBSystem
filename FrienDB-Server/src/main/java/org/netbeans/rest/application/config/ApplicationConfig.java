@@ -30,6 +30,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(friendb.server.rest.AccountsResource.class);
+        resources.add(friendb.server.rest.AdvertisementResource.class);
         resources.add(friendb.server.rest.AuthenticationResource.class);
         resources.add(friendb.server.rest.CircleMembershipResource.class);
         resources.add(friendb.server.rest.CircleResource.class);
