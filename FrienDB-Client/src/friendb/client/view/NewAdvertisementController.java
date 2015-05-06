@@ -49,7 +49,7 @@ public class NewAdvertisementController implements Initializable, ControlledScre
     private Button backButton;
     @FXML
     private TextField numUnitsText;
-    private final ServerAccessPoint newCustomer =
+    private final ServerAccessPoint newAdvertisement =
             new ServerAccessPoint(ServerResources.ADD_NEW_ADVERTISEMENT_URL);
     /**
      * Initializes the controller class.
@@ -81,7 +81,7 @@ public class NewAdvertisementController implements Initializable, ControlledScre
             
             //transmit new ad form to server
         
-            Response rsp = newAdvertisement.request(e);
+            Response rsp = newAdvertisement.request(a);
             //check response code
             if (rsp.getStatus() != Response.Status.OK.getStatusCode())
             {
