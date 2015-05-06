@@ -70,6 +70,7 @@ public class EmployeeLoginController implements Initializable, ControlledScreen 
 
     @FXML
     private void HandleMailing(ActionEvent event) {
+        
     }
 
     @FXML
