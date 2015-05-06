@@ -43,19 +43,19 @@ public class AdvertisementBean {
         
          em = DatabaseConnection.getEntityManager();
          Advertisement a = new Advertisement(adId, employeeID, adType, postDate, company, item, content, price, numUnits);
-    }
-         /*
+    
+         
          try
         {
             //add the school
             em.getTransaction().begin();
-            em.persist(c);
+            em.persist(a);
             em.getTransaction().commit();
-            logger.log(Level.INFO, "New customer added to database {0}", c);
+            logger.log(Level.INFO, "New Advertisement added to database {0}", a);
         } catch (EntityExistsException eeex)
         {
             //a school with that id already exists in database
-            logger.log(Level.WARNING, "Collision on customer ID within database");
+            logger.log(Level.WARNING, "Collision on Advertisement ID within database");
             throw eeex;
         } finally
         {
@@ -65,24 +65,45 @@ public class AdvertisementBean {
         }
     }
     
-    public List<Customer> getAllCustomers(){
-        List<Customer> customers = null;
+    public List<Advertisement> getAllAdvertisements(){
+        List<Advertisement> advertisements = null;
 
         // Create the entity manager and set up the query for all schools
         em = DatabaseConnection.getEntityManager();
-        TypedQuery<Customer> query =
-                em.createNamedQuery("Customer.findAll", Customer.class);
+        TypedQuery<Advertisement> query =
+                em.createNamedQuery("Advertisement.findAll", Advertisement.class);
         try
         {
-            customers = query.getResultList();
-            logger.log(Level.INFO, "Retrieving all customers in DB", customers);
+            advertisements = query.getResultList();
+            logger.log(Level.INFO, "Retrieving all advertisement in DB", advertisements);
         } finally
         {
             //Close the entity manager
             em.close();
             em = null;
         }
-        return customers;
+        return advertisements;
     }
-                 */
+    public List<Advertisement> getAdvertisementByEmployee(int employeeId){
+        List<Advertisement> advertisements = null;
+
+        // Create the entity manager and set up the query for all schools
+        em = DatabaseConnection.getEntityManager();
+        TypedQuery<Advertisement> query =
+                em.createNamedQuery("Advertisement.findByEmployeeID", Advertisement.class);
+        query.setParameter("employeeID", employeeId);
+        try
+        {
+            advertisements = query.getResultList();
+            logger.log(Level.INFO, "Retrieving all advertisement in DB", advertisements);
+        } finally
+        {
+            //Close the entity manager
+            em.close();
+            em = null;
+        }
+        return advertisements;
+    
+    }
+                 
 }

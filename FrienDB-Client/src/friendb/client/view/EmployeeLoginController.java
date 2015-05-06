@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 /**
@@ -26,7 +27,16 @@ import javafx.scene.control.Label;
  */
 public class EmployeeLoginController implements Initializable, ControlledScreen {
      ScreensController myController;
+    @FXML
     private Label welcomeTitle;
+    @FXML
+    private Button salesButton;
+    @FXML
+    private Button adsButton;
+    @FXML
+    private Button mailingButton;
+    @FXML
+    private Button suggestMailButton;
     /**
      * Initializes the controller class.
      */
@@ -56,6 +66,15 @@ public class EmployeeLoginController implements Initializable, ControlledScreen 
     @Override
     public void setScreenParent(ScreensController screenPage) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @FXML
+    private void HandleMailing(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void HandleSuggest(ActionEvent event) {
     }
     
 }

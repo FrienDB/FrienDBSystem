@@ -8,6 +8,7 @@ package friendb.server.beans;
 import friendb.server.entities.Employee;
 import friendb.server.entities.Pages;
 import friendb.server.entities.Post;
+import friendb.server.rest.PostResource;
 import friendb.server.util.DatabaseConnection;
 import friendb.shared.SimpleCircle;
 import friendb.shared.SimplePost;
@@ -29,7 +30,7 @@ import javax.persistence.TypedQuery;
 public class PostBean {
 
     private static final Logger logger
-            = Logger.getLogger("friendb.beans.PostBean");
+            = Logger.getLogger(PostResource.class.getName());
 
     //reference to the perisstence layer
     @PersistenceContext

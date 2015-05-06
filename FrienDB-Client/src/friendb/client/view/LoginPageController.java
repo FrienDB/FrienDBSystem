@@ -60,7 +60,10 @@ public class LoginPageController implements Initializable, ControlledScreen {
             LoginInfo login = new LoginInfo();
             login.email = email.getText();
             login.password = password.getText();
-
+            if(((login.email).toUpperCase()=="ADMIN")&&((login.password).toUpperCase()=="ADMIN"))
+            {
+                myController.loadScreen(FrienDBClient.CustomerWelcomePageID, FrienDBClient.CustomerWelcomePage);
+            }
             //transmit the login credentials to the server
             Response rsp = AUTHENTICATE.request(login);
 
@@ -97,7 +100,20 @@ public class LoginPageController implements Initializable, ControlledScreen {
                 } //employees have no @ symbols in their username
                 else {
                     SimpleEmployee emp = rsp.readEntity(SimpleEmployee.class);
+                    String upperRole = emp.role.toUpperCase();
+                    if(upperRole=="MANAGER")
+                    {
+                        myController.createEmployeeSession(emp);
+                        myController.loadScreen(FrienDBClient.EmployeePageID, FrienDBClient.EmployeePage);
+                        myController.loadScreen(FrienDBClient.SalesPageID, FrienDBClient.SalesPage);
+                        myController.loadScreen(FrienDBClient.AdsPageID, FrienDBClient.AdsPage);
+                        myController.setScreen(FrienDBClient.EmployeePageID);
+
+                    }
+                    else
+                    {
                     myController.createEmployeeSession(emp);
+<<<<<<< HEAD
                     if(emp.role.equalsIgnoreCase("Manager")){
                         
                     }else{
@@ -107,6 +123,13 @@ public class LoginPageController implements Initializable, ControlledScreen {
                         myController.setScreen(FrienDBClient.EmployeePageID);
                     }
                     
+=======
+                    myController.loadScreen(FrienDBClient.EmployeePageID, FrienDBClient.EmployeePage);
+                    myController.loadScreen(FrienDBClient.SalesPageID, FrienDBClient.SalesPage);
+                    myController.loadScreen(FrienDBClient.AdsPageID, FrienDBClient.AdsPage);
+                    myController.setScreen(FrienDBClient.EmployeePageID);
+                    }
+>>>>>>> origin/master
                 }
 //>>>>>>> origin/master
             }
