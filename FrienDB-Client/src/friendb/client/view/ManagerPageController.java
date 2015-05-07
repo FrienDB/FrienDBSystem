@@ -5,6 +5,8 @@
  */
 package friendb.client.view;
 
+import friendb.client.main.ControlledScreen;
+import friendb.client.main.ScreensController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,7 +19,8 @@ import javafx.scene.control.Button;
  *
  * @author Chin
  */
-public class ManagerPageController implements Initializable {
+public class ManagerPageController implements Initializable, ControlledScreen {
+    ControlledScreen myControlled;
     @FXML
     private Button salesReportButton;
     @FXML
@@ -61,6 +64,16 @@ public class ManagerPageController implements Initializable {
 
     @FXML
     private void handleRevenue(ActionEvent event) {
+    }
+
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void populatePage() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
