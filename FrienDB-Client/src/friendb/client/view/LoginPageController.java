@@ -7,6 +7,7 @@ package friendb.client.view;
 
 import friendb.client.main.ControlledScreen;
 import friendb.client.main.FrienDBClient;
+import static friendb.client.main.FrienDBClient.NewAdvertisementID;
 import friendb.client.main.ScreensController;
 import friendb.client.session.CustomerSession;
 import friendb.client.web.ServerAccessPoint;
@@ -99,12 +100,13 @@ public class LoginPageController implements Initializable, ControlledScreen {
                 else {
                     SimpleEmployee emp = rsp.readEntity(SimpleEmployee.class);
                     String upperRole = emp.role.toUpperCase();
-                    if(upperRole=="MANAGER")
+                    if(upperRole.equals("MANAGER")||emp.role.equals("Manager"))
                     {
                         myController.createEmployeeSession(emp);
                         myController.loadScreen(FrienDBClient.ManagerPageID, FrienDBClient.ManagerPage);
                         myController.loadScreen(FrienDBClient.ManagerSalesPageID, FrienDBClient.ManagerSalesPage);
-                        myController.loadScreen(FrienDBClient.AdsPageID, FrienDBClient.AdsPage);
+                        myController.loadScreen(FrienDBClient.ManagerEditEmployeeID, FrienDBClient.ManagerEditEmployee);
+                        
                         myController.setScreen(FrienDBClient.ManagerPageID);
                         
                     }
@@ -117,6 +119,7 @@ public class LoginPageController implements Initializable, ControlledScreen {
                         myController.loadScreen(FrienDBClient.AdsPageID, FrienDBClient.AdsPage);
                         myController.loadScreen(FrienDBClient.EmployeeEditPageID, FrienDBClient.EmployeeEditPage);
                         myController.loadScreen(FrienDBClient.MailingListPageID, FrienDBClient.MailingListPage);
+                        myController.loadScreen(FrienDBClient.NewAdvertisementID, FrienDBClient.NewAdvertisement);
                         myController.setScreen(FrienDBClient.EmployeePageID);
                     
 

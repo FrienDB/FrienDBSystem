@@ -5,6 +5,7 @@
  */
 package friendb.server.beans;
 
+import friendb.server.entities.Advertisement;
 import friendb.server.entities.Customer;
 import friendb.server.entities.Employee;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import javax.persistence.EntityExistsException;
 import friendb.server.util.DatabaseConnection;
+import friendb.shared.SimpleAdvertisement;
 import friendb.shared.SimpleEmployee;
 /**
  *
@@ -126,5 +128,43 @@ public class EmployeeBean {
             em = null;
         }
         
+    }
+    public Employee findEmployee(int empID){
+        
+
+        // Create the entity manager and set up the query for all schools
+        em = DatabaseConnection.getEntityManager();
+        
+        em = DatabaseConnection.getEntityManager();
+        TypedQuery<Employee> query =
+                em.createNamedQuery("Employee.findByID", Employee.class);
+                query.setParameter("employeeID", empID);
+           Employee employee = query.getSingleResult();
+           return employee;
+    }            
+    public void addAdvertisement(SimpleAdvertisement ad){
+        /*
+         em = DatabaseConnection.getEntityManager();
+         Advertisement = new Advertisement(firstName, lastName, sex, emailID, dob, address, city, state, zipCode, telephone, password);
+         
+         try
+        {
+            //add the school
+            em.getTransaction().begin();
+            em.persist(c);
+            em.getTransaction().commit();
+            logger.log(Level.INFO, "New customer added to database {0}", c);
+        } catch (EntityExistsException eeex)
+        {
+            //a school with that id already exists in database
+            logger.log(Level.WARNING, "Collision on customer ID within database");
+            throw eeex;
+        } finally
+        {
+            //close the entity manager
+            em.close();
+            em = null;
+        }
+                */
     }
 }

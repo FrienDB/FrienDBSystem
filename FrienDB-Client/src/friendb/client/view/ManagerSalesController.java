@@ -6,14 +6,20 @@
 package friendb.client.view;
 
 import friendb.client.main.ControlledScreen;
+import friendb.client.main.FrienDBClient;
 import friendb.client.main.ScreensController;
 import friendb.shared.SimpleCustomer;
 import friendb.shared.SimpleSales;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
@@ -27,6 +33,12 @@ public class ManagerSalesController implements Initializable, ControlledScreen {
     ScreensController myController;
     @FXML
     private ListView salesList;
+    @FXML
+    private ComboBox<String> monthCombo;
+    @FXML
+    private Button selectButton;
+    @FXML
+    private Button backButton;
     
     /**
      * Initializes the controller class.
@@ -43,6 +55,23 @@ public class ManagerSalesController implements Initializable, ControlledScreen {
 
     @Override
     public void populatePage() {
+        ObservableList<String> options
+                = FXCollections.observableArrayList(
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December");
+        monthCombo.setItems(options);
+        
+        
         /*
          Response rsp3 = getAllSalesByMonth.request();
 
@@ -57,6 +86,16 @@ public class ManagerSalesController implements Initializable, ControlledScreen {
             salesList.getItems().add(value);
         }
                 */
+    }
+
+    @FXML
+    private void HandleSelect(ActionEvent event) {
+        String value = monthCombo.getValue();
+    }
+
+    @FXML
+    private void HandleBack(ActionEvent event) {
+        myController.setScreen(FrienDBClient.ManagerPageID);
     }
     
 }

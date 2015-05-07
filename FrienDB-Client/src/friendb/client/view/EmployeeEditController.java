@@ -50,6 +50,7 @@ public class EmployeeEditController implements Initializable, ControlledScreen {
             new ServerAccessPoint(ServerResources.GET_EMPLOYEE_EDIT_URL);
     @FXML
     private PasswordField passwordText;
+  
 
     /**
      * Initializes the controller class.

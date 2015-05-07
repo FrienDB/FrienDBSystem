@@ -28,6 +28,7 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 import friendb.shared.SimpleCustomer;
 import friendb.shared.SimpleEmployee;
+import javax.persistence.RollbackException;
 /**
  *
  * @author evanguby
@@ -127,7 +128,7 @@ public class EmployeeResource {
         employeeBean.editEmployee(employee);
         try
         {
-            employeeBean.editEmployee(employee);
+            
             return Response.ok(employee).build();
         } catch (NoResultException nrex)
         {
@@ -139,5 +140,25 @@ public class EmployeeResource {
             return Response.serverError().build();
         }
         
+    }
+    @POST
+    @Path("/find")
+    @Consumes("application/json")
+    public Response findEmployee(int id) {
+        try
+        {
+            employeeBean.findEmployee(id);
+            logger.log(Level.INFO, "OK Response");
+            return Response.ok(id).build();
+        } catch (RollbackException rex)
+        {
+            logger.log(Level.WARNING, "BAD REQUEST");
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (NoResultException nrex)
+        {
+            //@TODO disambiguate errors
+            logger.log(Level.WARNING, "BAD REQUEST");
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
     }
 }

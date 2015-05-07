@@ -29,6 +29,7 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 import friendb.shared.SimpleCustomer;
 import friendb.shared.SimpleEmployee;
+import javax.persistence.RollbackException;
 /**
  *
  * @author evanguby
@@ -88,30 +89,24 @@ public class AdvertisementResource {
     }
     
     @POST
-    @Path("/add")
+    @Path("/addAdvertisement")
     @Consumes("application/json")
     public Response addAdvertisement(SimpleAdvertisement advertisement)
     {
         try
         {
-            //add the school
-           // customerBean.addCustomer(customer.firstName,customer.lastName,customer.sex,customer.emailID,
-             //       customer.dob,customer.address,customer.city,customer.state,customer.zipCode,customer.telephone, customer.password);
-            logger.log(Level.INFO, "OK response");
+            advertisementBean.addAdvertisement(advertisement);
+            logger.log(Level.INFO, "OK Response");
             return Response.ok(advertisement).build();
-        } catch (EntityExistsException eeex)
+        } catch (RollbackException rex)
         {
-            logger.log(Level.WARNING, "BAD REQUEST response");
+            logger.log(Level.WARNING, "BAD REQUEST");
             return Response.status(Response.Status.BAD_REQUEST).build();
-        } catch (NoResultException eeex)
+        } catch (NoResultException nrex)
         {
-            //@TODO disambiguate with previous exception
-            logger.log(Level.WARNING, "BAD REQUEST response");
+            //@TODO disambiguate errors
+            logger.log(Level.WARNING, "BAD REQUEST");
             return Response.status(Response.Status.BAD_REQUEST).build();
-        } catch (Exception ex)
-        {
-            logger.log(Level.SEVERE, null, ex);
-            return Response.serverError().build();
         }
     }
     @POST

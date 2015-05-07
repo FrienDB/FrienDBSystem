@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.CreateAdController">
+   <children>
+      <Label layoutX="491.0" layoutY="14.0" prefHeight="99.0" prefWidth="215.0" text="Create an Ad">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="createButton" layoutX="623.0" layoutY="324.0" mnemonicParsing="false" onAction="#HandleCreate" text="Create">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="backButton" layoutX="629.0" layoutY="401.0" mnemonicParsing="false" onAction="#HandleBack" text="Back">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <HBox layoutX="141.0" layoutY="43.0" prefHeight="27.0" prefWidth="278.0" spacing="20.0">
+         <children>
+            <Label prefHeight="55.0" prefWidth="96.0" text="Item Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="itemText" />
+         </children>
+      </HBox>
+      <HBox layoutX="141.0" layoutY="124.0" prefHeight="27.0" prefWidth="278.0" spacing="20.0">
+         <children>
+            <Label prefHeight="55.0" prefWidth="96.0" text="Company">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="companyText" />
+         </children>
+      </HBox>
+      <HBox layoutX="141.0" layoutY="87.0" prefHeight="27.0" prefWidth="278.0" spacing="20.0">
+         <children>
+            <Label prefHeight="55.0" prefWidth="96.0" text="Ad Type">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="typeText" />
+         </children>
+      </HBox>
+      <HBox layoutX="141.0" layoutY="166.0" prefHeight="27.0" prefWidth="278.0" spacing="20.0">
+         <children>
+            <Label prefHeight="55.0" prefWidth="96.0" text="Price">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="priceText" promptText="20.00" />
+         </children>
+      </HBox>
+      <HBox layoutX="141.0" layoutY="203.0" prefHeight="27.0" prefWidth="278.0" spacing="20.0">
+         <children>
+            <Label prefHeight="55.0" prefWidth="96.0" text="# of units">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="numUnitsText" />
+         </children>
+      </HBox>
+      <HBox layoutX="141.0" layoutY="240.0" prefHeight="27.0" prefWidth="278.0" spacing="20.0" />
+      <TextArea layoutX="32.0" layoutY="254.0" prefHeight="200.0" prefWidth="577.0" />
+      <Label layoutX="32.0" layoutY="232.0" text="Description" />
+   </children>
+</AnchorPane>

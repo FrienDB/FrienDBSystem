@@ -9,10 +9,12 @@ import friendb.client.main.ControlledScreen;
 import friendb.client.main.FrienDBClient;
 import static friendb.client.main.FrienDBClient.EmployeePageID;
 import friendb.client.main.ScreensController;
+import friendb.client.session.EmployeeSession;
 import friendb.client.web.ServerAccessPoint;
 import friendb.client.web.ServerResources;
 import friendb.shared.SimpleAdvertisement;
 import friendb.shared.SimpleCustomer;
+import friendb.shared.SimpleEmployee;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -66,6 +68,8 @@ public class NewAdvertisementController implements Initializable, ControlledScre
         {
             //MISSING FIELD ERROR
         } else {
+            EmployeeSession es = (EmployeeSession)myController.getSession();
+            SimpleEmployee e = es.getEmployeeAccount();
             SimpleAdvertisement a = new SimpleAdvertisement();
             
             a.adType=typeText.getText();
@@ -78,7 +82,7 @@ public class NewAdvertisementController implements Initializable, ControlledScre
             String change = value.replaceAll("/","-");
             a.postDate = change;
             a.numUnits=Integer.parseInt(numUnitsText.getText());
-            
+            a.employeeID=e.employeeID;
             //transmit new ad form to server
         
             Response rsp = newAdvertisement.request(a);
@@ -93,7 +97,7 @@ public class NewAdvertisementController implements Initializable, ControlledScre
             priceText.clear();
             descriptionText.clear();
             
-            myController.setScreen(FrienDBClient.LoginPageID);
+            myController.setScreen(FrienDBClient.EmployeePageID);
                 
     }
     }

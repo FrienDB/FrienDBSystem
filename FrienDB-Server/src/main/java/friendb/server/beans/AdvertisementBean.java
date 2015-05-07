@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import javax.persistence.EntityExistsException;
 import friendb.server.util.DatabaseConnection;
+import friendb.shared.SimpleAdvertisement;
 import friendb.shared.SimpleEmployee;
 /**
  *
@@ -32,18 +33,10 @@ public class AdvertisementBean {
     @PersistenceContext
     private EntityManager em;
     
-    public void addAdvertisement(int adId,
-            int employeeID,
-            String adType,
-            String postDate,
-            String company,
-            String item,
-            Double price,
-            String content,
-            int numUnits){
+    public void addAdvertisement(SimpleAdvertisement ad){
         
          em = DatabaseConnection.getEntityManager();
-         Advertisement a = new Advertisement(adId, employeeID, adType, postDate, company, item, content, price, numUnits);
+         Advertisement a = new Advertisement(ad.adID, ad.employeeID, ad.adType, ad.postDate, ad.company, ad.item, ad.content, ad.price, ad.numUnits);
     
          
          try

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.ManagerEditEmployeeController">
+   <children>
+      <Label layoutX="390.0" layoutY="14.0" text="Edit Information">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
+      <HBox layoutX="50.0" layoutY="90.0" prefHeight="26.0" prefWidth="277.0" spacing="40.0">
+         <children>
+            <Label text="First Name">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="firstNameText" />
+         </children>
+      </HBox>
+      <HBox layoutX="50.0" layoutY="143.0" prefHeight="26.0" prefWidth="277.0" spacing="40.0">
+         <children>
+            <Label text="Last Name">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="lastNameText" />
+         </children>
+      </HBox>
+      <HBox layoutX="50.0" layoutY="205.0" prefHeight="26.0" prefWidth="277.0" spacing="40.0">
+         <children>
+            <Label text="Telephone">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="telephoneText" />
+         </children>
+      </HBox>
+      <HBox layoutX="50.0" layoutY="256.0" prefHeight="26.0" prefWidth="398.0" spacing="40.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="80.0" text="Address">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="addressText" prefHeight="25.0" prefWidth="269.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="50.0" layoutY="316.0" prefHeight="26.0" prefWidth="277.0" spacing="40.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="79.0" text="City">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cityText" />
+         </children>
+      </HBox>
+      <HBox layoutX="50.0" layoutY="367.0" prefHeight="26.0" prefWidth="277.0" spacing="40.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="79.0" text="State">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="stateText" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="50.0" layoutY="417.0" prefHeight="26.0" prefWidth="277.0" spacing="40.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="79.0" text="Password">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordText" />
+         </children>
+      </HBox>
+      <Button fx:id="confirmButton" layoutX="508.0" layoutY="418.0" mnemonicParsing="false" onAction="#HandleConfirm" text="Confirm" />
+      <Button fx:id="backButton" layoutX="602.0" layoutY="418.0" mnemonicParsing="false" onAction="#HandleBack" text="Back" />
+      <HBox layoutX="399.0" layoutY="90.0" prefHeight="26.0" prefWidth="277.0" spacing="40.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="98.0" text="Hourly Rate">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="hourlyText" />
+         </children>
+      </HBox>
+      <HBox layoutX="399.0" layoutY="143.0" prefHeight="26.0" prefWidth="277.0" spacing="40.0">
+         <children>
+            <Label text="Role">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="roleText" />
+         </children>
+      </HBox>
+      <HBox layoutX="50.0" layoutY="50.0" prefHeight="26.0" prefWidth="302.0" spacing="40.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="108.0" text="EmployeeID">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="EmployeeIDText" prefHeight="25.0" prefWidth="178.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

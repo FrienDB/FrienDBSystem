@@ -176,7 +176,7 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         }
         cs.setCircles(scA);
         circles.setItems(circle);
-        
+        /*
         Response rsp2 = getTopSellingList.request();
         GenericType<List<SimpleAdvertisement>> gtlc2 = new GenericType<List<SimpleAdvertisement>>() {
         };
@@ -186,7 +186,7 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         for(SimpleAdvertisement ad : ads2){
             ads.getItems().add(ad.company + ": " + ad.item + " for $" + ad.price);
         }
-        
+        */
         Response rsp3 = getAllCircles.request();
         GenericType<List<SimpleCircle>> gtlc3 = new GenericType<List<SimpleCircle>>() {
         };

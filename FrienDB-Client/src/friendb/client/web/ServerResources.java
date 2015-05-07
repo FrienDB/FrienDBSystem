@@ -26,7 +26,7 @@ public final class ServerResources {
             SERVER_BASE_URL + "advertisement";
     
     public static final String ADD_NEW_ADVERTISEMENT_URL =
-            SERVER_BASE_URL + "advertisement/add";
+            SERVER_BASE_URL + "advertisement/addAdvertisement";
 
     public static final String AUTHENTICATION_URL = 
             SERVER_BASE_URL + "authentication";
@@ -62,7 +62,8 @@ public final class ServerResources {
     
     public static final String DELETE_CIRCLE_URL = 
             SERVER_BASE_URL + "circle/deleteCircle";
-    
+    public static final String ADD_ADVERTISEMENT_URL = 
+            SERVER_BASE_URL + "advertisement/addAdvertisment";
     public static final String ADD_CUSTOMER_TO_CIRCLE_URL = 
             SERVER_BASE_URL + "circleMembership/addCustomerToCircle";
     
@@ -97,5 +98,6 @@ public final class ServerResources {
     
     public static final String GET_EMPLOYEE_EDIT_URL = 
             SERVER_BASE_URL + "employee/edit";
-    
+    public static final String FIND_EMPLOYEE_URL = 
+            SERVER_BASE_URL + "employee/find";
 }

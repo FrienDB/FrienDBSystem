@@ -6,6 +6,7 @@
 package friendb.client.view;
 
 import friendb.client.main.ControlledScreen;
+import friendb.client.main.FrienDBClient;
 import friendb.client.main.ScreensController;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,6 +34,10 @@ public class ManagerPageController implements Initializable, ControlledScreen {
     private Button allSalesButton;
     @FXML
     private Button revenueButton;
+    @FXML
+    private Button employeeInfoButton;
+    @FXML
+    private Button logoutButton;
 
     /**
      * Initializes the controller class.
@@ -60,6 +65,7 @@ public class ManagerPageController implements Initializable, ControlledScreen {
 
     @FXML
     private void handleSales(ActionEvent event) {
+        myController.setScreen(FrienDBClient.ManagerSalesPageID);
     }
 
     @FXML
@@ -74,6 +80,16 @@ public class ManagerPageController implements Initializable, ControlledScreen {
     @Override
     public void populatePage() {
         
+    }
+
+    @FXML
+    private void HandleInfo(ActionEvent event) {
+        myController.setScreen(FrienDBClient.ManagerEditEmployee);
+    }
+
+    @FXML
+    private void handlelogOut(ActionEvent event) {
+        myController.setScreen(FrienDBClient.LoginPageID);
     }
     
 }
