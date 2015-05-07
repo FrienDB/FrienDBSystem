@@ -62,6 +62,15 @@ public class PostResource {
     }
     
     @POST
+    @Path("/getLikes")
+    @Consumes("application/json")
+    public Response getNumberLikes(int postID) {
+        int numLikes = postBean.getNumberOfLikes(postID);
+        //GenericEntity<List<int>> likes = new GenericEntity<List<int>>(numLikes){};
+        return Response.ok(numLikes).build();
+    }
+    
+    @POST
     @Path("/addPost")
     @Consumes("application/json")
     public Response addPost(SimplePost sp) {

@@ -69,8 +69,13 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     private final ServerAccessPoint removePost 
             = new ServerAccessPoint(ServerResources.REMOVE_POST_URL);
     
+<<<<<<< HEAD
     private final ServerAccessPoint getPostComments 
             = new ServerAccessPoint(ServerResources.GET_POST_COMMENTS_URL);
+=======
+    private final ServerAccessPoint getPostLikes
+            = new ServerAccessPoint(ServerResources.GET_POST_LIKES);
+>>>>>>> origin/master
 
 
     /**
@@ -169,7 +174,6 @@ public class YourCirclePageController implements Initializable, ControlledScreen
             simplePost.pageID = cs.getCirclePosts().get(actualIndex).pageID;
 
             Response rsp = removePost.request(simplePost);
-//            post.getItems().remove(cs.getCirclePosts().get(post.getSelectionModel().getSelectedIndex()));
             post.getItems().remove(postToDelete);
         }
     }
@@ -279,7 +283,11 @@ public class YourCirclePageController implements Initializable, ControlledScreen
                     break;
                 }
             }
-            String add = author + ": " + p.content + " (" + p.datePosted + ")";
+            
+            Response rsp4 = getPostLikes.request();
+            GenericType<List<Integer>> gtl4 = new GenericType<List<Integer>>() {};
+            List<Integer> theLike = rsp4.readEntity(gtl4);
+            String add = "(" + p.datePosted + ") " + author + ": " + p.content + " Likes: " + theLike.get(0);
             post.getItems().add(add);
         }
 

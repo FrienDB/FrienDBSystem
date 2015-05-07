@@ -77,11 +77,12 @@ public class SalesScreenController implements Initializable, ControlledScreen {
 
     @Override
     public void setScreenParent(ScreensController screenPage) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       myController = screenPage;
     }
 
     @Override
     public void populatePage() {
+        /*
         EmployeeSession es = (EmployeeSession) myController.getSession();
         SimpleEmployee e = es.getEmployeeAccount();
 
@@ -100,6 +101,7 @@ public class SalesScreenController implements Initializable, ControlledScreen {
         es.setEmployeeSales(seA);
         salesList.setItems(sale);
         //circle.setItems(circles);
+        */
     }
 
     @FXML

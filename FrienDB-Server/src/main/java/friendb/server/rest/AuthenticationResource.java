@@ -8,6 +8,7 @@ package friendb.server.rest;
 import friendb.server.beans.AuthenticationBean;
 import friendb.shared.LoginInfo;
 import friendb.shared.SimpleCustomer;
+import friendb.shared.SimpleEmployee;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -89,12 +90,27 @@ public class AuthenticationResource {
                 return Response.ok(c).build();
             } else //Employee
             {
-
+                SimpleEmployee e = new SimpleEmployee();
+                e.employeeID = Integer.parseInt(s[1]);
+                e.ssn = Integer.parseInt(s[2]);
+                e.startDate = s[3];
+                e.firstName = s[4];
+                e.lastName = s[5];
+                e.telephone = s[6];
+                e.address = s[7];
+                e.city = s[8];
+                e.curState = s[9];
+                e.hourlyRate = Double.parseDouble(s[11]);
+                e.role = s[12];
+                e.zipCode = Integer.parseInt(s[10]);
+                e.password = s[13];
+                //CREATE C FINDBYNAME.Customer
+                return Response.ok(e).build();
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, "UNAUTHORIZED resposne");
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
-        return Response.status(Response.Status.UNAUTHORIZED).build();
+        
     }
 }

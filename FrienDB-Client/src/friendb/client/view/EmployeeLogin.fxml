@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.EmployeeLoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.EmployeeLoginController">
    <children>
       <Label fx:id="welcomeTitle" layoutX="214.0" layoutY="54.0">
          <font>
@@ -43,4 +43,4 @@
       </VBox>
       <Button fx:id="signOutButton" layoutX="38.0" layoutY="29.0" mnemonicParsing="false" onAction="#HandleSignOut" text="Sign Out" />
    </children>
-</fx:root>
+</AnchorPane>
