@@ -113,6 +113,8 @@ public class PostBean {
         em = DatabaseConnection.getEntityManager();
         try {
             Post post = new Post(sp.pageID, sp.content, sp.authorID, sp.datePosted);
+            post.setPostID(sp.postID);
+            post.setCommentCount(sp.commentCount);
             //add the course
             em.getTransaction().begin();
             //@TODO check return of addCourse to see if it worked

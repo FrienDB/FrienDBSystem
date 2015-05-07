@@ -92,7 +92,7 @@ public class LoginPageController implements Initializable, ControlledScreen {
                     myController.loadScreen(FrienDBClient.NewPostPageID, FrienDBClient.NewPostPage);
                     myController.loadScreen(FrienDBClient.ManageCustomerInfoID, FrienDBClient.ManageCustomerInfo);
                     myController.loadScreen(FrienDBClient.AccountPageID, FrienDBClient.AccountPage);
-                    //myController.loadScreen(FrienDBClient.MessagesPageID, FrienDBClient.MessagesPage);
+                    myController.loadScreen(FrienDBClient.MessagesPageID, FrienDBClient.MessagesPage);
                     myController.setScreen(FrienDBClient.CustomerWelcomePageID);
 
                 } //employees have no @ symbols in their username
