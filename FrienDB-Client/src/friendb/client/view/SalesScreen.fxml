@@ -11,24 +11,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="718.0">
                <children>
-                  <SplitPane dividerPositions="0.21368715083798884" layoutX="107.0" layoutY="44.0" prefHeight="372.0" prefWidth="718.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="150.0">
-                           <children>
-                              <ListView fx:id="salesList" layoutX="-40.0" layoutY="-15.0" prefHeight="370.0" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                           <children>
-                              <Label fx:id="salesInfo" alignment="TOP_LEFT" layoutX="114.0" layoutY="122.0" prefHeight="370.0" prefWidth="560.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
+                  <ListView fx:id="salesList" prefHeight="319.0" prefWidth="718.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>
@@ -42,6 +25,5 @@
          <children>
             <Button fx:id="backButton" layoutX="24.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleBack" text="Back" />
          </children></AnchorPane>
-      <Button fx:id="selectButton" layoutX="100.0" layoutY="427.0" mnemonicParsing="false" onAction="#HandleSelect" text="Select" />
    </children>
 </AnchorPane>

@@ -33,6 +33,8 @@ public final class ServerResources {
     
     public static final String GET_CUSTOMERS_CIRCLES_URL = 
             SERVER_BASE_URL + "circle";
+    public static final String GET_SALE_FROM_AD_URL = 
+            SERVER_BASE_URL + "sales/getFromAd";
     public static final String GET_EMPLOYEE_SALES_URL = 
             SERVER_BASE_URL + "sales";
     public static final String GET_SINGLE_EMP_SALES_URL = 

@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import javax.persistence.EntityExistsException;
 import friendb.server.util.DatabaseConnection;
+import friendb.shared.SimpleAdvertisement;
 import friendb.shared.SimpleCustomer;
 import friendb.shared.SimpleEmployee;
 import friendb.shared.SimpleSales;
@@ -96,7 +97,7 @@ public class SalesBean {
         em = DatabaseConnection.getEntityManager();
         TypedQuery<Sales> query
                 = em.createNamedQuery("Sales.findByEmployeeID", Sales.class);
-        query.setParameter("employeeId", employee.employeeID);
+        query.setParameter("empId", employee.employeeID);
         try {
             sales = query.getResultList();
             logger.log(Level.INFO, "Retrieving all advertisement in DB", sales);
@@ -114,6 +115,25 @@ public class SalesBean {
                 query.setParameter("customerID", sale.accountNum);
                 customer = query.getSingleResult();
                 return customer;
+    }
+    public List<Sales> getSalesByAd(SimpleAdvertisement ad) {
+        List<Sales> sales = null;
+
+        // Create the entity manager and set up the query for all schools
+        em = DatabaseConnection.getEntityManager();
+        TypedQuery<Sales> query
+                = em.createNamedQuery("Sales.findByAdId", Sales.class);
+        query.setParameter("advertID", ad.adID);
+        try {
+            sales = query.getResultList();
+            logger.log(Level.INFO, "Retrieving all advertisement in DB", sales);
+        } finally {
+            //Close the entity manager
+            em.close();
+            em = null;
+        }
+        return sales;
+
     }
     /*
      public List<Sales> getSalesFromEmployee(SimpleEmployee emp){

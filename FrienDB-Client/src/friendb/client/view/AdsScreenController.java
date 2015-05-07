@@ -85,7 +85,9 @@ public class AdsScreenController implements Initializable, ControlledScreen{
             String item = ad.item;
             String company = ad.company;
             String post = ad.postDate;
-            String value = item + "\t\t" + company +"\t\t"+ post;
+            String content = ad.content;
+            String type = ad.adType;
+            String value = item + "\t\t"+"\t\t"+type+"\t\t" + company +"\t\t"+ post + "\t\t"+content;
             adList.getItems().add(value);
           
         }

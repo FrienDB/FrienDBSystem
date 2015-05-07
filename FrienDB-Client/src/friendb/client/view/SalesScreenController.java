@@ -12,6 +12,7 @@ import friendb.client.session.CustomerSession;
 import friendb.client.session.EmployeeSession;
 import friendb.client.web.ServerAccessPoint;
 import friendb.client.web.ServerResources;
+import friendb.shared.SimpleAdvertisement;
 import friendb.shared.SimpleCircle;
 import friendb.shared.SimpleCustomer;
 import friendb.shared.SimpleEmployee;
@@ -46,18 +47,17 @@ public class SalesScreenController implements Initializable, ControlledScreen {
     ScreensController myController;
     @FXML
     private ListView salesList;
-    @FXML
     private Label salesInfo;
     @FXML
     private Label salesTitle;
     @FXML
     private Button backButton;
-    @FXML
-    private Button selectButton;
     
     private final ServerAccessPoint getEmployeeSales
-            = new ServerAccessPoint(ServerResources.GET_SINGLE_EMP_SALES_URL);
-     private final ServerAccessPoint getCustomerById =
+            = new ServerAccessPoint(ServerResources.GET_EMPLOYEE_ADS_URL);
+    private final ServerAccessPoint getSaleFromAd
+            = new ServerAccessPoint(ServerResources.GET_SALE_FROM_AD_URL);
+    private final ServerAccessPoint getCustomerById =
             new ServerAccessPoint(ServerResources.GET_CUSTOMER_SALES_URL);
     private static final Logger logger =
             Logger.getLogger("friendb.beans.EmployeeBean");
@@ -82,26 +82,51 @@ public class SalesScreenController implements Initializable, ControlledScreen {
 
     @Override
     public void populatePage() {
-        /*
+        
         EmployeeSession es = (EmployeeSession) myController.getSession();
         SimpleEmployee e = es.getEmployeeAccount();
-
+        List<SimpleSales> sales = new ArrayList();
         Response rsp = getEmployeeSales.request(e);
-        GenericType<List<SimpleSales>> gtlc = new GenericType<List<SimpleSales>>() {
+        GenericType<List<SimpleAdvertisement>> gtlc = new GenericType<List<SimpleAdvertisement>>() {
         };
-        ObservableList<String> sale = FXCollections.observableArrayList();
-        ArrayList<SimpleSales> seA = new ArrayList<>();
-        List<SimpleSales> seList = rsp.readEntity(gtlc);
-
+        List<SimpleAdvertisement> adList = rsp.readEntity(gtlc);
+        
         //circle.setItems(scList);
-        for (SimpleSales ss : seList) {
-            sale.add("TransID: " + ss.transID + " | Date Sold: " + ss.dateSold);
-            seA.add(ss);
+        for (SimpleAdvertisement ss : adList) {
+            System.out.print(ss);
+            System.out.print(ss);
+           
+             Response rsp1 = getSaleFromAd.request(ss);
+             GenericType<List<SimpleSales>> gtlc2 = new GenericType<List<SimpleSales>>() {
+                };
+             List<SimpleSales> sale = rsp1.readEntity(gtlc2);
+             for(SimpleSales sale1: sale)
+             {
+                 String adId ="AdId: "+sale1.adID;
+                 String item = "Item: "+ss.item;
+                 String price="Price: "+ss.price;
+                String dateSold ="Date Sold: "+sale1.dateSold;
+                String numUnits ="# of units: "+sale1.numUnits;
+                String transID ="Trans ID: "+ sale1.transID;
+                String value = adId +"\t\t"+item +"\t\t"+price + "\t\t"+dateSold +"\t\t"+numUnits+"\t\t"+transID;
+            salesList.getItems().add(value);
+                //sales.add(sale1);
+             }
         }
-        es.setEmployeeSales(seA);
-        salesList.setItems(sale);
+        /*
+        for(SimpleSales val : sales)
+        {
+            String adId ="AdId: "+val.adID;
+            String dateSold ="Date Sold: "+val.dateSold;
+            String numUnits ="# of units: "+val.numUnits;
+            String transID ="Trans ID: "+ val.transID;
+            String value = adId + "\t\t"+dateSold +"\t\t"+numUnits+"\t\t"+transID;
+            salesList.getItems().add(value);
+        }
+                */
+        
         //circle.setItems(circles);
-        */
+        
     }
 
     @FXML
@@ -109,7 +134,6 @@ public class SalesScreenController implements Initializable, ControlledScreen {
         myController.setScreen(FrienDBClient.EmployeePageID);
     }
 
-    @FXML
     private void HandleSelect(ActionEvent event) {
         int index = salesList.getSelectionModel().getSelectedIndex();
         EmployeeSession es = (EmployeeSession) myController.getSession();

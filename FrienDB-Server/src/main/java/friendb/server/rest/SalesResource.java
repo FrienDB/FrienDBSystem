@@ -20,6 +20,7 @@ import friendb.server.beans.CustomerBean;
 import friendb.server.beans.SalesBean;
 import friendb.server.entities.Customer;
 import friendb.server.entities.Sales;
+import friendb.shared.SimpleAdvertisement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import javax.persistence.EntityExistsException;
@@ -150,5 +151,31 @@ public class SalesResource {
         return Response.ok(wrapper).build();
     
     }
+    @POST
+    @Path("/getFromAd")
+    @Consumes("application/json")
+    public Response getSalesByAd(SimpleAdvertisement ad)
+    {
+      
+        List<SimpleSales> allSales2 = new ArrayList();
+        List<Sales> allSales = salesBean.getSalesByAd(ad);
+        SimpleSales s;
+        for (Sales sale : allSales)
+        {
+            s = new SimpleSales();
+            s.transID = sale.getTransID();
+            s.dateSold = sale.getDateSold();
+            s.adID = sale.getAdID();
+            //string d = customer.getDob();
+            s.numUnits = sale.getNumUnits();
+            s.accountNum = sale.getAccountNum();
+            allSales2.add(s);
+        }
+        GenericEntity<List<SimpleSales>> wrapper =
+                new GenericEntity<List<SimpleSales>>(allSales2)
+                {
+                };
+        return Response.ok(wrapper).build();
     
+    }
 }
