@@ -38,7 +38,7 @@ public class AdvertisementBean {
     public void addAdvertisement(SimpleAdvertisement ad){
         
          em = DatabaseConnection.getEntityManager();
-         Advertisement a = new Advertisement(ad.adID, ad.employeeID, ad.adType, ad.postDate, ad.company, ad.item, ad.content, ad.price, ad.numUnits);
+         Advertisement a = new Advertisement(ad.employeeID, ad.adType, ad.postDate, ad.company, ad.item, ad.content, ad.price, ad.numUnits);
     
          
          try

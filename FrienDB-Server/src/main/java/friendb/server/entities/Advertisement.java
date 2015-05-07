@@ -41,11 +41,10 @@
         public Advertisement() {
         }
 
-        public Advertisement(int adID, int employeeID, String adType,
+        public Advertisement(int employeeID, String adType,
                 String postDate, String company, String item,
                 String content, double price, int numUnits
                 ){
-            this.adID = adID;
             this.employeeID = employeeID;
             this.adType = adType;
             this.postDate = postDate;
