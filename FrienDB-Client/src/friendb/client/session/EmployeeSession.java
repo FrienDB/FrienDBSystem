@@ -6,6 +6,8 @@
 package friendb.client.session;
 
 import friendb.shared.SimpleEmployee;
+import friendb.shared.SimpleSales;
+import java.util.List;
 
 /**
  *
@@ -13,6 +15,7 @@ import friendb.shared.SimpleEmployee;
  */
 public class EmployeeSession implements Session{
     private SimpleEmployee employee;
+    private List<SimpleSales> allSales;
 
     public EmployeeSession(SimpleEmployee acct)
     {
@@ -23,4 +26,12 @@ public class EmployeeSession implements Session{
     {
         return employee;
     }
+    public List<SimpleSales> getEmployeeSales() {
+        return allSales;
+    }
+
+    public void setEmployeeSales(List<SimpleSales> allSales) {
+        this.allSales = allSales;
+    }
+    
 }

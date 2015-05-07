@@ -87,10 +87,11 @@ public class AuthenticationBean
                 }
             } else //Employee don't have @ symbol in their username
             {
+                int empID = Integer.parseInt(email);
                 //set up the query
                 TypedQuery<Employee> query =
                         em.createNamedQuery("Employee.findByID", Employee.class);
-                query.setParameter("employeeID", email);
+                query.setParameter("employeeID", empID);
 
                 //find the right account with that email
                 Employee e = query.getSingleResult();

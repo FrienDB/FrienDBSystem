@@ -20,7 +20,7 @@
         @NamedQuery(name = "Employee.findAll", 
                 query = "SELECT e FROM Employee e"),
         @NamedQuery(name = "Employee.findByID", 
-            query = "SELECT e FROM Employee e WHERE e.employeeID = :employeeID")
+            query = "SELECT e FROM Employee e WHERE e.EmployeeID = :EmployeeId")
     })
     @Entity
     public class Employee implements Serializable{
@@ -38,6 +38,7 @@
         private int zipCode;
         private Double hourlyRate;
         private String role;
+        private String password;
 
 
 
@@ -69,6 +70,13 @@
         public void setEmployeeId(int employeeID) {
             this.employeeID = employeeID;
         }
+         public String getPassword() {
+            return password;
+            }
+
+            public void setPassword(String password) {
+                this.password = password;
+            }
          public int  getSSN() {
         return ssn;
         }

@@ -18,6 +18,10 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import javax.persistence.EntityExistsException;
 import friendb.server.util.DatabaseConnection;
+import friendb.shared.SimpleCustomer;
+import friendb.shared.SimpleEmployee;
+import friendb.shared.SimpleSales;
+import javax.inject.Inject;
 
 /**
  *
@@ -29,12 +33,12 @@ public class SalesBean {
     //Logger
 
     private static final Logger logger
-            = Logger.getLogger("friendb.beans.CustomerBean");
+            = Logger.getLogger("friendb.beans.SalesBean");
 
     //reference to the perisstence layer
     @PersistenceContext
     private EntityManager em;
-
+    
     public void addSales(int transId,
             String dateSold,
             int adId,
@@ -81,14 +85,14 @@ public class SalesBean {
         return sales;
     }
 
-    public List<Sales> getSalesByEmployee(int employeeId) {
+    public List<Sales> getSalesByEmployee(SimpleEmployee employee) {
         List<Sales> sales = null;
 
         // Create the entity manager and set up the query for all schools
         em = DatabaseConnection.getEntityManager();
         TypedQuery<Sales> query
                 = em.createNamedQuery("Sales.findByEmployeeID", Sales.class);
-        query.setParameter("employeeID", employeeId);
+        query.setParameter("employeeID", employee.employeeID);
         try {
             sales = query.getResultList();
             logger.log(Level.INFO, "Retrieving all advertisement in DB", sales);
@@ -99,6 +103,13 @@ public class SalesBean {
         }
         return sales;
 
+    }
+    public Customer getCustomerByID(SimpleSales sale){
+        Customer customer= null; 
+        TypedQuery<Customer> query = em.createNamedQuery("Customer.findByID", Customer.class);
+                query.setParameter("customerID", sale.accountNum);
+                customer = query.getSingleResult();
+                return customer;
     }
 
 }

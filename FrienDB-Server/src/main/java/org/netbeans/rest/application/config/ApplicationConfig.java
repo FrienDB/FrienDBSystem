@@ -38,6 +38,7 @@ public class ApplicationConfig extends Application {
         resources.add(friendb.server.rest.CustomerResource.class);
         resources.add(friendb.server.rest.EmployeeResource.class);
         resources.add(friendb.server.rest.PostResource.class);
+        resources.add(friendb.server.rest.SalesResource.class);
 
     }
     

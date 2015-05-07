@@ -62,6 +62,7 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
 
     private final ServerAccessPoint getCustomersCircles =
             new ServerAccessPoint(ServerResources.GET_CUSTOMERS_CIRCLES_URL);
+   
     @FXML
     private ListView<?> accounts;
 
