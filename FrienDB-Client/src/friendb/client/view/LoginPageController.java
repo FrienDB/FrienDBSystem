@@ -78,9 +78,6 @@ public class LoginPageController implements Initializable, ControlledScreen {
                 return;
             } //successful response
             else {
-
-
-//=======
                 //customer authenticate with an email
                 if (login.email.indexOf('@') != -1) {
                     SimpleCustomer cust = rsp.readEntity(SimpleCustomer.class);
@@ -95,6 +92,7 @@ public class LoginPageController implements Initializable, ControlledScreen {
                     myController.loadScreen(FrienDBClient.NewPostPageID, FrienDBClient.NewPostPage);
                     myController.loadScreen(FrienDBClient.ManageCustomerInfoID, FrienDBClient.ManageCustomerInfo);
                     myController.loadScreen(FrienDBClient.AccountPageID, FrienDBClient.AccountPage);
+                    myController.loadScreen(FrienDBClient.MessagesPageID, FrienDBClient.MessagesPage);
                     myController.setScreen(FrienDBClient.CustomerWelcomePageID);
 
                 } //employees have no @ symbols in their username
