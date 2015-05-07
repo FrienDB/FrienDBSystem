@@ -64,6 +64,8 @@ public final class ServerResources {
     
     public static final String REMOVE_CUSTOMER_FROM_CIRCLE_URL = 
             SERVER_BASE_URL + "circleMembership/removeCustomerFromCircle";
-    
+
+    public static final String GET_POST_LIKES = 
+            SERVER_BASE_URL + "post/getLikes";
     
 }

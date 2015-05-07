@@ -67,6 +67,21 @@ public class PostBean {
         }
         return simplePosts;
     }
+    
+    public int getNumberOfLikes(int postID) {
+        em = DatabaseConnection.getEntityManager();
+        int numLikes;
+        try {
+            Query query
+                    = em.createQuery("SELECT COUNT(*) FROM Likes p WHERE p.postID = " + postID);
+            numLikes = (int) query.getResultList().get(0);
+        } finally {
+            //Close the entity manager
+            em.close();
+            em = null;
+        }
+        return numLikes;
+    }
 
     public void addCirclePost(SimplePost sp) {
         em = DatabaseConnection.getEntityManager();
