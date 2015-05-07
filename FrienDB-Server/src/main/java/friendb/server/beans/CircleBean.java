@@ -8,6 +8,7 @@ package friendb.server.beans;
 import friendb.server.entities.Circle;
 import friendb.server.entities.CircleMembership;
 import friendb.server.entities.Customer;
+import friendb.server.entities.Pages;
 import friendb.server.rest.CircleResource;
 import friendb.server.util.DatabaseConnection;
 import friendb.shared.SimpleCircle;
@@ -90,6 +91,14 @@ public class CircleBean {
             em.getTransaction().begin();
             //@TODO check return of addCourse to see if it worked
             em.persist(cm);
+            em.getTransaction().commit();
+            
+            Pages newPage = new Pages();
+            newPage.setAssociatedCircle(circle.getCircleID());
+            newPage.setPostCount(0);
+            em.getTransaction().begin();
+            //@TODO check return of addCourse to see if it worked
+            em.persist(newPage);
             em.getTransaction().commit();
             logger.log(Level.INFO, "New circlemembership added to database {0}", circle);
         } catch (RollbackException rex)
