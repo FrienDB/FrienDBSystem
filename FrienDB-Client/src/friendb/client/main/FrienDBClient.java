@@ -54,8 +54,8 @@ public class FrienDBClient extends Application {
     public static String MessagesPage = "MessagesPage.fxml";
     public static String ManagerSalesReportPageID = "SalesReportPage";
     public static String ManagerSalesReportPage = "SalesReportPage.fxml";
-    public static String ManagerAdsPageID = "ManagerAdsPage";
-    public static String ManagerAdsPage = "ManagerAdsPage.fxml";
+    public static String ManagerAdsPageID = "ManagerAds";
+    public static String ManagerAdsPage = "ManagerAds.fxml";
     public static String ManagerEditEmployeePageID = "EditEmployeePage";
     public static String ManagerEditEmployeePage = "EditEmployeePage.fxml";
     public static String ManagerSalesPageID = "ManagerSales";
@@ -70,7 +70,7 @@ public class FrienDBClient extends Application {
     public static String EmployeeEditPageID = "EmployeeEdit";
     public static String CreateAdPage = "CreateAd.fxml";
     public static String CreateAdPageID = "CreateAd";
-     public static String ManagerEditEmployee = "ManagerEditEmployee.fxml";
+    public static String ManagerEditEmployee = "ManagerEditEmployee.fxml";
     public static String ManagerEditEmployeeID = "ManagerEditEmployee";
     
     

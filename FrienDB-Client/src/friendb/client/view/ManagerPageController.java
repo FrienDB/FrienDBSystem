@@ -53,6 +53,7 @@ public class ManagerPageController implements Initializable, ControlledScreen {
 
     @FXML
     private void handleAdvertisements(ActionEvent event) {
+        myController.setScreen(FrienDBClient.ManagerAdsPageID);
     }
 
     @FXML

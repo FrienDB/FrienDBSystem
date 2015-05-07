@@ -104,9 +104,9 @@ public class LoginPageController implements Initializable, ControlledScreen {
                     {
                         myController.createEmployeeSession(emp);
                         myController.loadScreen(FrienDBClient.ManagerPageID, FrienDBClient.ManagerPage);
-                        myController.loadScreen(FrienDBClient.ManagerSalesPageID, FrienDBClient.ManagerSalesPage);
+                       // myController.loadScreen(FrienDBClient.ManagerSalesPageID, FrienDBClient.ManagerSalesPage);
                         myController.loadScreen(FrienDBClient.ManagerEditEmployeeID, FrienDBClient.ManagerEditEmployee);
-                        
+                        myController.loadScreen(FrienDBClient.ManagerAdsPageID, FrienDBClient.ManagerAdsPage);
                         myController.setScreen(FrienDBClient.ManagerPageID);
                         
                     }

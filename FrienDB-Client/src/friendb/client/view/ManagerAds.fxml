@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.ManagerAdsController">
+   <children>
+      <Label layoutX="244.0" layoutY="14.0" text="Advertisements">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <ListView fx:id="adList" layoutX="14.0" layoutY="128.0" prefHeight="330.0" prefWidth="685.0" />
+      <Button fx:id="backButton" layoutX="51.0" layoutY="39.0" mnemonicParsing="false" onAction="#HandleBack" text=" Back" />
+   </children>
+</AnchorPane>
