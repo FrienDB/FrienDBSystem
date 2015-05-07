@@ -6,15 +6,20 @@
 package friendb.server.beans;
 
 import friendb.server.entities.Comments;
+import friendb.server.entities.Pages;
 import friendb.server.rest.CommentResource;
 import friendb.server.util.DatabaseConnection;
 import friendb.shared.SimpleComments;
+import friendb.shared.SimplePost;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.RollbackException;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -60,6 +65,32 @@ public class CommentBean {
             em.close();
             em = null;
         }
+    }
+
+    public List<SimpleComments> getPostComments(SimplePost sp) {
+        em = DatabaseConnection.getEntityManager();
+        TypedQuery<Comments> query
+                = em.createNamedQuery("Comments.findByPostID", Comments.class);
+        query.setParameter("postID", sp.postID);
+        List<SimpleComments> simpleComments = new ArrayList<>();
+        try {
+            List<Comments> comments = query.getResultList();
+            for(Comments c : comments){
+                SimpleComments sc = new SimpleComments();
+                sc.author = c.getAuthor();
+                sc.commentID = c.getCommentID();
+                sc.content = c.getContent();
+                sc.dateCommented = c.getDateCommented();
+                sc.postID = c.getPostID();
+                simpleComments.add(sc);
+            }
+        }finally
+        {
+            //close the entity manager
+            em.close();
+            em = null;
+        }
+        return simpleComments;
     }
     
 }

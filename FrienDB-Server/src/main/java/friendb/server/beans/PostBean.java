@@ -47,7 +47,7 @@ public class PostBean {
         try {
             Pages page = query.getSingleResult();
             Query query2
-                    = em.createQuery("SELECT p.content, p.author, p.datePosted, p.commentCount, p.pageID FROM Post p WHERE p.pageID = " + page.getpageID());
+                    = em.createQuery("SELECT p.content, p.author, p.datePosted, p.commentCount, p.pageID, p.postID FROM Post p WHERE p.pageID = " + page.getpageID());
             List<Object[]> posts = query2.getResultList();
             simplePosts = new ArrayList<>();
             SimplePost sp;
@@ -58,6 +58,7 @@ public class PostBean {
                 sp.content = (String) post[0];
                 sp.datePosted = (String) post[2];
                 sp.pageID = (int) post[4];
+                sp.postID = (int) post[5];
                 simplePosts.add(sp);
             }
         } finally {

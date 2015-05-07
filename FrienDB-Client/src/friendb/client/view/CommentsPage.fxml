@@ -7,29 +7,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.CommentsPageController">
    <children>
-      <Label fx:id="circleName" layoutX="14.0" layoutY="15.0" text="Comments">
+      <Label fx:id="circleName" layoutX="14.0" layoutY="15.0" text="Post">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
-      <TableView fx:id="post" layoutX="14.0" layoutY="53.0" prefHeight="97.0" prefWidth="693.0">
-         <columns>
-            <TableColumn prefWidth="103.0" text="Author" />
-            <TableColumn prefWidth="495.0" text="Post" />
-            <TableColumn prefWidth="94.0" text="Likes" />
-         </columns>
-      </TableView>
       <Button layoutX="14.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleLikeComment" text="Like/Unlike Comment" />
       <Button layoutX="411.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleRemoveComment" text="Remove Comment" />
       <Button layoutX="167.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleNewComment" text="New Comment" />
       <Button layoutX="282.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleModifyComment" text="Modify Comment" />
       <Button layoutX="657.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleBack" text="Back" />
-      <TableView fx:id="comment" layoutX="14.0" layoutY="160.0" prefHeight="273.0" prefWidth="693.0">
-         <columns>
-            <TableColumn prefWidth="103.0" text="Author" />
-            <TableColumn prefWidth="496.0" text="Comment" />
-            <TableColumn prefWidth="93.0" text="Likes" />
-         </columns>
-      </TableView>
+      <ListView fx:id="post" layoutX="14.0" layoutY="54.0" prefHeight="39.0" prefWidth="692.0" />
+      <ListView fx:id="comment" layoutX="14.0" layoutY="151.0" prefHeight="278.0" prefWidth="692.0" />
+      <Label fx:id="circleName1" layoutX="14.0" layoutY="103.0" text="Comments">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

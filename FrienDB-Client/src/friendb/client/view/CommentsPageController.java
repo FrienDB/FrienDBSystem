@@ -8,12 +8,18 @@ package friendb.client.view;
 import friendb.client.main.ControlledScreen;
 import friendb.client.main.FrienDBClient;
 import friendb.client.main.ScreensController;
+import friendb.client.session.CustomerSession;
+import friendb.shared.SimpleComments;
+import friendb.shared.SimpleCustomer;
+import friendb.shared.SimplePost;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 
 /**
@@ -27,9 +33,9 @@ public class CommentsPageController implements Initializable, ControlledScreen {
     @FXML
     private Label circleName;
     @FXML
-    private TableView<?> post;
+    private ListView<String> post;
     @FXML
-    private TableView<?> comment;
+    private ListView<String> comment;
 
     /**
      * Initializes the controller class.
@@ -68,7 +74,22 @@ public class CommentsPageController implements Initializable, ControlledScreen {
 
     @Override
     public void populatePage() {
-
+        CustomerSession cs = (CustomerSession)myController.getSession();
+        List<SimpleComments> comments = cs.getPostComments();
+        SimplePost sp = cs.getVisitingPost();
+        SimpleCustomer authorC = cs.getPostAuthor();
+        String author = authorC.firstName + " " + authorC.lastName;
+        post.getItems().add(author + ": " + sp.content + " (" + sp.datePosted + ")");
+        List<SimpleCustomer> circleMems = cs.getAllCustomers();
+        for(SimpleComments c : comments){
+            String commentAuthor = "";
+            for(SimpleCustomer cus : circleMems){
+                if(cus.CustomerID == c.author){
+                    commentAuthor = cus.firstName + " " + cus.lastName;
+                }
+            }
+            comment.getItems().add(commentAuthor + ": " + c.content + " (" + c.dateCommented + ")");
+        }
     }
     
 }

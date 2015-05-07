@@ -18,7 +18,10 @@
      */
     @NamedQueries({
         @NamedQuery(name = "Comments.findAll", 
-                query = "SELECT c FROM Comments c")
+                query = "SELECT c FROM Comments c"),
+        @NamedQuery(name = "Comments.findByPostID", 
+                query = "SELECT c FROM Comments c WHERE c.postID = :postID")
+            
     })
     @Entity
     public class Comments implements Serializable{

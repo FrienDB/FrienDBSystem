@@ -13,6 +13,7 @@ import friendb.client.web.ServerAccessPoint;
 import friendb.client.web.ServerResources;
 import friendb.shared.SimpleCircle;
 import friendb.shared.SimpleCircleMembership;
+import friendb.shared.SimpleComments;
 import friendb.shared.SimpleCustomer;
 import friendb.shared.SimplePost;
 import java.net.URL;
@@ -67,6 +68,9 @@ public class YourCirclePageController implements Initializable, ControlledScreen
 
     private final ServerAccessPoint removePost 
             = new ServerAccessPoint(ServerResources.REMOVE_POST_URL);
+    
+    private final ServerAccessPoint getPostComments 
+            = new ServerAccessPoint(ServerResources.GET_POST_COMMENTS_URL);
 
 
     /**
@@ -181,6 +185,25 @@ public class YourCirclePageController implements Initializable, ControlledScreen
 
     @FXML
     private void handleViewComments(ActionEvent event) {
+        int index = post.getSelectionModel().getSelectedIndex();
+        CustomerSession cs = (CustomerSession)myController.getSession();
+        SimplePost post = cs.getCirclePosts().get(index);
+        Response rsp = getPostComments.request(post);
+        
+        GenericType<List<SimpleComments>> gtlc = new GenericType<List<SimpleComments>>() {
+        };
+
+        List<SimpleComments> comments = rsp.readEntity(gtlc);
+        
+        cs.setPostComments(comments);
+        cs.setVisitingPost(post);
+        List<SimpleCustomer> scList = cs.getAllCustomers();
+        for(SimpleCustomer cust : scList){
+            if(cust.CustomerID == post.authorID)
+                cs.setPostAuthor(cust);
+        }
+        
+        myController.loadScreen(FrienDBClient.CommentsPageID, FrienDBClient.CommentsPage);
         myController.setScreen(FrienDBClient.CommentsPageID);
     }
 

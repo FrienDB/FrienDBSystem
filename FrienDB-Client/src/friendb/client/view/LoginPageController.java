@@ -91,7 +91,7 @@ public class LoginPageController implements Initializable, ControlledScreen {
                      //this will too MOVED
                     myController.loadScreen(FrienDBClient.NewCirclePageID, FrienDBClient.NewCirclePage);
                     myController.loadScreen(FrienDBClient.NewCommentPageID, FrienDBClient.NewCommentPage);
-                    myController.loadScreen(FrienDBClient.CommentsPageID, FrienDBClient.CommentsPage);
+                    
                     myController.loadScreen(FrienDBClient.NewPostPageID, FrienDBClient.NewPostPage);
                     myController.loadScreen(FrienDBClient.ManageCustomerInfoID, FrienDBClient.ManageCustomerInfo);
                     myController.loadScreen(FrienDBClient.AccountPageID, FrienDBClient.AccountPage);

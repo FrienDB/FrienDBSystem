@@ -26,7 +26,7 @@ import javax.persistence.NamedQuery;
 public class Post implements Serializable{
     
     @Id
-    //private int postID;
+    private int postID;
     private int pageID;
     private String content;
     private int author;

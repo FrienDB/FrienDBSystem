@@ -7,6 +7,7 @@ package friendb.client.session;
 
 import friendb.shared.SimpleAccount;
 import friendb.shared.SimpleCircle;
+import friendb.shared.SimpleComments;
 import friendb.shared.SimpleCustomer;
 import friendb.shared.SimplePost;
 import java.util.ArrayList;
@@ -25,6 +26,9 @@ public class CustomerSession implements Session{
     private List<SimplePost> circlePosts;
     private int pageID;
     private List<SimpleCustomer> allCustomers;
+    private List<SimpleComments> postComments;
+    private SimplePost visitingPost;
+    private SimpleCustomer postAuthor;
 
     public CustomerSession(SimpleCustomer acct)
     {
@@ -90,6 +94,30 @@ public class CustomerSession implements Session{
 
     public void setAllCustomers(List<SimpleCustomer> allCustomers) {
         this.allCustomers = allCustomers;
+    }
+
+    public List<SimpleComments> getPostComments() {
+        return postComments;
+    }
+
+    public void setPostComments(List<SimpleComments> postComments) {
+        this.postComments = postComments;
+    }
+
+    public SimplePost getVisitingPost() {
+        return visitingPost;
+    }
+
+    public void setVisitingPost(SimplePost visitingPost) {
+        this.visitingPost = visitingPost;
+    }
+
+    public SimpleCustomer getPostAuthor() {
+        return postAuthor;
+    }
+
+    public void setPostAuthor(SimpleCustomer postAuthor) {
+        this.postAuthor = postAuthor;
     }
     
     
