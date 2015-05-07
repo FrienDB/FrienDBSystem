@@ -10,6 +10,7 @@ import friendb.server.entities.Messages;
 import friendb.shared.SimpleMessages;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
@@ -29,6 +30,10 @@ public class MessagesResource {
 
     @Inject
     private MessagesBean messagesBean;
+    
+    //Logger
+    private static final Logger logger =
+            Logger.getLogger(MessagesResource.class.getName());
 
     public MessagesResource() {
     }
