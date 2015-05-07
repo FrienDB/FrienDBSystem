@@ -113,4 +113,24 @@ public class CustomerResource {
             return Response.serverError().build();
         }
     }
+    
+    @POST
+    @Path("/updateCustomer")
+    @Consumes("application/json")
+    public Response updateCustomer(SimpleCustomer sc)
+    {
+        try
+        {
+            customerBean.updateCustomer(sc);
+            return Response.ok(sc).build();
+        } catch (NoResultException nrex)
+        {
+            logger.log(Level.WARNING, "BAD REQUEST response", nrex);
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (Exception ex)
+        {
+            logger.log(Level.SEVERE, null, ex);
+            return Response.serverError().build();
+        }
+    }
 }

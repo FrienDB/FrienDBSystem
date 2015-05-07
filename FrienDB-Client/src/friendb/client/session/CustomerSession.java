@@ -119,6 +119,10 @@ public class CustomerSession implements Session{
     public void setPostAuthor(SimpleCustomer postAuthor) {
         this.postAuthor = postAuthor;
     }
+
+    public void setCustomer(SimpleCustomer customer) {
+        this.customer = customer;
+    }
     
     
 

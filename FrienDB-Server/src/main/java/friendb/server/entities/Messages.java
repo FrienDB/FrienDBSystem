@@ -28,8 +28,8 @@ public class Messages implements Serializable{
     private String subj;
     private String content;
     private String dateSent;
-    private String sender;
-    private String receiver;
+    private int sender;
+    private int receiver;
     
 
 
@@ -37,8 +37,8 @@ public class Messages implements Serializable{
     }
     
     public Messages(int messageID, String subj, String content,
-            String dateSent, String sender,
-            String receiver){
+            String dateSent, int sender,
+            int receiver){
         this.messageID = messageID;
         this.subj = subj;
         this.content = content;
@@ -75,18 +75,18 @@ public class Messages implements Serializable{
     public void setDateSent(String dateSent) {
         this.dateSent = dateSent;
     }
-    public String getSender() {
+    public int getSender() {
         return sender;
     }
 
-    public void setSender(String sender) {
+    public void setSender(int sender) {
         this.sender = sender;
     }    
-    public String getReceiver() {
+    public int getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(String receiver) {
+    public void setReceiver(int receiver) {
         this.receiver = receiver;
     }    
     }

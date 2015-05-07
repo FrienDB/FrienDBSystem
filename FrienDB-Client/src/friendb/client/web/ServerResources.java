@@ -76,5 +76,11 @@ public final class ServerResources {
     public static final String ADD_COMMENT_URL = 
             SERVER_BASE_URL + "comment/addComment";
     
+    public static final String GET_MESSAGES_URL =
+            SERVER_BASE_URL + "message/getMessages";
+    
+    
+    public static final String UPDATE_CUSTOMER_URL = 
+            SERVER_BASE_URL + "customer/updateCustomer";
     
 }
