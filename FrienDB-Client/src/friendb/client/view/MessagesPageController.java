@@ -35,7 +35,7 @@ public class MessagesPageController implements Initializable, ControlledScreen {
     private Label Messages;
     @FXML
     private ListView<String> messages;
-    
+
     private final ServerAccessPoint getMessages
             = new ServerAccessPoint(ServerResources.GET_MESSAGES_URL);
 
@@ -45,7 +45,7 @@ public class MessagesPageController implements Initializable, ControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void handleBack(ActionEvent event) {
@@ -66,14 +66,15 @@ public class MessagesPageController implements Initializable, ControlledScreen {
 
     @Override
     public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 
     @Override
     public void populatePage() {
         CustomerSession cs = (CustomerSession) myController.getSession();
-        
+
         Response rsp = getMessages.request(cs.getCustomerAccount().CustomerID);
-        
+
         GenericType<List<SimpleMessages>> gtlm = new GenericType<List<SimpleMessages>>() {
         };
         List<SimpleMessages> simpleMessagesList = null;
@@ -89,7 +90,5 @@ public class MessagesPageController implements Initializable, ControlledScreen {
         }
 
     }
-    
-    
-    
+
 }
