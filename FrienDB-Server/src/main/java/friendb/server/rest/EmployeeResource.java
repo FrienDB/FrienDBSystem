@@ -119,4 +119,25 @@ public class EmployeeResource {
             return Response.serverError().build();
         }
     }
+    @POST
+    @Path("/edit")
+    @Consumes("application/json")
+    public Response getEmployeeEdit(SimpleEmployee employee)
+    {
+        employeeBean.editEmployee(employee);
+        try
+        {
+            employeeBean.editEmployee(employee);
+            return Response.ok(employee).build();
+        } catch (NoResultException nrex)
+        {
+            logger.log(Level.WARNING, "BAD REQUEST response", nrex);
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (Exception ex)
+        {
+            logger.log(Level.SEVERE, null, ex);
+            return Response.serverError().build();
+        }
+        
+    }
 }

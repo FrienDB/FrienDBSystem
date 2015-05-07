@@ -89,6 +89,7 @@ public class EmployeeLoginController implements Initializable, ControlledScreen 
 
     @FXML
     private void HandleEdit(ActionEvent event) {
+        myController.setScreen(FrienDBClient.EmployeeEditPageID);
     }
     
 }

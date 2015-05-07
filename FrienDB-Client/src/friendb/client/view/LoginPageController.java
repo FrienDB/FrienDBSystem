@@ -115,6 +115,7 @@ public class LoginPageController implements Initializable, ControlledScreen {
                         myController.loadScreen(FrienDBClient.EmployeePageID, FrienDBClient.EmployeePage);
                         myController.loadScreen(FrienDBClient.SalesPageID, FrienDBClient.SalesPage);
                         myController.loadScreen(FrienDBClient.AdsPageID, FrienDBClient.AdsPage);
+                        myController.loadScreen(FrienDBClient.EmployeeEditPageID, FrienDBClient.EmployeeEditPage);
                         myController.loadScreen(FrienDBClient.MailingListPageID, FrienDBClient.MailingListPage);
                         myController.setScreen(FrienDBClient.EmployeePageID);
                     

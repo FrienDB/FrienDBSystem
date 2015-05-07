@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import javax.persistence.EntityExistsException;
 import friendb.server.util.DatabaseConnection;
+import friendb.shared.SimpleEmployee;
 /**
  *
  * @author evanguby
@@ -86,5 +87,44 @@ public class EmployeeBean {
             em = null;
         }
         return employees;
+    }
+    public void editEmployee(SimpleEmployee employee){
+        
+
+        // Create the entity manager and set up the query for all schools
+        em = DatabaseConnection.getEntityManager();
+        
+        em = DatabaseConnection.getEntityManager();
+        TypedQuery<Employee> query =
+                em.createNamedQuery("Employee.findByID", Employee.class);
+                query.setParameter("employeeID", employee.employeeID);
+        try
+        {
+            //execute query and update school info
+            Employee edit = query.getSingleResult();
+            em.getTransaction().begin();
+            edit.setFirstName(employee.firstName);
+            edit.setLastName(employee.lastName);
+            edit.setTelephone(employee.telephone);
+            edit.setCity(employee.city);
+            edit.setAddress(employee.address);
+            edit.setCurState(employee.curState);
+            edit.setPassword(employee.password);
+            em.getTransaction().commit();
+            logger.log(Level.INFO, "Updated properties for customer: {0}", edit);
+
+        } catch (NoResultException nrex)
+        {
+            //school not found
+            logger.log(Level.WARNING,
+                    "No customer with name {0} found in database", employee);
+            throw nrex;
+        } finally
+        {
+            //close the entity manager
+            em.close();
+            em = null;
+        }
+        
     }
 }

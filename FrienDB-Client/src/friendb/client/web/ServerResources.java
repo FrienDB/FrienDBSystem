@@ -95,5 +95,7 @@ public final class ServerResources {
     public static final String GET_ALL_CIRCLES_URL = 
             SERVER_BASE_URL + "circle/getAll";
     
+    public static final String GET_EMPLOYEE_EDIT_URL = 
+            SERVER_BASE_URL + "employee/edit";
     
 }

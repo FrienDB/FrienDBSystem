@@ -93,8 +93,7 @@ public class SalesScreenController implements Initializable, ControlledScreen {
         
         //circle.setItems(scList);
         for (SimpleAdvertisement ss : adList) {
-            System.out.print(ss);
-            System.out.print(ss);
+           
            
              Response rsp1 = getSaleFromAd.request(ss);
              GenericType<List<SimpleSales>> gtlc2 = new GenericType<List<SimpleSales>>() {
