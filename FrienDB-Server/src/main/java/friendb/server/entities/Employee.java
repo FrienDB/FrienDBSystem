@@ -20,7 +20,7 @@
         @NamedQuery(name = "Employee.findAll", 
                 query = "SELECT e FROM Employee e"),
         @NamedQuery(name = "Employee.findByID", 
-            query = "SELECT e FROM Employee e WHERE e.EmployeeID = :EmployeeId")
+            query = "SELECT e FROM Employee e WHERE e.employeeID = :EmployeeId")
     })
     @Entity
     public class Employee implements Serializable{
