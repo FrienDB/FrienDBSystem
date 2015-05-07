@@ -24,22 +24,9 @@
                   </HBox>
                </children>
             </AnchorPane>
-          <AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="396.0" prefWidth="123.0">
                <children>
-                  <SplitPane dividerPositions="0.29797979797979796" layoutX="6.0" prefHeight="398.0" prefWidth="718.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="396.0" prefWidth="123.0">
-                           <children>
-                              <ListView fx:id="adList" layoutX="-27.0" layoutY="-15.0" prefHeight="396.0" prefWidth="210.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="517.0">
-                           <children>
-                              <Label fx:id="adInfo" alignment="TOP_LEFT" layoutX="66.0" layoutY="198.0" prefHeight="396.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
+                  <ListView fx:id="adList" layoutX="-27.0" layoutY="-15.0" prefHeight="396.0" prefWidth="210.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>

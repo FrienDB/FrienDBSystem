@@ -71,10 +71,11 @@ public class AdsScreenController implements Initializable, ControlledScreen{
 
     @Override
     public void populatePage() {
-        /*
+        
          EmployeeSession es = (EmployeeSession) myController.getSession();
         SimpleEmployee e = es.getEmployeeAccount();
-
+        System.out.print("e");
+        
          Response rsp3 = getEmployeeAdvertisements.request(e);
 
         GenericType<List<SimpleAdvertisement>> gtlc3 = new GenericType<List<SimpleAdvertisement>>() {
@@ -86,8 +87,9 @@ public class AdsScreenController implements Initializable, ControlledScreen{
             String post = ad.postDate;
             String value = item + "\t\t" + company +"\t\t"+ post;
             adList.getItems().add(value);
+          
         }
-                */
+                
     }
     
 }

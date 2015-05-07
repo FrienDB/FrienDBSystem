@@ -107,15 +107,16 @@ public class AdvertisementBean {
     
     }
     public List<Advertisement> getEmployeeAds(SimpleEmployee employee){
-        List<Advertisement> empAds = null;
-        em = DatabaseConnection.getEntityManager();
-        TypedQuery<Advertisement> query =
-                em.createNamedQuery("Advertisement.findByEmployeeID", Advertisement.class);
-                    query.setParameter("employeeID", employee.employeeID);
+        
                     
-      
+      List<Advertisement> empAds = null;
         try
         {
+            
+                em = DatabaseConnection.getEntityManager();
+                TypedQuery<Advertisement> query =
+                em.createNamedQuery("Advertisement.findByEmployeeID", Advertisement.class);
+                    query.setParameter("empId", employee.employeeID);
             empAds  = query.getResultList();
         } catch (EntityExistsException eeex)
         {
