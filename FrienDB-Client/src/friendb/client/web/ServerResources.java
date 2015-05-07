@@ -79,4 +79,7 @@ public final class ServerResources {
             SERVER_BASE_URL + "message/getMessages";
     
     
+    public static final String UPDATE_CUSTOMER_URL = 
+            SERVER_BASE_URL + "customer/updateCustomer";
+    
 }
