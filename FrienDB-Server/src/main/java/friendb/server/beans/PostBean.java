@@ -5,6 +5,7 @@
  */
 package friendb.server.beans;
 
+import friendb.server.entities.Circle;
 import friendb.server.entities.Employee;
 import friendb.server.entities.Pages;
 import friendb.server.entities.Post;
@@ -70,7 +71,10 @@ public class PostBean {
     public void addCirclePost(SimplePost sp) {
         em = DatabaseConnection.getEntityManager();
         try {
-            Post post = new Post(sp.pageID, sp.content, sp.authorID, sp.datePosted);
+            TypedQuery<Pages> query = em.createNamedQuery("Pages.findByCircleID", Pages.class);
+            query.setParameter("circleID", sp.circleID);
+            Pages p = query.getSingleResult();
+            Post post = new Post(p.getpageID(), sp.content, sp.authorID, sp.datePosted);
             //add the course
             em.getTransaction().begin();
             //@TODO check return of addCourse to see if it worked

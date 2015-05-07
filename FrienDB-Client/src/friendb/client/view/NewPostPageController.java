@@ -70,9 +70,14 @@ public class NewPostPageController implements Initializable, ControlledScreen {
         newPost.datePosted = change;
         newPost.circleID = cs.getVisitingCircle().circleID;
         Response rsp = addNewPost.request(newPost);
-        
+        if(cs.getVisitingCircle().circleOwner == cs.getCustomerAccount().CustomerID){
         myController.loadScreen(FrienDBClient.YourCirclePageID,FrienDBClient.YourCirclePage);
         myController.setScreen(FrienDBClient.YourCirclePageID);
+        }
+        else{
+            myController.loadScreen(FrienDBClient.CirclePageID,FrienDBClient.CirclePage);
+        myController.setScreen(FrienDBClient.CirclePageID);
+        }
     }
 
     @Override

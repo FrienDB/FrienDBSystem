@@ -82,6 +82,7 @@ public class CirclePageController implements Initializable, ControlledScreen {
 
     @FXML
     private void handleNewPost(ActionEvent event) {
+        myController.setScreen(FrienDBClient.NewPostPageID);
     }
 
     @FXML
