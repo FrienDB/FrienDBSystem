@@ -69,13 +69,13 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     private final ServerAccessPoint removePost 
             = new ServerAccessPoint(ServerResources.REMOVE_POST_URL);
     
-<<<<<<< HEAD
+
     private final ServerAccessPoint getPostComments 
             = new ServerAccessPoint(ServerResources.GET_POST_COMMENTS_URL);
-=======
+
     private final ServerAccessPoint getPostLikes
             = new ServerAccessPoint(ServerResources.GET_POST_LIKES);
->>>>>>> origin/master
+
 
 
     /**
