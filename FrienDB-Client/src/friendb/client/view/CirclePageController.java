@@ -8,7 +8,15 @@ package friendb.client.view;
 import friendb.client.main.ControlledScreen;
 import friendb.client.main.FrienDBClient;
 import friendb.client.main.ScreensController;
+import friendb.client.session.CustomerSession;
+import friendb.client.web.ServerAccessPoint;
+import friendb.client.web.ServerResources;
+import friendb.shared.SimpleCircleMembership;
+import friendb.shared.SimpleCustomer;
+import friendb.shared.SimplePost;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +24,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.Response;
 
 /**
  * FXML Controller class
@@ -28,9 +38,31 @@ public class CirclePageController implements Initializable, ControlledScreen {
     @FXML
     private Label circleName;
     @FXML
-    private TableView<?> post;
+    private ListView<String> post;
     @FXML
-    private ListView<?> circleMember;
+    private ListView<String> circleMember;
+    
+    private final ServerAccessPoint getCircleMembers
+            = new ServerAccessPoint(ServerResources.GET_CIRCLE_MEMBERS_URL);
+
+    private final ServerAccessPoint getCirclePosts
+            = new ServerAccessPoint(ServerResources.GET_CIRCLE_POSTS_URL);
+
+    private final ServerAccessPoint getAllCustomers
+            = new ServerAccessPoint(ServerResources.GET_ALL_CUSTOMERS_URL);
+
+    private final ServerAccessPoint deleteCircle
+            = new ServerAccessPoint(ServerResources.DELETE_CIRCLE_URL);
+    
+    private final ServerAccessPoint addCustomerToCircle
+            = new ServerAccessPoint(ServerResources.ADD_CUSTOMER_TO_CIRCLE_URL);
+    
+
+    private final ServerAccessPoint removeCustomerFromCircle
+            = new ServerAccessPoint(ServerResources.REMOVE_CUSTOMER_FROM_CIRCLE_URL);
+
+    private final ServerAccessPoint removePost 
+            = new ServerAccessPoint(ServerResources.REMOVE_POST_URL);
 
     /**
      * Initializes the controller class.
@@ -38,7 +70,7 @@ public class CirclePageController implements Initializable, ControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void handleLikePost(ActionEvent event) {
@@ -72,7 +104,46 @@ public class CirclePageController implements Initializable, ControlledScreen {
 
     @Override
     public void populatePage() {
+        CustomerSession cs = (CustomerSession) myController.getSession();
+        circleName.setText(cs.getVisitingCircle().circleName);
+        SimpleCircleMembership scm = new SimpleCircleMembership();
+        scm.circleID = cs.getVisitingCircle().circleID;
 
+        Response rsp = getCircleMembers.request(scm);
+
+        GenericType<List<SimpleCustomer>> gtlc = new GenericType<List<SimpleCustomer>>() {
+        };
+
+        List<SimpleCustomer> customers = rsp.readEntity(gtlc);
+        cs.setCustomersInCircle(customers);
+        for (SimpleCustomer c : customers) {
+            String add = c.firstName + " " + c.lastName;
+            circleMember.getItems().add(add);
+        }
+
+        Response rsp2 = getCirclePosts.request(scm);
+
+        GenericType<List<SimplePost>> gtlc2 = new GenericType<List<SimplePost>>() {
+        };
+        List<SimplePost> posts = null;
+        try {
+            posts = rsp2.readEntity(gtlc2);
+        } catch (Exception e) {
+            return;
+        }
+
+        cs.setCirclePosts(posts);
+        cs.setPageID(posts.get(0).pageID);
+        for (SimplePost p : posts) {
+            String author = "";
+            for (SimpleCustomer c : customers) {
+                if (c.CustomerID == p.authorID) {
+                    author = c.firstName + " " + c.lastName;
+                }
+            }
+            String add = author + ": " + p.content + " (" + p.datePosted + ")";
+            post.getItems().add(add);
+        }
     }
-    
+
 }
