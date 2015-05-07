@@ -188,6 +188,7 @@ public class YourCirclePageController implements Initializable, ControlledScreen
         int index = post.getSelectionModel().getSelectedIndex();
         CustomerSession cs = (CustomerSession) myController.getSession();
         SimplePost post = cs.getCirclePosts().get(index);
+        
         Response rsp = getPostComments.request(post);
 
         GenericType<List<SimpleComments>> gtlc = new GenericType<List<SimpleComments>>() {

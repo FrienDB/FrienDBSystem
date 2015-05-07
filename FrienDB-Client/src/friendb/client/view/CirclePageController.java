@@ -12,6 +12,7 @@ import friendb.client.session.CustomerSession;
 import friendb.client.web.ServerAccessPoint;
 import friendb.client.web.ServerResources;
 import friendb.shared.SimpleCircleMembership;
+import friendb.shared.SimpleComments;
 import friendb.shared.SimpleCustomer;
 import friendb.shared.SimplePost;
 import java.net.URL;
@@ -63,6 +64,9 @@ public class CirclePageController implements Initializable, ControlledScreen {
 
     private final ServerAccessPoint removePost 
             = new ServerAccessPoint(ServerResources.REMOVE_POST_URL);
+    
+    private final ServerAccessPoint getPostComments
+            = new ServerAccessPoint(ServerResources.GET_POST_COMMENTS_URL);
 
     /**
      * Initializes the controller class.
@@ -91,6 +95,32 @@ public class CirclePageController implements Initializable, ControlledScreen {
 
     @FXML
     private void handleViewComments(ActionEvent event) {
+        int index = post.getSelectionModel().getSelectedIndex();
+        CustomerSession cs = (CustomerSession) myController.getSession();
+        SimplePost post = cs.getCirclePosts().get(index);
+        
+        Response rsp = getPostComments.request(post);
+
+        GenericType<List<SimpleComments>> gtlc = new GenericType<List<SimpleComments>>() {
+        };
+        List<SimpleComments> comments = null;
+        try {
+            comments = rsp.readEntity(gtlc);
+        }catch (Exception e){
+            
+        }
+
+        cs.setPostComments(comments);
+        cs.setVisitingPost(post);
+        List<SimpleCustomer> scList = cs.getAllCustomers();
+        for (SimpleCustomer cust : scList) {
+            if (cust.CustomerID == post.authorID) {
+                cs.setPostAuthor(cust);
+            }
+        }
+
+        myController.loadScreen(FrienDBClient.CommentsPageID, FrienDBClient.CommentsPage);
+        myController.setScreen(FrienDBClient.CommentsPageID);
     }
 
     @FXML
@@ -147,6 +177,13 @@ public class CirclePageController implements Initializable, ControlledScreen {
             String add = author + ": " + p.content + " (" + p.datePosted + ")";
             post.getItems().add(add);
         }
+        Response rsp3 = getAllCustomers.request();
+
+        GenericType<List<SimpleCustomer>> gtlc3 = new GenericType<List<SimpleCustomer>>() {
+        };
+        boolean addToList = true;
+        List<SimpleCustomer> customersTo = rsp3.readEntity(gtlc3);
+        cs.setAllCustomers(customersTo);
     }
 
 }

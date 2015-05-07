@@ -70,8 +70,8 @@ public class NewCommentPageController implements Initializable, ControlledScreen
         newComment.dateCommented = change;
         Response rsp = addNewComment.request(newComment);
     
-        myController.loadScreen(FrienDBClient.CommentsPageID, FrienDBClient.CommentsPage);
-        myController.setScreen(FrienDBClient.CommentsPageID);
+        myController.loadScreen(FrienDBClient.YourCirclePageID, FrienDBClient.YourCirclePage);
+        myController.setScreen(FrienDBClient.YourCirclePageID);
     }
 
     @Override
