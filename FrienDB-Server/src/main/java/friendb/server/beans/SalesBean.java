@@ -39,7 +39,7 @@ public class SalesBean {
     @PersistenceContext
     private EntityManager em;
     
-    public void addSales(int transId,
+    public void addSales(
             String dateSold,
             int adId,
             int numUnits,
@@ -48,7 +48,7 @@ public class SalesBean {
         {
 
         em = DatabaseConnection.getEntityManager();
-        Sales s = new Sales(transId, dateSold, adId, numUnits, accountNum);
+        Sales s = new Sales(dateSold, adId, numUnits, accountNum);
 
         try {
             //add the school

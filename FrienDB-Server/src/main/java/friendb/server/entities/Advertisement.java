@@ -34,7 +34,7 @@
         private String item;
         private String content;
         private double price;
-        private int numOfUnits;
+        private int numUnits;
 
 
 
@@ -109,10 +109,10 @@
             this.price = price;
         }
         public int getNumOfUnits(){
-            return numOfUnits;
+            return numUnits;
         }
         public void setNumOfUnits(int numOfUnits) {
-            this.numOfUnits = numOfUnits;
+            this.numUnits = numOfUnits;
         }
         }
 

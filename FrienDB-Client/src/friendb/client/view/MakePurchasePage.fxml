@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="friendb.client.view.MakePurchasePageController">
+   <children>
+      <Label fx:id="welcome" layoutX="14.0" layoutY="14.0" text="Make Purchase">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="creditCard" layoutX="14.0" layoutY="62.0" prefWidth="150.0" promptText="Credit Card" />
+      <Button layoutX="657.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleBack" text="Back" />
+      <Button layoutX="14.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleMakePurchase" prefHeight="26.0" prefWidth="127.0" text="Make Purchase" />
+      <TextField fx:id="amount" layoutX="117.0" layoutY="99.0" prefHeight="26.0" prefWidth="49.0" />
+      <Label fx:id="quantity" layoutX="14.0" layoutY="104.0" text="Quantity" />
+   </children>
+</AnchorPane>

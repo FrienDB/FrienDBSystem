@@ -113,4 +113,33 @@ public class AdvertisementResource {
             return Response.serverError().build();
         }
     }
+    
+    @GET
+    @Path("/getTopSellingList")
+    @Produces("application/json")
+    public Response getTopSellingList()
+    {
+        List<Advertisement> allAdvertisements = advertisementBean.getTopSellingList();
+        List<SimpleAdvertisement> simpleAdvertisement = new ArrayList<>();
+        SimpleAdvertisement a;
+        for (Advertisement advertisement : allAdvertisements)
+        {
+            a = new SimpleAdvertisement();
+            a.adID = advertisement.getAdID();
+            a.employeeID = advertisement.getEmployeeID();
+            a.adType = advertisement.getAdType();
+            a.postDate = advertisement.getPostDate();
+            a.company = advertisement.getCompany();
+            a.item = advertisement.getItem();
+            a.content = advertisement.getContent();
+            a.price = advertisement.getPrice();
+            a.numOfUnits = advertisement.getNumOfUnits();
+            simpleAdvertisement.add(a);
+        }
+        GenericEntity<List<SimpleAdvertisement>> wrapper =
+                new GenericEntity<List<SimpleAdvertisement>>(simpleAdvertisement)
+                {
+                };
+        return Response.ok(wrapper).build();
+    }
 }

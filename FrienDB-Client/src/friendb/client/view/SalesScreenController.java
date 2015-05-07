@@ -82,7 +82,7 @@ public class SalesScreenController implements Initializable, ControlledScreen {
 
     @Override
     public void populatePage() {
-        /*
+        
         EmployeeSession es = (EmployeeSession) myController.getSession();
         SimpleEmployee e = es.getEmployeeAccount();
 

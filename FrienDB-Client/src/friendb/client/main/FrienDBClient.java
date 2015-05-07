@@ -61,7 +61,8 @@ public class FrienDBClient extends Application {
     public static String ManagerSalesPageID = "ManagerAdsPage";
     public static String MailingListPage = "MailingList.fxml";
     public static String MailingListPageID = "MailingList";
-    
+    public static String MakePurchasePage = "MakePurchasePage.fxml";
+    public static String MakePurchasePageID = "MakePurchasePage";
     
     
     

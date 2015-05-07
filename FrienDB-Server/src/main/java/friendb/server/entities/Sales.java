@@ -37,9 +37,8 @@ public class Sales implements Serializable{
     public Sales() {
     }
     
-    public Sales(int transID, String dateSold,
+    public Sales(String dateSold,
             int adID, int numUnits, int accountNum){
-        this.transID = transID;
         this.dateSold = dateSold;
         this.adID = adID;
         this.numUnits = numUnits;

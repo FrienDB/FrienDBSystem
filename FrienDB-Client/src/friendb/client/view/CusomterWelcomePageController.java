@@ -14,6 +14,7 @@ import friendb.client.web.ServerResources;
 import friendb.shared.SimpleCircle;
 import friendb.shared.SimpleCustomer;
 import friendb.client.session.CustomerSession;
+import friendb.shared.SimpleAdvertisement;
 import friendb.shared.SimpleCustomer;
 import java.net.URL;
 import java.util.ArrayList;
@@ -46,22 +47,20 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     @FXML
     private Label welcome;
     @FXML
-    private TableView<?> ad;
+    private ListView<String> ads;
     @FXML
-    private ListView circles;
+    private ListView<String> circles;
 
-    @FXML
-    private TableColumn<?,?> company;
-    @FXML
-    private TableColumn<?, ?> product;
-    @FXML
-    private TableColumn<?, ?> price;
 
     @FXML
     private TextField joinCircleName;
 
     private final ServerAccessPoint getCustomersCircles =
             new ServerAccessPoint(ServerResources.GET_CUSTOMERS_CIRCLES_URL);
+    
+    private final ServerAccessPoint getTopSellingList =
+            new ServerAccessPoint(ServerResources.GET_TOP_SELLING_LIST_URL);
+    
    
     @FXML
     private ListView<?> accounts;
@@ -76,6 +75,13 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
 
     @FXML
     private void handlePurchase(ActionEvent event) {
+        CustomerSession cs = (CustomerSession)myController.getSession();
+        List<SimpleAdvertisement> ads = cs.getAdvertisements();
+        int index = this.ads.getSelectionModel().getSelectedIndex();
+        SimpleAdvertisement ad = ads.get(index);
+        cs.setAdvertisement(ad);
+        myController.loadScreen(FrienDBClient.MakePurchasePageID, FrienDBClient.MakePurchasePage);
+        myController.setScreen(FrienDBClient.MakePurchasePageID);
     }
 
     @FXML
@@ -153,6 +159,16 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         }
         cs.setCircles(scA);
         circles.setItems(circle);
+        
+        Response rsp2 = getTopSellingList.request();
+        GenericType<List<SimpleAdvertisement>> gtlc2 = new GenericType<List<SimpleAdvertisement>>() {
+        };
+        List<SimpleAdvertisement> ads2 = rsp2.readEntity(gtlc2);
+        
+        cs.setAdvertisements(ads2);
+        for(SimpleAdvertisement ad : ads2){
+            ads.getItems().add(ad.company + ": " + ad.item + " for $" + ad.price);
+        }
         //circle.setItems(circles);
     }
     
