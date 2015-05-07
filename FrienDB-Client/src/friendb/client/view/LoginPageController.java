@@ -102,24 +102,22 @@ public class LoginPageController implements Initializable, ControlledScreen {
                     if(upperRole=="MANAGER")
                     {
                         myController.createEmployeeSession(emp);
-                        myController.loadScreen(FrienDBClient.EmployeePageID, FrienDBClient.EmployeePage);
-                        myController.loadScreen(FrienDBClient.SalesPageID, FrienDBClient.SalesPage);
+                        myController.loadScreen(FrienDBClient.ManagerPageID, FrienDBClient.ManagerPage);
+                        myController.loadScreen(FrienDBClient.ManagerSalesPageID, FrienDBClient.ManagerSalesPage);
                         myController.loadScreen(FrienDBClient.AdsPageID, FrienDBClient.AdsPage);
-                        myController.setScreen(FrienDBClient.EmployeePageID);
-
+                        myController.setScreen(FrienDBClient.ManagerPageID);
+                        
                     }
                     else
                     {
                     myController.createEmployeeSession(emp);
-                    if(emp.role.equalsIgnoreCase("Manager")){
-                        
-                    }else{
+                    
                         myController.loadScreen(FrienDBClient.EmployeePageID, FrienDBClient.EmployeePage);
                         myController.loadScreen(FrienDBClient.SalesPageID, FrienDBClient.SalesPage);
                         myController.loadScreen(FrienDBClient.AdsPageID, FrienDBClient.AdsPage);
                         myController.loadScreen(FrienDBClient.MailingListPageID, FrienDBClient.MailingListPage);
                         myController.setScreen(FrienDBClient.EmployeePageID);
-                    }
+                    
 
                     }
 

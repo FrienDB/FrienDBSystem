@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import javax.persistence.EntityExistsException;
 import friendb.server.util.DatabaseConnection;
+import friendb.shared.SimpleEmployee;
 /**
  *
  * @author evanguby
@@ -104,6 +105,30 @@ public class AdvertisementBean {
         }
         return advertisements;
     
+    }
+    public List<Advertisement> getEmployeeAds(SimpleEmployee employee){
+        List<Advertisement> empAds = null;
+        em = DatabaseConnection.getEntityManager();
+        TypedQuery<Advertisement> query =
+                em.createNamedQuery("Advertisement.findByEmployeeID", Advertisement.class);
+                    query.setParameter("employeeID", employee.employeeID);
+                    
+      
+        try
+        {
+            empAds  = query.getResultList();
+        } catch (EntityExistsException eeex)
+        {
+            //a school with that id already exists in database
+            logger.log(Level.WARNING, "Collision on customer ID within database");
+            throw eeex;
+        } finally
+        {
+            //close the entity manager
+            em.close();
+            em = null;
+        }
+        return empAds;
     }
                  
 }

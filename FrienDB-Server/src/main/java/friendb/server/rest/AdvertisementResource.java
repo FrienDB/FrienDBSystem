@@ -28,6 +28,7 @@ import javax.persistence.NoResultException;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 import friendb.shared.SimpleCustomer;
+import friendb.shared.SimpleEmployee;
 /**
  *
  * @author evanguby
@@ -76,7 +77,7 @@ public class AdvertisementResource {
             a.item = advertisement.getItem();
             a.content = advertisement.getContent();
             a.price = advertisement.getPrice();
-            a.numOfUnits = advertisement.getNumOfUnits();
+            a.numUnits = advertisement.getNumUnits();
             simpleAdvertisement.add(a);
         }
         GenericEntity<List<SimpleAdvertisement>> wrapper =
@@ -112,5 +113,38 @@ public class AdvertisementResource {
             logger.log(Level.SEVERE, null, ex);
             return Response.serverError().build();
         }
+    }
+    @POST
+    @Path("/getEmployeeAds")
+    @Consumes("application/json")
+    public Response getEmployeeAds(SimpleEmployee employee)
+    {
+        List<Advertisement> allCustomers = advertisementBean.getEmployeeAds(employee);
+        
+        //convert the School entities to a stripped down version readable by the client
+        List<SimpleAdvertisement> simpleAdvertisements = new ArrayList<>();
+        SimpleAdvertisement c;
+        for (Advertisement ad : allCustomers)
+        {
+               
+            c = new SimpleAdvertisement();
+            c.adID = ad.getAdID();
+            
+            c.employeeID = ad.getEmployeeID();
+            c.adType = ad.getAdType();
+            c.postDate = ad.getPostDate();
+            c.company = ad.getCompany();
+            c.item = ad.getItem();
+            c.content = ad.getContent();
+            c.price = ad.getPrice();
+            //c.sex = customer.getSex();
+            c.numUnits = ad.getNumUnits();
+            simpleAdvertisements.add(c);
+        }
+        GenericEntity<List<SimpleAdvertisement>> wrapper =
+                new GenericEntity<List<SimpleAdvertisement>>(simpleAdvertisements)
+                {
+                };
+        return Response.ok(wrapper).build();
     }
 }

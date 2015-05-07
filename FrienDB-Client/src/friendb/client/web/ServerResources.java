@@ -46,7 +46,8 @@ public final class ServerResources {
     
     public static final String GET_CIRCLE_MEMBERS_URL =
             SERVER_BASE_URL + "circleMembership/getCircleMembers";
-
+    public static final String GET_EMPLOYEE_ADS_URL =
+            SERVER_BASE_URL + "advertisement/getEmployeeAds";
     public static final String GET_CIRCLE_POSTS_URL =
             SERVER_BASE_URL + "post/getCirclePosts";
     public static final String GET_CUSTOMER_SALES_URL = 

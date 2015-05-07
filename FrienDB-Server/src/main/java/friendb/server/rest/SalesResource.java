@@ -124,13 +124,15 @@ public class SalesResource {
         return Response.ok(wrapper).build();
     
     }
+    
     @POST
     @Path("/employeeSales")
     @Consumes("application/json")
     public Response getSalesFromEmployee(SimpleEmployee employee)
     {
+      
         List<SimpleSales> simpleSales = new ArrayList();
-        List<Sales> allSales = salesBean.getSalesFromEmployee(employee);
+        List<Sales> allSales = salesBean.getSalesByEmployee(employee);
         SimpleSales s;
         for (Sales sale : allSales)
         {
@@ -150,4 +152,5 @@ public class SalesResource {
         return Response.ok(wrapper).build();
     
     }
+    
 }

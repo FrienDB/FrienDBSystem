@@ -20,7 +20,7 @@ import javafx.scene.control.Button;
  * @author Chin
  */
 public class ManagerPageController implements Initializable, ControlledScreen {
-    ControlledScreen myControlled;
+    ScreensController myController;
     @FXML
     private Button salesReportButton;
     @FXML
@@ -68,12 +68,12 @@ public class ManagerPageController implements Initializable, ControlledScreen {
 
     @Override
     public void setScreenParent(ScreensController screenPage) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        myController = screenPage;
     }
 
     @Override
     public void populatePage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }

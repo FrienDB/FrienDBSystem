@@ -20,6 +20,6 @@ public class SimpleAdvertisement {
     public String item;
     public String content;
     public double price;
-    public int numOfUnits;
+    public int numUnits;
 
 }

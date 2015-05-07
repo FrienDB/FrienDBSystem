@@ -56,7 +56,7 @@ public class SalesScreenController implements Initializable, ControlledScreen {
     private Button selectButton;
     
     private final ServerAccessPoint getEmployeeSales
-            = new ServerAccessPoint(ServerResources.GET_EMPLOYEE_SALES_URL);
+            = new ServerAccessPoint(ServerResources.GET_SINGLE_EMP_SALES_URL);
      private final ServerAccessPoint getCustomerById =
             new ServerAccessPoint(ServerResources.GET_CUSTOMER_SALES_URL);
     private static final Logger logger =
@@ -86,7 +86,7 @@ public class SalesScreenController implements Initializable, ControlledScreen {
         EmployeeSession es = (EmployeeSession) myController.getSession();
         SimpleEmployee e = es.getEmployeeAccount();
 
-        Response rsp = getEmployeeSales.request(es.getEmployeeSales());
+        Response rsp = getEmployeeSales.request(e);
         GenericType<List<SimpleSales>> gtlc = new GenericType<List<SimpleSales>>() {
         };
         ObservableList<String> sale = FXCollections.observableArrayList();
@@ -101,7 +101,7 @@ public class SalesScreenController implements Initializable, ControlledScreen {
         es.setEmployeeSales(seA);
         salesList.setItems(sale);
         //circle.setItems(circles);
-        
+        */
     }
 
     @FXML

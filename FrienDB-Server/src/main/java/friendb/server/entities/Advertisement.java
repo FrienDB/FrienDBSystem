@@ -34,7 +34,7 @@
         private String item;
         private String content;
         private double price;
-        private int numOfUnits;
+        private int numUnits;
 
 
 
@@ -43,7 +43,7 @@
 
         public Advertisement(int adID, int employeeID, String adType,
                 String postDate, String company, String item,
-                String content, double price, int numOfUnits
+                String content, double price, int numUnits
                 ){
             this.adID = adID;
             this.employeeID = employeeID;
@@ -53,6 +53,7 @@
             this.item = item;
             this.content = content;
             this.price = price;
+            this.numUnits=numUnits;
             }
          public int getAdID() {
         return adID;
@@ -108,11 +109,11 @@
         public void setPrice(Double price) {
             this.price = price;
         }
-        public int getNumOfUnits(){
-            return numOfUnits;
+        public int getNumUnits(){
+            return numUnits;
         }
-        public void setNumOfUnits(int numOfUnits) {
-            this.numOfUnits = numOfUnits;
+        public void setNumUnits(int numUnits) {
+            this.numUnits = numUnits;
         }
         }
 

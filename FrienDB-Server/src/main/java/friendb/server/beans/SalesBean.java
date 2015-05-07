@@ -111,7 +111,9 @@ public class SalesBean {
                 customer = query.getSingleResult();
                 return customer;
     }
+    /*
      public List<Sales> getSalesFromEmployee(SimpleEmployee emp){
+         
         List<Advertisement> allAds= null;
         List<Sales> allSales = null;
         TypedQuery<Advertisement> query1 = em.createNamedQuery("Advertisement.findByEmployeeID", Advertisement.class);
@@ -126,6 +128,8 @@ public class SalesBean {
                 }
                     
                 return allSales;
+                
     }
+*/
 
 }
