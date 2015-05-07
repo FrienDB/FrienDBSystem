@@ -284,12 +284,20 @@ public class YourCirclePageController implements Initializable, ControlledScreen
                     break;
                 }
             }
+<<<<<<< HEAD
 
             Response rsp4 = getPostLikes.request();
             GenericType<List<Integer>> gtl4 = new GenericType<List<Integer>>() {
             };
             // List<Integer> theLike = rsp4.readEntity(gtl4);
             String add = "(" + p.datePosted + ") " + author + ": " + p.content + " Likes: ";
+=======
+            
+            /*Response rsp4 = getPostLikes.request();
+            GenericType<List<Integer>> gtl4 = new GenericType<List<Integer>>() {};
+            List<Integer> theLike = rsp4.readEntity(gtl4);*/
+            String add = "(" + p.datePosted + ") " + author + ": " + p.content + " Likes: "/* + theLike.get(0)*/;
+>>>>>>> origin/master
             post.getItems().add(add);
         }
 
