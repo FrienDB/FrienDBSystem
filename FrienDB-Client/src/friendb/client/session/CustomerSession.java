@@ -6,6 +6,7 @@
 package friendb.client.session;
 
 import friendb.shared.SimpleAccount;
+import friendb.shared.SimpleAdvertisement;
 import friendb.shared.SimpleCircle;
 import friendb.shared.SimpleComments;
 import friendb.shared.SimpleCustomer;
@@ -29,6 +30,9 @@ public class CustomerSession implements Session{
     private List<SimpleComments> postComments;
     private SimplePost visitingPost;
     private SimpleCustomer postAuthor;
+    private List<SimpleAdvertisement> advertisements;
+    private SimpleAdvertisement advertisement;
+    private List<SimpleCircle> circlesNotIn;
 
     public CustomerSession(SimpleCustomer acct)
     {
@@ -122,6 +126,30 @@ public class CustomerSession implements Session{
 
     public void setCustomer(SimpleCustomer customer) {
         this.customer = customer;
+    }
+
+    public List<SimpleAdvertisement> getAdvertisements() {
+        return advertisements;
+    }
+
+    public void setAdvertisements(List<SimpleAdvertisement> advertisements) {
+        this.advertisements = advertisements;
+    }
+
+    public SimpleAdvertisement getAdvertisement() {
+        return advertisement;
+    }
+
+    public void setAdvertisement(SimpleAdvertisement advertisement) {
+        this.advertisement = advertisement;
+    }
+
+    public List<SimpleCircle> getCirclesNotIn() {
+        return circlesNotIn;
+    }
+
+    public void setCirclesNotIn(List<SimpleCircle> circlesNotIn) {
+        this.circlesNotIn = circlesNotIn;
     }
     
     

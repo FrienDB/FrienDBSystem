@@ -137,6 +137,26 @@ public class CircleBean {
             em = null;
         }
     }
+
+    public List<Circle> getAllCircles() {
+        List<Circle> circles = null;
+
+        // Create the entity manager and set up the query for all schools
+        em = DatabaseConnection.getEntityManager();
+        TypedQuery<Circle> query =
+                em.createNamedQuery("Circle.findAll", Circle.class);
+        try
+        {
+            circles = query.getResultList();
+            logger.log(Level.INFO, "Retrieving all employees in DB", circles);
+        } finally
+        {
+            //Close the entity manager
+            em.close();
+            em = null;
+        }
+        return circles;
+    }
     
     
 }

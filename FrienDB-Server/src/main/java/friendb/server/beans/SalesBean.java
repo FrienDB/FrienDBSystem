@@ -39,7 +39,7 @@ public class SalesBean {
     @PersistenceContext
     private EntityManager em;
     
-    public void addSales(int transId,
+    public void addSales(
             String dateSold,
             int adId,
             int numUnits,
@@ -48,12 +48,16 @@ public class SalesBean {
         {
 
         em = DatabaseConnection.getEntityManager();
-        Sales s = new Sales(transId, dateSold, adId, numUnits, accountNum);
-
+        Sales s = new Sales(dateSold, adId, numUnits, accountNum);
+        TypedQuery<Advertisement> query
+                = em.createNamedQuery("Advertisement.findAll", Advertisement.class);
+        
         try {
             //add the school
+            Advertisement ad = query.getSingleResult();
             em.getTransaction().begin();
             em.persist(s);
+            ad.setNumUnits(ad.getNumUnits() - numUnits);
             em.getTransaction().commit();
             logger.log(Level.INFO, "New Sale added to database {0}", s);
         } catch (EntityExistsException eeex) {

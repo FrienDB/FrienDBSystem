@@ -84,15 +84,13 @@ public class SalesResource {
     }
     
     @POST
-    @Path("/add")
+    @Path("/makeSale")
     @Consumes("application/json")
-    public Response addSales(SimpleSales sale)
+    public Response makeSale(SimpleSales sale)
     {
         try
         {
-            //add the school
-           // customerBean.addCustomer(customer.firstName,customer.lastName,customer.sex,customer.emailID,
-             //       customer.dob,customer.address,customer.city,customer.state,customer.zipCode,customer.telephone, customer.password);
+            salesBean.addSales(sale.dateSold, sale.adID, sale.numUnits, sale.accountNum);
             logger.log(Level.INFO, "OK response");
             return Response.ok(sale).build();
         } catch (EntityExistsException eeex)

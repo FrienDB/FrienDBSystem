@@ -77,7 +77,7 @@ public class NewAdvertisementController implements Initializable, ControlledScre
             String value = dateFormat.format(date);
             String change = value.replaceAll("/","-");
             a.postDate = change;
-            a.numOfUnits=Integer.parseInt(numUnitsText.getText());
+            a.numUnits=Integer.parseInt(numUnitsText.getText());
             
             //transmit new ad form to server
         

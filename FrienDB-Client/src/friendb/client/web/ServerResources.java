@@ -84,4 +84,14 @@ public final class ServerResources {
     public static final String UPDATE_CUSTOMER_URL = 
             SERVER_BASE_URL + "customer/updateCustomer";
     
+    public static final String GET_TOP_SELLING_LIST_URL = 
+            SERVER_BASE_URL + "advertisement/getTopSellingList";
+    
+    public static final String MAKE_SALE_URL = 
+            SERVER_BASE_URL + "sales/makeSale";
+    
+    public static final String GET_ALL_CIRCLES_URL = 
+            SERVER_BASE_URL + "circle/getAll";
+    
+    
 }
