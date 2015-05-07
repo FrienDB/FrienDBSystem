@@ -11,8 +11,10 @@ import friendb.shared.SimpleMessages;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
@@ -23,6 +25,8 @@ import javax.ws.rs.core.UriInfo;
  *
  * @author nathanwong
  */
+@Path("message") //the url at which this web service's resources are accessed
+@RequestScoped
 public class MessagesResource {
     
     @Context
