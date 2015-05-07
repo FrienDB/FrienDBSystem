@@ -65,7 +65,8 @@ public class MailingListController implements Initializable, ControlledScreen {
             String first = customer.firstName;
             String last = customer.lastName;
             String email = customer.emailID;
-            String value = first + " " + last +" "+ email;
+            String address = customer.address;
+            String value = first + "\t\t" + last +"\t\t"+ address+"\t\t"+ email;
             mailingList.getItems().add(value);
         }
     }
