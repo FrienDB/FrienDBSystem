@@ -57,11 +57,11 @@ public class YourCirclePageController implements Initializable, ControlledScreen
 
     private final ServerAccessPoint deleteCircle
             = new ServerAccessPoint(ServerResources.DELETE_CIRCLE_URL);
-    
+
     private final ServerAccessPoint addCustomerToCircle
             = new ServerAccessPoint(ServerResources.ADD_CUSTOMER_TO_CIRCLE_URL);
-    
-    private final ServerAccessPoint removePost 
+
+    private final ServerAccessPoint removePost
             = new ServerAccessPoint(ServerResources.REMOVE_POST_URL);
 
     /**
@@ -97,40 +97,59 @@ public class YourCirclePageController implements Initializable, ControlledScreen
 
     @FXML
     private void handleAddMember(ActionEvent event) {
-        CustomerSession cs = (CustomerSession)myController.getSession();
+        CustomerSession cs = (CustomerSession) myController.getSession();
         String toAdd = customerToAdd.getValue();
         String[] name = toAdd.split(" ");
         List<SimpleCustomer> allCustomers = cs.getAllCustomers();
         SimpleCustomer customerToAdd = null;
-        for(SimpleCustomer c : allCustomers){
-            if(c.firstName == name[0] && c.lastName == name[1]){
+        for (SimpleCustomer c : allCustomers) {
+            if (c.firstName == name[0] && c.lastName == name[1]) {
                 customerToAdd = c;
             }
         }
-        
+
         SimpleCircleMembership scm = new SimpleCircleMembership();
         scm.circleID = cs.getVisitingCircle().circleID;
         scm.customerID = customerToAdd.CustomerID;
-        
+
         Response rsp = addCustomerToCircle.request(scm);
-        
-        myController.loadScreen(FrienDBClient.YourCirclePageID,FrienDBClient.YourCirclePage);
+
+        myController.loadScreen(FrienDBClient.YourCirclePageID, FrienDBClient.YourCirclePage);
         myController.setScreen(FrienDBClient.YourCirclePageID);
     }
 
     @FXML
     private void handleRemovePost(ActionEvent event) {
-        CustomerSession cs = (CustomerSession)myController.getSession();
-                
-        SimplePost simplePost = new SimplePost();
-        simplePost.authorID = cs.getCirclePosts().get( post.getSelectionModel().getSelectedIndex() ).authorID;
-        simplePost.circleID = cs.getCirclePosts().get( post.getSelectionModel().getSelectedIndex() ).circleID;
-        simplePost.commentCount = cs.getCirclePosts().get( post.getSelectionModel().getSelectedIndex() ).commentCount;
-        simplePost.datePosted = cs.getCirclePosts().get( post.getSelectionModel().getSelectedIndex() ).datePosted;
-        simplePost.content = cs.getCirclePosts().get( post.getSelectionModel().getSelectedIndex() ).content;
-        simplePost.pageID = cs.getCirclePosts().get( post.getSelectionModel().getSelectedIndex() ).pageID;
-        
-        Response rsp = removePost.request(simplePost);
+        CustomerSession cs = (CustomerSession) myController.getSession();
+
+        // Get the index in reference to the post ListView of the post to delete
+        int postToDelete = post.getSelectionModel().getSelectedIndex();
+        int actualIndex = -1;
+
+        // Need to search for the proper post index in cs.GetCirclePosts();
+        for (int i = 0; i < cs.getCirclePosts().size(); i++) {
+            if (post.getItems().get(postToDelete).contains(cs.getCirclePosts().get(i).content)) {
+                actualIndex = i;
+                break;
+            }
+        }
+        // If the post is not found, then there is an error
+        if (actualIndex == -1) {
+
+        } // else, proceed to delete post
+        else {
+            SimplePost simplePost = new SimplePost();
+            simplePost.authorID = cs.getCirclePosts().get(actualIndex).authorID;
+            simplePost.circleID = cs.getCirclePosts().get(actualIndex).circleID;
+            simplePost.commentCount = cs.getCirclePosts().get(actualIndex).commentCount;
+            simplePost.datePosted = cs.getCirclePosts().get(actualIndex).datePosted;
+            simplePost.content = cs.getCirclePosts().get(actualIndex).content;
+            simplePost.pageID = cs.getCirclePosts().get(actualIndex).pageID;
+
+            Response rsp = removePost.request(simplePost);
+//            post.getItems().remove(cs.getCirclePosts().get(post.getSelectionModel().getSelectedIndex()));
+            post.getItems().remove(postToDelete);
+        }
     }
 
     @FXML
@@ -187,7 +206,7 @@ public class YourCirclePageController implements Initializable, ControlledScreen
             return;
         }
         Response rsp3 = getAllCustomers.request();
-        
+
         GenericType<List<SimpleCustomer>> gtlc3 = new GenericType<List<SimpleCustomer>>() {
         };
         boolean addToList = true;
@@ -195,16 +214,16 @@ public class YourCirclePageController implements Initializable, ControlledScreen
         ArrayList<SimpleCustomer> customersNotInCircle = new ArrayList<>();
         for (SimpleCustomer c : customersTo) {
             for (SimpleCustomer cus : customers) {
-                
+
                 if (c.CustomerID == cus.CustomerID) {
                     addToList = false;
                 }
-                
+
             }
-            if(addToList){
-                    customerToAdd.getItems().add(c.firstName + " " + c.lastName);
-                    customersNotInCircle.add(c);
-                }
+            if (addToList) {
+                customerToAdd.getItems().add(c.firstName + " " + c.lastName);
+                customersNotInCircle.add(c);
+            }
             addToList = true;
         }
         cs.setAllCustomers(customersTo);
@@ -216,6 +235,7 @@ public class YourCirclePageController implements Initializable, ControlledScreen
             for (SimpleCustomer c : customers) {
                 if (c.CustomerID == p.authorID) {
                     author = c.firstName + " " + c.lastName;
+                    break;
                 }
             }
             String add = author + ": " + p.content + " (" + p.datePosted + ")";
