@@ -7,6 +7,7 @@ package friendb.server.beans;
 
 import friendb.server.entities.Advertisement;
 import friendb.server.entities.Customer;
+import friendb.server.entities.Sales;
 import java.util.List;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -19,6 +20,7 @@ import javax.persistence.EntityExistsException;
 import friendb.server.util.DatabaseConnection;
 import friendb.shared.SimpleAdvertisement;
 import friendb.shared.SimpleEmployee;
+import java.util.ArrayList;
 /**
  *
  * @author evanguby
@@ -124,5 +126,56 @@ public class AdvertisementBean {
         }
         return empAds;
     }
+
+    public List<Advertisement> getTopSellingList() {
+        List<Advertisement> advertisements = new ArrayList<>();
+        TypedQuery<Advertisement> query
+                = em.createNamedQuery("Advertisement.findAll", Advertisement.class);
+        TypedQuery<Sales> query2
+                = em.createNamedQuery("Sales.findAll", Sales.class);
+        //Create the entity manager and set up the query for all schools
+        em = DatabaseConnection.getEntityManager();
+//        Query q = em.createQuery("SELECT c from Sales s inner join on Advertisement a where s.adID = a.adID GROUP BY Item ORDER BY s.adID DESC");
+
+        try {
+
+            List<Advertisement> a = query.getResultList();
+            List<Sales> s = query2.getResultList();
+            int[] numSold = new int[a.size()];
+            int counter = 0;
+            for (Advertisement ad : a) {
+                int numSoldtemp = 0;
+                for (Sales sale : s) {
+
+                    if (ad.getAdID() == sale.getAdID()) {
+                        numSoldtemp += sale.getNumUnits();
+                    }
+                    numSold[counter] = numSoldtemp;
+                }
+                counter++;
+            }
+            Advertisement[] temp = new Advertisement[a.size()];
+            for (int i = 0; i < a.size(); i++) {
+                counter = 0;
+                for (int j = 0; j < a.size(); j++) {
+
+                    if (numSold[i] < numSold[j] && i != j) {
+                        counter++;
+                    }
+                }
+                temp[counter] = a.get(i);
+            }
+            for (int i = 0; i < temp.length; i++) {
+                advertisements.add(temp[i]);
+            }
+            logger.log(Level.INFO, "Retrieving all advertisement in DB", advertisements);
+        } finally {
+            //Close the entity manager
+            em.close();
+            em = null;
+        }
+        return advertisements;
+    }
+
                  
 }
