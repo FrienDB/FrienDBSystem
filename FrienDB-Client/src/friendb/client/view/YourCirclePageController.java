@@ -284,10 +284,10 @@ public class YourCirclePageController implements Initializable, ControlledScreen
                 }
             }
             
-            Response rsp4 = getPostLikes.request();
+            /*Response rsp4 = getPostLikes.request();
             GenericType<List<Integer>> gtl4 = new GenericType<List<Integer>>() {};
-            List<Integer> theLike = rsp4.readEntity(gtl4);
-            String add = "(" + p.datePosted + ") " + author + ": " + p.content + " Likes: " + theLike.get(0);
+            List<Integer> theLike = rsp4.readEntity(gtl4);*/
+            String add = "(" + p.datePosted + ") " + author + ": " + p.content + " Likes: "/* + theLike.get(0)*/;
             post.getItems().add(add);
         }
 
