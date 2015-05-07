@@ -5,6 +5,7 @@
  */
 package friendb.server.beans;
 
+import friendb.server.entities.Circle;
 import friendb.server.entities.CircleMembership;
 import friendb.server.entities.Customer;
 import friendb.server.util.DatabaseConnection;
@@ -79,6 +80,26 @@ public class CircleMembershipBean {
             logger.log(Level.WARNING, "Customer already in circle");
             throw rex;
         } finally
+        {
+            //close the entity manager
+            em.close();
+            em = null;
+        }
+    }
+
+    public void removeCustomerFromCircle(SimpleCircleMembership scm) {
+        em = DatabaseConnection.getEntityManager();
+        try
+        {
+            TypedQuery<CircleMembership> query = em.createNamedQuery("CircleMembership.findByCircleIDAndCustomerID", CircleMembership.class);
+            query.setParameter("circleID", scm.circleID);
+            query.setParameter("customerID", scm.customerID);
+            CircleMembership cm = query.getSingleResult();
+
+            em.getTransaction().begin();
+            em.remove(cm);
+            em.getTransaction().commit();
+        }finally
         {
             //close the entity manager
             em.close();

@@ -49,11 +49,15 @@ public class SalesBean {
 
         em = DatabaseConnection.getEntityManager();
         Sales s = new Sales(dateSold, adId, numUnits, accountNum);
-
+        TypedQuery<Advertisement> query
+                = em.createNamedQuery("Advertisement.findAll", Advertisement.class);
+        
         try {
             //add the school
+            Advertisement ad = query.getSingleResult();
             em.getTransaction().begin();
             em.persist(s);
+            ad.setNumOfUnits(ad.getNumOfUnits() - numUnits);
             em.getTransaction().commit();
             logger.log(Level.INFO, "New Sale added to database {0}", s);
         } catch (EntityExistsException eeex) {

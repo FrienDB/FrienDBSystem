@@ -89,5 +89,8 @@ public final class ServerResources {
     public static final String MAKE_SALE_URL = 
             SERVER_BASE_URL + "sales/makeSale";
     
+    public static final String GET_ALL_CIRCLES_URL = 
+            SERVER_BASE_URL + "circle/getAll";
+    
     
 }

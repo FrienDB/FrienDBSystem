@@ -32,6 +32,7 @@ public class CustomerSession implements Session{
     private SimpleCustomer postAuthor;
     private List<SimpleAdvertisement> advertisements;
     private SimpleAdvertisement advertisement;
+    private List<SimpleCircle> circlesNotIn;
 
     public CustomerSession(SimpleCustomer acct)
     {
@@ -141,6 +142,14 @@ public class CustomerSession implements Session{
 
     public void setAdvertisement(SimpleAdvertisement advertisement) {
         this.advertisement = advertisement;
+    }
+
+    public List<SimpleCircle> getCirclesNotIn() {
+        return circlesNotIn;
+    }
+
+    public void setCirclesNotIn(List<SimpleCircle> circlesNotIn) {
+        this.circlesNotIn = circlesNotIn;
     }
     
     

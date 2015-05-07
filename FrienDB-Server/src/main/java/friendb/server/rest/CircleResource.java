@@ -8,9 +8,11 @@ package friendb.server.rest;
 import friendb.server.beans.CircleBean;
 import friendb.server.beans.CustomerBean;
 import friendb.server.entities.Circle;
+import friendb.server.entities.Employee;
 import friendb.shared.LoginInfo;
 import friendb.shared.SimpleCircle;
 import friendb.shared.SimpleCustomer;
+import friendb.shared.SimpleEmployee;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,8 +22,10 @@ import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import javax.persistence.RollbackException;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
@@ -113,4 +117,29 @@ public class CircleResource {
         }
     }
     
+    @GET
+    @Path("/getAll")
+    @Produces("application/json")
+    public Response getAllCircles()
+    {
+        List<Circle> allCircles = circleBean.getAllCircles();
+        
+        //convert the School entities to a stripped down version readable by the client
+        List<SimpleCircle> simpleCircle = new ArrayList<>();
+        SimpleCircle c;
+        for (Circle circle : allCircles)
+        {
+            c = new SimpleCircle();
+            c.circleID = circle.getCircleID();
+            c.circleName = circle.getCircleName();
+            c.circleOwner = circle.getCircleOwner();
+            c.circleType = circle.getCircleType();
+            simpleCircle.add(c);
+        }
+        GenericEntity<List<SimpleCircle>> wrapper =
+                new GenericEntity<List<SimpleCircle>>(simpleCircle)
+                {
+                };
+        return Response.ok(wrapper).build();
+    }
 }

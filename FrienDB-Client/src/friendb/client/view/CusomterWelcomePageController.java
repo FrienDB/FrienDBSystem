@@ -15,6 +15,7 @@ import friendb.shared.SimpleCircle;
 import friendb.shared.SimpleCustomer;
 import friendb.client.session.CustomerSession;
 import friendb.shared.SimpleAdvertisement;
+import friendb.shared.SimpleCircleMembership;
 import friendb.shared.SimpleCustomer;
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -53,7 +55,7 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
 
 
     @FXML
-    private TextField joinCircleName;
+    private ComboBox circlesToJoin;
 
     private final ServerAccessPoint getCustomersCircles =
             new ServerAccessPoint(ServerResources.GET_CUSTOMERS_CIRCLES_URL);
@@ -61,6 +63,10 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
     private final ServerAccessPoint getTopSellingList =
             new ServerAccessPoint(ServerResources.GET_TOP_SELLING_LIST_URL);
     
+    private final ServerAccessPoint getAllCircles =
+            new ServerAccessPoint(ServerResources.GET_ALL_CIRCLES_URL);
+    private final ServerAccessPoint joinCircle =
+            new ServerAccessPoint(ServerResources.ADD_CUSTOMER_TO_CIRCLE_URL);
    
     @FXML
     private ListView<?> accounts;
@@ -107,6 +113,17 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
 
     @FXML
     private void handleJoinCircle(ActionEvent event) {
+        CustomerSession cs = (CustomerSession) myController.getSession();
+        
+        SimpleCircle sc = cs.getCirclesNotIn().get(circlesToJoin.getSelectionModel().getSelectedIndex());
+        
+        SimpleCircleMembership scm = new SimpleCircleMembership();
+        scm.circleID = sc.circleID;
+        scm.customerID = cs.getCustomerAccount().CustomerID;
+        joinCircle.request(scm);
+        
+        myController.loadScreen(FrienDBClient.CustomerWelcomePageID, FrienDBClient.CustomerWelcomePage);
+        myController.setScreen(FrienDBClient.CustomerWelcomePageID);
     }
     
     @FXML
@@ -169,6 +186,27 @@ public class CusomterWelcomePageController implements Initializable, ControlledS
         for(SimpleAdvertisement ad : ads2){
             ads.getItems().add(ad.company + ": " + ad.item + " for $" + ad.price);
         }
+        
+        Response rsp3 = getAllCircles.request();
+        GenericType<List<SimpleCircle>> gtlc3 = new GenericType<List<SimpleCircle>>() {
+        };
+        List<SimpleCircle> allCircles = rsp3.readEntity(gtlc3);
+        List<SimpleCircle> circlesNotIn = new ArrayList<>();
+        for(SimpleCircle circle3 : allCircles){
+            boolean toAdd= true;
+            for(SimpleCircle circle2 : scA){
+                if(circle3.circleID == circle2.circleID)
+                    toAdd = false;
+                
+            }
+            if(toAdd)
+                circlesNotIn.add(circle3);
+                
+        }
+        for(SimpleCircle circle4 : circlesNotIn){
+            circlesToJoin.getItems().add(circle4.circleName);
+        }
+        cs.setCirclesNotIn(circlesNotIn);
         //circle.setItems(circles);
     }
     

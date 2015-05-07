@@ -92,4 +92,26 @@ public class CircleMembershipResource {
         }
     }
     
+    @POST
+    @Path("/removeCustomerFromCircle")
+    @Consumes("application/json")
+    public Response removeCustomerFromCircle(SimpleCircleMembership scm) {
+        try
+        {
+            circleMembershipBean.removeCustomerFromCircle(scm);
+            logger.log(Level.INFO, "OK Response");
+            return Response.ok(scm).build();
+        } catch (RollbackException rex)
+        {
+            logger.log(Level.WARNING, "BAD REQUEST");
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (NoResultException nrex)
+        {
+            //@TODO disambiguate errors
+            logger.log(Level.WARNING, "BAD REQUEST");
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+    }
+    
+    
 }
