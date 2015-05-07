@@ -13,7 +13,9 @@ import java.util.List;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -42,14 +44,15 @@ public class MessagesResource {
     public MessagesResource() {
     }
     
-    @GET
-    @Produces("application/json")
+    @POST
+    @Path("/getMessages")
+    @Consumes("application/json")
     public Response getMessages(int customerID)
     {
         List<SimpleMessages> allMessages = messagesBean.getMessages(customerID);
         
         //convert the School entities to a stripped down version readable by the client
-        List<SimpleMessages> simpleMessages = new ArrayList<>();
+        /*List<SimpleMessages> simpleMessages = new ArrayList<>();
         SimpleMessages m;
         for (SimpleMessages message : allMessages)
         {
@@ -62,9 +65,9 @@ public class MessagesResource {
             m.content = message.content;
             
             simpleMessages.add(m);
-        }
+        }*/
         GenericEntity<List<SimpleMessages>> wrapper =
-                new GenericEntity<List<SimpleMessages>>(simpleMessages)
+                new GenericEntity<List<SimpleMessages>>(allMessages)
                 {
                 };
         return Response.ok(wrapper).build();
