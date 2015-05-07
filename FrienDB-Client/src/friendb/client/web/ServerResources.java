@@ -35,7 +35,8 @@ public final class ServerResources {
             SERVER_BASE_URL + "circle";
     public static final String GET_EMPLOYEE_SALES_URL = 
             SERVER_BASE_URL + "sales";
-    
+    public static final String GET_SINGLE_EMP_SALES_URL = 
+            SERVER_BASE_URL + "sales/employeeSales" ;   
     public static final String ADD_CIRCLE_URL = 
             SERVER_BASE_URL + "circle/add";
     

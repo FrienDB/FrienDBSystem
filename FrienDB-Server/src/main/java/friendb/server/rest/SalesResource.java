@@ -27,6 +27,7 @@ import javax.persistence.NoResultException;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 import friendb.shared.SimpleCustomer;
+import friendb.shared.SimpleEmployee;
 import friendb.shared.SimpleSales;
 /**
  *
@@ -118,6 +119,32 @@ public class SalesResource {
         
         GenericEntity<Customer> wrapper =
                 new GenericEntity<Customer>(simplePosts)
+                {
+                };
+        return Response.ok(wrapper).build();
+    
+    }
+    @POST
+    @Path("/employeeSales")
+    @Consumes("application/json")
+    public Response getSalesFromEmployee(SimpleEmployee employee)
+    {
+        List<SimpleSales> simpleSales = new ArrayList();
+        List<Sales> allSales = salesBean.getSalesFromEmployee(employee);
+        SimpleSales s;
+        for (Sales sale : allSales)
+        {
+            s = new SimpleSales();
+            s.transID = sale.getTransID();
+            s.dateSold = sale.getDateSold();
+            s.adID = sale.getAdID();
+            //string d = customer.getDob();
+            s.numUnits = sale.getNumUnits();
+            s.accountNum = sale.getAccountNum();
+            simpleSales.add(s);
+        }
+        GenericEntity<List<SimpleSales>> wrapper =
+                new GenericEntity<List<SimpleSales>>(simpleSales)
                 {
                 };
         return Response.ok(wrapper).build();

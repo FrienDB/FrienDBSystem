@@ -92,7 +92,7 @@ public class SalesBean {
         em = DatabaseConnection.getEntityManager();
         TypedQuery<Sales> query
                 = em.createNamedQuery("Sales.findByEmployeeID", Sales.class);
-        query.setParameter("employeeID", employee.employeeID);
+        query.setParameter("employeeId", employee.employeeID);
         try {
             sales = query.getResultList();
             logger.log(Level.INFO, "Retrieving all advertisement in DB", sales);
@@ -110,6 +110,22 @@ public class SalesBean {
                 query.setParameter("customerID", sale.accountNum);
                 customer = query.getSingleResult();
                 return customer;
+    }
+     public List<Sales> getSalesFromEmployee(SimpleEmployee emp){
+        List<Advertisement> allAds= null;
+        List<Sales> allSales = null;
+        TypedQuery<Advertisement> query1 = em.createNamedQuery("Advertisement.findByEmployeeID", Advertisement.class);
+                query1.setParameter("employeeID", emp.employeeID);
+                allAds = query1.getResultList();
+                
+                for(Advertisement ad: allAds)
+                {
+                    TypedQuery<Sales> query = em.createNamedQuery("Sales.findByAdId", Sales.class);
+                    query.setParameter("adID", ad.getAdID());
+                    allSales.add(query.getSingleResult());
+                }
+                    
+                return allSales;
     }
 
 }

@@ -101,7 +101,7 @@ public class SalesScreenController implements Initializable, ControlledScreen {
         es.setEmployeeSales(seA);
         salesList.setItems(sale);
         //circle.setItems(circles);
-        */
+        
     }
 
     @FXML

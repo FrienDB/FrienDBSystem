@@ -18,7 +18,9 @@ import javax.persistence.NamedQuery;
  */
 @NamedQueries({
     @NamedQuery(name = "Sales.findAll", 
-            query = "SELECT s FROM Sales s")
+            query = "SELECT s FROM Sales s"),
+    @NamedQuery(name = "Sales.findByAdId", 
+            query = "SELECT s FROM Sales s WHERE s.adID = :adID")    
 })
 @Entity
 public class Sales implements Serializable{
