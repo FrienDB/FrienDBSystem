@@ -23,5 +23,6 @@ public class SimpleEmployee {
     public int zipCode;
     public Double hourlyRate;
     public String role;
+    public String password;
 
 }

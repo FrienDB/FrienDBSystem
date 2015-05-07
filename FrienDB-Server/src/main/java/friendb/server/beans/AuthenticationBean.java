@@ -95,11 +95,31 @@ public class AuthenticationBean
 
                 //find the right account with that email
                 Employee e = query.getSingleResult();
-
-                    logger.log(Level.INFO, "Emplyee {0} logged in", email);
-                    String toReturn[] = {"Employee",email};
+                if (e.getPassword().equals(password))
+                {
+                    logger.log(Level.INFO, "Student {0} logged in", email);
+                    String toReturn[] = new String[14];
+                    toReturn[0] = "Employee";
+                    toReturn[1] = ""+e.getEmployeeID();
+                    toReturn[2] = ""+e.getSSN();
+                    toReturn[3] = e.getStartDate();
+                    toReturn[4] = e.getFirstName();
+                    toReturn[5] = e.getLastName();
+                    toReturn[6] = e.getTelephone();
+                    toReturn[7] = e.getAddress();
+                    toReturn[8] = e.getCity();
+                    toReturn[9] = e.getCurState();
+                    toReturn[10] = ""+e.getZipCode();
+                    toReturn[11] = ""+e.getHourlyRate();
+                    toReturn[12] = e.getRole();
+                    toReturn[13] = e.getPassword();
                     return toReturn;
-
+                }
+                else
+                {
+                    logger.log(Level.WARNING, "Incorrect password for Student {0}", email);
+                    throw new WrongPasswordException();
+                }
             }
         } catch (NoResultException nrex)
         {

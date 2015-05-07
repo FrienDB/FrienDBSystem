@@ -105,12 +105,12 @@ public class NewAdvertisementController implements Initializable, ControlledScre
 
     @Override
     public void setScreenParent(ScreensController screenPage) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        myController = screenPage;
     }
 
     @Override
     public void populatePage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }
