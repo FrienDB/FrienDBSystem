@@ -73,7 +73,7 @@ public class MessagesPageController implements Initializable, ControlledScreen {
     public void populatePage() {
         CustomerSession cs = (CustomerSession) myController.getSession();
 
-        Response rsp = getMessages.request((cs.getCustomerAccount().CustomerID));
+        Response rsp = getMessages.request((cs.getCustomerAccount()));
 
         GenericType<List<SimpleMessages>> gtlm = new GenericType<List<SimpleMessages>>() {
         };

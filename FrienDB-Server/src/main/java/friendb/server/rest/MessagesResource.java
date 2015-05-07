@@ -7,6 +7,7 @@ package friendb.server.rest;
 
 import friendb.server.beans.MessagesBean;
 import friendb.server.entities.Messages;
+import friendb.shared.SimpleCustomer;
 import friendb.shared.SimpleMessages;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,9 +48,9 @@ public class MessagesResource {
     @POST
     @Path("/getMessages")
     @Consumes("application/json")
-    public Response getMessages(int customerID)
+    public Response getMessages(SimpleCustomer customerID)
     {
-        List<SimpleMessages> allMessages = messagesBean.getMessages(customerID);
+        List<SimpleMessages> allMessages = messagesBean.getMessages(customerID.CustomerID);
         
         //convert the School entities to a stripped down version readable by the client
         /*List<SimpleMessages> simpleMessages = new ArrayList<>();
