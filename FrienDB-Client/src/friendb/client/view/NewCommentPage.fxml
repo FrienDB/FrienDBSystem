@@ -13,7 +13,7 @@
          </font>
       </Label>
       <Button layoutX="657.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleBack" text="Back" />
-      <TextArea layoutX="14.0" layoutY="55.0" prefHeight="376.0" prefWidth="694.0" />
+      <TextArea fx:id="content" layoutX="14.0" layoutY="55.0" prefHeight="376.0" prefWidth="694.0" />
       <Button layoutX="20.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleMakeComment" text="Make Comment" />
    </children>
 </AnchorPane>

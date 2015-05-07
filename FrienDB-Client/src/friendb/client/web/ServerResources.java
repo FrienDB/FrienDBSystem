@@ -72,5 +72,8 @@ public final class ServerResources {
     public static final String GET_POST_LIKES = 
             SERVER_BASE_URL + "post/getLikes";
 
+    public static final String ADD_COMMENT_URL = 
+            SERVER_BASE_URL + "comment/addComment";
+    
     
 }

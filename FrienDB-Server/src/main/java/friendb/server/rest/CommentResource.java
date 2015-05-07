@@ -9,9 +9,12 @@ import friendb.server.beans.CommentBean;
 import friendb.shared.SimpleComments;
 import friendb.shared.SimplePost;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
+import javax.persistence.RollbackException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -50,6 +53,27 @@ public class CommentResource {
                 {
                 };
         return Response.ok(wrapper).build();
+    }
+    
+    @POST
+    @Path("/addComment")
+    @Consumes("application/json")
+    public Response addComment(SimpleComments sc) {
+        try
+        {
+            commentBean.addPostComment(sc);
+            logger.log(Level.INFO, "OK Response");
+            return Response.ok(sc).build();
+        } catch (RollbackException rex)
+        {
+            logger.log(Level.WARNING, "BAD REQUEST");
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (NoResultException nrex)
+        {
+            //@TODO disambiguate errors
+            logger.log(Level.WARNING, "BAD REQUEST");
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
     }
     
 }

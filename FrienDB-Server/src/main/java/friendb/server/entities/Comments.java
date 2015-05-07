@@ -38,9 +38,8 @@
         public Comments() {
         }
 
-        public Comments(int commentID, String content, String dateCommented,
+        public Comments(String content, String dateCommented,
                 int author, int postID){
-            this.commentID = commentID;
             this.content = content;
             this.dateCommented = dateCommented;
             this.author = author;

@@ -20,7 +20,9 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name = "Post.findAll", 
             query = "SELECT p FROM Post p"),
     @NamedQuery(name = "Post.findByPageID", 
-            query = "SELECT p.content, p.author, p.datePosted FROM Post p WHERE p.pageID = :pageID")
+            query = "SELECT p.content, p.author, p.datePosted FROM Post p WHERE p.pageID = :pageID"),
+    @NamedQuery(name = "Post.findByID", 
+            query = "SELECT p FROM Post p WHERE p.postID = :postID")
 })
 @Entity
 public class Post implements Serializable{
@@ -53,7 +55,7 @@ public class Post implements Serializable{
     public void setPageID(int pageID) {
         this.pageID = pageID;
     }
-/*
+
     public int getPostID() {
         return postID;
     }
@@ -61,7 +63,7 @@ public class Post implements Serializable{
     public void setPostID(int postID) {
         this.postID = postID;
     }
-*/
+
     public String getContent() {
         return content;
     }

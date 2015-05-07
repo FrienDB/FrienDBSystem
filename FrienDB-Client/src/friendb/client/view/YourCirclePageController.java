@@ -62,21 +62,17 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     private final ServerAccessPoint addCustomerToCircle
             = new ServerAccessPoint(ServerResources.ADD_CUSTOMER_TO_CIRCLE_URL);
 
-   
     private final ServerAccessPoint removeCustomerFromCircle
             = new ServerAccessPoint(ServerResources.REMOVE_CUSTOMER_FROM_CIRCLE_URL);
 
-    private final ServerAccessPoint removePost 
+    private final ServerAccessPoint removePost
             = new ServerAccessPoint(ServerResources.REMOVE_POST_URL);
-    
 
-    private final ServerAccessPoint getPostComments 
+    private final ServerAccessPoint getPostComments
             = new ServerAccessPoint(ServerResources.GET_POST_COMMENTS_URL);
 
     private final ServerAccessPoint getPostLikes
             = new ServerAccessPoint(ServerResources.GET_POST_LIKES);
-
-
 
     /**
      * Initializes the controller class.
@@ -89,12 +85,12 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     @FXML
     private void handleRemoveSelected(ActionEvent event) {
         int index = circleMember.getSelectionModel().getSelectedIndex();
-        CustomerSession cs = (CustomerSession)myController.getSession();
+        CustomerSession cs = (CustomerSession) myController.getSession();
         SimpleCustomer sc = cs.getCustomersInCircle().get(index);
         SimpleCircleMembership scm = new SimpleCircleMembership();
         scm.circleID = cs.getVisitingCircle().circleID;
         scm.customerID = sc.CustomerID;
-        if(cs.getVisitingCircle().circleOwner != scm.customerID){
+        if (cs.getVisitingCircle().circleOwner != scm.customerID) {
             Response rsp = removeCustomerFromCircle.request(scm);
         }
         myController.loadScreen(FrienDBClient.YourCirclePageID, FrienDBClient.YourCirclePage);
@@ -128,8 +124,8 @@ public class YourCirclePageController implements Initializable, ControlledScreen
         List<SimpleCustomer> allCustomers = cs.getAllCustomers();
         SimpleCustomer customerToAdd = null;
 
-        for(SimpleCustomer c : allCustomers){
-            if(c.firstName.equals(name[0]) && c.lastName.equals(name[1])){
+        for (SimpleCustomer c : allCustomers) {
+            if (c.firstName.equals(name[0]) && c.lastName.equals(name[1])) {
 
                 customerToAdd = c;
             }
@@ -190,23 +186,28 @@ public class YourCirclePageController implements Initializable, ControlledScreen
     @FXML
     private void handleViewComments(ActionEvent event) {
         int index = post.getSelectionModel().getSelectedIndex();
-        CustomerSession cs = (CustomerSession)myController.getSession();
+        CustomerSession cs = (CustomerSession) myController.getSession();
         SimplePost post = cs.getCirclePosts().get(index);
         Response rsp = getPostComments.request(post);
-        
+
         GenericType<List<SimpleComments>> gtlc = new GenericType<List<SimpleComments>>() {
         };
+        List<SimpleComments> comments = null;
+        try {
+            comments = rsp.readEntity(gtlc);
+        }catch (Exception e){
+            
+        }
 
-        List<SimpleComments> comments = rsp.readEntity(gtlc);
-        
         cs.setPostComments(comments);
         cs.setVisitingPost(post);
         List<SimpleCustomer> scList = cs.getAllCustomers();
-        for(SimpleCustomer cust : scList){
-            if(cust.CustomerID == post.authorID)
+        for (SimpleCustomer cust : scList) {
+            if (cust.CustomerID == post.authorID) {
                 cs.setPostAuthor(cust);
+            }
         }
-        
+
         myController.loadScreen(FrienDBClient.CommentsPageID, FrienDBClient.CommentsPage);
         myController.setScreen(FrienDBClient.CommentsPageID);
     }
@@ -283,11 +284,12 @@ public class YourCirclePageController implements Initializable, ControlledScreen
                     break;
                 }
             }
-            
+
             Response rsp4 = getPostLikes.request();
-            GenericType<List<Integer>> gtl4 = new GenericType<List<Integer>>() {};
-            List<Integer> theLike = rsp4.readEntity(gtl4);
-            String add = "(" + p.datePosted + ") " + author + ": " + p.content + " Likes: " + theLike.get(0);
+            GenericType<List<Integer>> gtl4 = new GenericType<List<Integer>>() {
+            };
+            // List<Integer> theLike = rsp4.readEntity(gtl4);
+            String add = "(" + p.datePosted + ") " + author + ": " + p.content + " Likes: ";
             post.getItems().add(add);
         }
 
