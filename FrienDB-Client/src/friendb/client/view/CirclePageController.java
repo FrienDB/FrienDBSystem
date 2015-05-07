@@ -133,6 +133,8 @@ public class CirclePageController implements Initializable, ControlledScreen {
         }
 
         cs.setCirclePosts(posts);
+        if(posts.isEmpty())
+            return;
         cs.setPageID(posts.get(0).pageID);
         for (SimplePost p : posts) {
             String author = "";

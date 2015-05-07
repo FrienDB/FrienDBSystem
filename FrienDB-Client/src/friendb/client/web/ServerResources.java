@@ -62,4 +62,8 @@ public final class ServerResources {
     public static final String ADD_CUSTOMER_TO_CIRCLE_URL = 
             SERVER_BASE_URL + "circleMembership/addCustomerToCircle";
     
+    public static final String REMOVE_CUSTOMER_FROM_CIRCLE_URL = 
+            SERVER_BASE_URL + "circleMembership/removeCustomerFromCircle";
+    
+    
 }
